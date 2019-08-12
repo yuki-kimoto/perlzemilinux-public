@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>初めてのHello World (1) - ライブラリの読み込み - PerlゼミのLinux入門</title>
+<meta name="description" content="ではさっそく「Hello World」をC言語で記述してみましょう。C言語のソースコードの拡張子は「.c」です。「hello.c」というファイルに次のコードを書いてみてください。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812182932.html">初めてのHello World (1) - ライブラリの読み込み</a></h2>
+<p>
+  　ではさっそく「Hello World」をC言語で記述してみましょう。C言語のソースコードの拡張子は「.c」です。「hello.c」というファイルに次のコードを書いてみてください。
+</p>
+<p>
+  ```c:
+</p>
+<p>
+  #include <stdio.h>
+</p>
+<p>
+  // エントリポイント
+</p>
+<p>
+  int main () {
+</p>
+  
+  // Hello World!を出力
+  printf("Hello World!\n");
+  
+  // 正常に終了したことを知らせる
+  return 0;
+<p>
+  }
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##ライブラリの読み込み
+</p>
+<p>
+  　まず最初にライブラリの読み込みについて見てみましょう。
+</p>
+<p>
+  ```c:
+</p>
+<p>
+  #include <stdio.h>
+</p>
+<p>
+  ```
+</p>
+<p>
+  　Perlではuseを使ってモジュールを読み込みました。C言語では、ライブラリの読み込みは<b>include</b>ディレクティブを使って行います。<b>ディレクティブ</b>というのは、プリプロセッサへの命令のことです。プリプロセッサ命令は「#」で始まります。
+</p>
+<p>
+  　プリプロセッサとは、ソースコードをコンパイルする前の前処理を行うものです。C言語では、ライブラリの読み込みというのは、他のソースコードを取り込むことに等しいです。
+</p>
+<p>
+  　つまり「stdio.h」というソースコードを現在のソースコードに取り込むということを意味しています。コンパイルまでの流れを見ると次のようになります。
+</p>
+<p>
+  ```
+</p>
+<p>
+  ソースコード　→　前処理されたソースコード　→　コンパイルされたソースコード
+</p>
+<p>
+  　　　　(プリプロセッサ)　　　　　　 (コンパイラ)
+</p>
+<p>
+  ```
+</p>
+<p>
+  ###<stdio.h>のように「&lt;&gt;」で囲まれているのはどんな意味があるのか
+</p>
+<p>
+  　どうして「stdio.h」は「&lt;&gt;」で囲まれているのだろうと不思議に思います。C言語ではルールとして、標準ライブラリは「&lt;&gt;」で囲むというルールがあります。
+</p>
+<p>
+  　「stdio.h」は、標準ライブラリなので「&lt;&gt;」で囲んでいます。自作のライブラリの場合は次のように、ダブルクォーテーションで囲みます。
+</p>
+<p>
+  ```c:
+</p>
+<p>
+  #include "mylib.h"
+</p>
+<p>
+  ```
+</p>
+<p>
+  ###stdio.hの「.h」はどんな意味があるのか
+</p>
+<p>
+  　C言語では、ライブラリは、<b>ソースファイル</b>と<b>ヘッダファイル</b>に分けて書くことが一般的です。ソースファイルは「stdio.c」になります。ヘッダファイルは「stdio.h」になります。
+</p>
+<p>
+  　簡潔に説明すると、ヘッダファイルには、関数の宣言を書きます。ソースファイルには、関数の実装を書きます。ライブラリを利用するためには、ヘッダファイルを読み込むだけで大丈夫です。最終的には、コンパイルされたソースファイルが結び合わされることになりますが、ソースコードを書く上では、ヘッダファイルを読み込むだけで、大丈夫です。
+</p>
+<p>
+  ###stdio.hはどこに存在するのか
+</p>
+<p>
+  　Linux環境であれば「/usr/include」にあります。Windowsであれば「C:\Perl\site\lib\auto\MinGW\include」にあります。
+</p>
+<p>
+  ###stdioは何をするためのライブラリか
+</p>
+<p>
+  　<b>stdio</b>は、標準入出力を扱うためのライブラリです。<b>printf</b>関数を利用するためには「stdio」を読み込む必要があります。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

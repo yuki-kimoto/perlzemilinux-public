@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>PHPみたいにファイルを作ったら、実行されるフレームワークはあるかな -> 作りました。 - PerlゼミのLinux入門</title>
+<meta name="description" content="PHPのファイルを置いたらそのまま実行されるという機能はとても便利だね。PHPの一番の魅力だ。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812190036.html">PHPみたいにファイルを作ったら、実行されるフレームワークはあるかな -> 作りました。</a></h2>
+<p>
+  PHPのファイルを置いたらそのまま実行されるという機能はとても便利だね。PHPの一番の魅力だ。
+</p>
+<p>
+  Perlのフレームワークにも、そういう機能があったらいいな。ファイルがたくさんあると「いちいちファイルごとにURLを定義するなんて、めっちゃめんどうだよー」と思うからね。
+</p>
+<p>
+  これを実現するためのMojoliciousのプラグインを作ったよ。
+</p>
+<p>
+  ## ルートを自動的に生成するためのプラグイン
+</p>
+<p>
+  　<strong>Mojolicious::Plugin::AutoRoute</strong>は<strong>ルートを自動的に生成してくれるプラグイン</strong>です。テンプレートを置くだけで、Webアプリケーションを作成することができます。
+</p>
+<p>
+  MojoliciousにPHPの機能を組み組むプラグインだよ。
+</p>
+<p>
+  ## Mojolicious::Plugin::AutoRouteの簡単な使い方
+</p>
+<p>
+  ```
+</p>
+<p>
+  use Mojolicious::Lite;
+</p>
+<p>
+  plugin 'AutoRoute';
+</p>
+<p>
+  ```
+</p>
+<p>
+  これをコードに書いてから。<b>templates/auto</b>というディレクトリにファイルを置くだけ。
+</p>
+<p>
+  ```
+</p>
+<p>
+  テンプレート                         URL
+</p>
+<p>
+  templates/auto/index.html.ep        # /
+</p>
+              /foo.html.ep          # /foo
+              /foo/bar.html.ep      # /foo/bar
+              /foo/bar/baz.html.ep  # /foo/bar/baz
+<p>
+  ```
+</p>
+<p>
+  Webサイトを作るときは、ちょっとだけ動的で、ほとんど静的というページが大量にできるね。こういうときは、このプラグインを使うと、たくさん早く、ページが作れて、便利だよ。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

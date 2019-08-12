@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Perlの強力な「FFI」モジュールの紹介 - PerlゼミのLinux入門</title>
+<meta name="description" content="みなさんFFIって知ってますか。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812190043.html">Perlの強力な「FFI」モジュールの紹介</a></h2>
+<p>
+  みなさんFFIって知ってますか。
+</p>
+<p>
+  他言語関数インターフェース (Foreign function interface)っていって、C言語で書いた静的ライブラリやダイナミックリンクライブラリを、直接プログラムから呼び出すことができちゃうんです!
+</p>
+<p>
+  組み込みソフトウェアなんかだと、Cの関数を呼び出したいことが多いからFFIがあると便利だね。
+</p>
+<p>
+  ##「FFI::Platypus」というPerlの強力な「FFI」モジュール
+</p>
+<p>
+  「FFI::Platypus」というのは、 2015年1月7日リリースで、新しいモジュールだ。ドキュメントを読むと、これぞPerlでFFIの決定版と呼べるような機能がそろっている。
+</p>
+<p>
+  [FFI::Platypusの公式ドキュメント](http://search.cpan.org/dist/FFI-Platypus/lib/FFI/Platypus.pm)
+</p>
+<p>
+  そうそう「FFI::Raw」では、ちょっと物足りなかったんだよね。「機能が足りない」とか「やりたいことが本当にできるのかな」とか。
+</p>
+<p>
+  でも「FFI::Platypus」なら、FFIでのやりたいことは、たいてい実現できそうな感じがする。
+</p>
+<p>
+  + C, C++, Fortran, Rust, Pascalのライブラリが呼び出し可能
+</p>
+<p>
+  + PerlのXSを書かないで、Cをバインディングできるよ
+</p>
+<p>
+  + ピュアーPerlでポータブル、どこでも動く
+</p>
+<p>
+  ##FFI::Platypusを使う
+</p>
+<p>
+  FFI::Platypusはこんな風に使う。公式ドキュメントから引用。
+</p>
+<p>
+  ```
+</p>
+ use FFI::Platypus;
+ 
+ my $ffi = FFI::Platypus->new;
+ $ffi->lib(undef); # search libc
+ 
+ # call dynamically
+ $ffi->function( puts => ['string'] => 'int' )->call("hello world");
+ 
+ # attach as a xsub and call (much faster)
+ $ffi->attach( puts => ['string'] => 'int' );
+ puts("hello world");
+<p>
+  ```
+</p>
+<p>
+  C言語の関数「puts」が直接呼び出せているね。
+</p>
+<p>
+  ##まとめ
+</p>
+<p>
+  Perlに強力なFFIモジュールが登場したということをお知らせしました。組み込みのシステムなんかで、C言語直接呼出したい場合は、利用してみよう。ピュアPerlだから、インストールも簡単よ。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

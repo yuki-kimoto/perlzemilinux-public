@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>CentOS5にLLVMとclangをインストールする | CentOS - PerlゼミのLinux入門</title>
+<meta name="description" content="LLVMとclangはpapixさんの手順(http://hachiojipm.github.io/entry/2013-10-14-codegenerator-llvm.html)でインストールできるのですが、CentOS5では、前提としていくつか追加の手順が必要になります。CentOS6だと、pythonは2.6,gccは4.4なので、たぶん大丈夫だと思います。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812173631.html">CentOS5にLLVMとclangをインストールする | CentOS</a></h2>
+<p>
+  　<strong>LLVM</strong>と<strong>clang</strong>はpapixさんの手順(http://hachiojipm.github.io/entry/2013-10-14-codegenerator-llvm.html)で<strong>インストール</strong>できるのですが、<strong>CentOS5</strong>では、前提としていくつか追加の手順が必要になります。CentOS6だと、pythonは2.6,gccは4.4なので、たぶん大丈夫だと思います。
+</p>
+<p>
+  ##llvmのインストールにはpython2.5以上が必要
+</p>
+<p>
+  　LLVMはインストールのときにpython2.5以上が必要です。epelというリポジトリを利用して、python 2.6をインストールしましょう。
+</p>
+<p>
+  　まずはCentOSのアーキテクチャの確認です。
+</p>
+<p>
+  ```
+</p>
+<p>
+  uname -a
+</p>
+<p>
+  ```
+</p>
+<p>
+  　x86_64が含まれていれば64bit版のCentOSです。i386が含まれていれば32bit版のCentOSです。
+</p>
+<p>
+  　64bit版のCentOSの場合は以下のコマンドでepelというRPMリポジトリを追加します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+</p>
+<p>
+  ```
+</p>
+<p>
+  　32bit版のCentOSの場合は以下のコマンドでepelというRPMリポジトリを追加します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+</p>
+<p>
+  ```
+</p>
+<p>
+  　パッケージが自動的に更新されない設定を行っておきます。下記のファイルを編集します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  vi /etc/yum.repos.d/epel.repo
+</p>
+<p>
+  ```
+</p>
+<p>
+  　[epel]のセクションのenabledの値を0に設定しておきます
+</p>
+<p>
+  ```
+</p>
+<p>
+  [epel]
+</p>
+<p>
+  ...
+</p>
+<p>
+  enabled=0
+</p>
+<p>
+  ```
+</p>
+<p>
+  　python26パッケージをインストールします。
+</p>
+<p>
+  ```
+</p>
+<p>
+  yum -y install python26 --enablerepo=epel
+</p>
+<p>
+  ```
+</p>
+<p>
+  　python26がインストールされたかを確認します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  python26 -V
+</p>
+<p>
+  ```
+</p>
+<p>
+  　バージョンなどが表示されればインストールに成功しています。
+</p>
+<p>
+  ##LLVMのインストールにはgcc 4.2以上が必要
+</p>
+<p>
+  　次にLLVMのインストールにはgcc 4.2以上が必要です。
+</p>
+<p>
+  　gcc 4.4をインストールします。
+</p>
+<p>
+  ```
+</p>
+<p>
+  yum -y install gcc44
+</p>
+<p>
+  ```
+</p>
+<p>
+  　インストールされたかを確認します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  gcc44 -v
+</p>
+<p>
+  ```
+</p>
+<p>
+  　C++をコンパイルするためのg++ 4.4もインストールします。
+</p>
+<p>
+  ```
+</p>
+<p>
+  yum -y install gcc44-c++
+</p>
+<p>
+  ```
+</p>
+<p>
+  　インストールされたかを確認します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  g++44 -v
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##LLVMとclangのインストール
+</p>
+<p>
+  　ここからやっとLLVMとclangをインストールします。
+</p>
+<p>
+  　以下の三つのファイルをダウンロードします。
+</p>
+<p>
+  ```
+</p>
+<p>
+  cd /usr/local/src
+</p>
+<p>
+  wget http://llvm.org/releases/3.3/cfe-3.3.src.tar.gz
+</p>
+<p>
+  wget http://llvm.org/releases/3.3/compiler-rt-3.3.src.tar.gz
+</p>
+<p>
+  wget http://llvm.org/releases/3.3/llvm-3.3.src.tar.gz
+</p>
+<p>
+  ```
+</p>
+<p>
+  　展開します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  tar -xf cfe-3.3.src.tar.gz
+</p>
+<p>
+  tar -xf llvm-3.3.src.tar.gz
+</p>
+<p>
+  tar -xf compiler-rt-3.3.src.tar.gz
+</p>
+<p>
+  ```
+</p>
+<p>
+  　llvm-3.3.srcのの中の適切な位置に、cfe-3.3.srcとcompiler-rt-3.3.srcをコピーします。
+</p>
+<p>
+  ```
+</p>
+<p>
+  cp -rp cfe-3.3.src llvm-3.3.src/tools/clang
+</p>
+<p>
+  cp -rp compiler-rt-3.3.src llvm-3.3.src/projects/compiler-rt
+</p>
+<p>
+  ```
+</p>
+<p>
+  　llvm-3.3.srcディレクトリに移動して、設定を行います. configureを実行するときにgccとしてgcc44を、g++としてg++44を、pythonとしてpython26を使うようにします。
+</p>
+<p>
+  ```
+</p>
+<p>
+  cd llvm-3.3.src
+</p>
+<p>
+  CC=gcc44 CXX=g++44 ./configure --with-python=/usr/bin/python26
+</p>
+<p>
+  ```
+</p>
+<p>
+  　コンパイルします。1～2時間くらいはかかると思います。
+</p>
+<p>
+  ```
+</p>
+<p>
+  make
+</p>
+<p>
+  ```
+</p>
+<p>
+  　インストールします。
+</p>
+<p>
+  ```
+</p>
+<p>
+  make install
+</p>
+<p>
+  ```
+</p>
+<p>
+  　LLVMがインストールされたかどうかを確認します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  llvm-config --version
+</p>
+<p>
+  ```
+</p>
+<p>
+  　バージョンが出力されればインストールが完了しています。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>コミット数を取得する方法 / Gitメモ - PerlゼミのLinux入門</title>
+<meta name="description" content="あるブランチのコミット数を取得するには次のようにする。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812182927.html">コミット数を取得する方法 / Gitメモ</a></h2>
+<p>
+  　あるブランチのコミット数を取得するには次のようにする。
+</p>
+<p>
+  ```
+</p>
+<p>
+  git shortlog -s ブランチ名
+</p>
+<p>
+  ```
+</p>
+<p>
+  　ブランチ名を省略した場合は、現在のブランチになる。
+</p>
+<p>
+  　自分がgitリポジトリのディレクトにいない場合は<b>--git-dir</b>オプションというのでディレクトリを指定できる。
+</p>
+<p>
+  ```
+</p>
+<p>
+  git --git-dir=ディレクトリ名 shortlog -s ブランチ名
+</p>
+<p>
+  ```
+</p>
+<p>
+  　次のような出力が得られる。
+</p>
+<p>
+  ```
+</p>
+    25  Yuki Kimoto
+     1  root
+<p>
+  ```
+</p>
+<p>
+  　コミットした回数とコミットしたユーザーの名前がでてくる。コミット数の合計を出したい場合は、左の値を足し算すればよい。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>SSHの概要 - PerlゼミのLinux入門</title>
+<meta name="description" content="さて、Linuxの基本コマンドや基礎的な事柄を解説したので、次のステップはLinuxの上で動くアプリケーションをインストールして環境を構築する作業に移っていきます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812184525.html">SSHの概要</a></h2>
+<p>
+  　さて、Linuxの基本コマンドや基礎的な事柄を解説したので、次のステップはLinuxの上で動くアプリケーションをインストールして環境を構築する作業に移っていきます。
+</p>
+<p>
+  　たとえば、WebサーバーであるApacheや、データベースサーバーであるMySQLなどをWeb上からインストールして、Webアプリケーションを実行できる環境を構築していくことになります。
+</p>
+<p>
+  ##SSHを使ってサーバーと通信する
+</p>
+<p>
+  　まず最初に行うことは、SSHというプロトコルを使ってサーバーと通信することです。さくらVPSを使っているときに、今まではブラウザ上から実行できるリモートコンソールを使って作業していました。けれどもこれは、使いやすいといえるものではありません。これを使っていては作業効率がとても落ちます。
+</p>
+<p>
+  　ですので、Linux上でコマンドをもっと便利に、効率的に実行するために、SSHという通信プロトコルを使います。
+</p>
+<p>
+  ```
+</p>
+<p>
+  SSHサーバー
+</p>
+    |
+<p>
+  SSHクライアント
+</p>
+<p>
+  ```
+</p>
+<p>
+  　SSHによる通信では、通信経路上で、データが暗号化されます。データはインターネット上を通りますが、他の第三者に見られることなく、クライアントとサーバー間でデータをやり取りすることができます。また秘密鍵と公開鍵を使った通信を行うことで、通信ができるコンピュータを制限することができます。つまり、鍵を保有しているパソコンのみから作業を許可するということができるようになります。
+</p>
+<p>
+  　今回の連載では、Windows上でSSHクライアントとして利用できるTeratermというアプリケーションを使ってみたいと思います。他のOSでも便利なSSHクライアントがあると思うので、探して使ってみてください。
+</p>
+<p>
+  　SSHサーバーとしてはOpenSSHというLinux上で実行できるアプリケーションを利用します。
+</p>
+<p>
+  　今後は環境構築を行うために、コマンドを実行する場合は、SSHクライアントを起動して作業することになります。ブラウザを開いて、リモートコンソールを開く必要がないので、とても作業が楽になります。
+</p>
+<p>
+  　実際のアプリケーションのインストールについては、次回にしたいと思います。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

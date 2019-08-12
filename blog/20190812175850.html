@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>SSHクライアントTeraTermの導入 - PerlゼミのLinux入門</title>
+<meta name="description" content="SSHサーバを使用してリモートログインする場合は、SSHに対応したクライアントアプリケーションが必要です。SSHに対応したクライアントアプリケーションには、Putty,Pedorosa,TeraTermなどがあります。ここでは、TeraTermを使用することにします。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812175850.html">SSHクライアントTeraTermの導入</a></h2>
+<p>
+  　SSHサーバを使用してリモートログインする場合は、SSHに対応したクライアントアプリケーションが必要です。SSHに対応したクライアントアプリケーションには、Putty,Pedorosa,TeraTermなどがあります。ここでは、TeraTermを使用することにします。
+</p>
+<p>
+  ##TeraTermをダウンロードしてインストール
+</p>
+<p>
+  　以下のサイトからTeraTermをダウンロードしてインストールします。
+</p>
+<p>
+  >>
+</p>
+<p>
+  [http://www.forest.impress.co.jp/lib/inet/servernt/remote/utf8teraterm.html:title=Tera Term]
+</p>
+<<
+<p>
+  ##公開鍵と秘密鍵のペアの作成
+</p>
+<p>
+  　SSHを使用してリモートログインをするためには、公開鍵と秘密鍵のペアを作成する必要があります。
+</p>
+<p>
+  ```
+</p>
+<p>
+  1.TeraTermを起動して、メニューバーから「Setup」→「SSH KeyGenerator」を選択。
+</p>
+<p>
+  2.DSAにチェックを入れる。
+</p>
+<p>
+  3.Key passphrase にパスフレーズを入力 Confirm passphrase で再入力。
+</p>
+<p>
+  4.Generateをクリックして、公開鍵と秘密鍵を作成
+</p>
+<p>
+  5.Save puplic key をクリックして公開鍵を保存( id_dsa.pub )
+</p>
+<p>
+  6.Save private key をクリックして秘密鍵を保存( id_dsa )
+</p>
+<p>
+  ```
+</p>
+<p>
+  　パスフレーズとは、パスワードのことです。SSHで接続するためには、公開鍵と秘密鍵のペアを作成します。公開鍵は後ほどサーバに移動させます。
+</p>
+<p>
+  ##公開鍵のアップロード
+</p>
+<p>
+  　公開鍵をアップロードします。いったん、ログインしたユーザのホームディレクトリにアップロードしておくことにしましょう。公開鍵は 
+</p>
+<p>
+  ```
+</p>
+<p>
+  id_dsa.pub
+</p>
+<p>
+  ```
+</p>
+<p>
+  のほうです。秘密鍵と間違えないようにしましょう。
+</p>
+<p>
+  ##サーバでの作業
+</p>
+<p>
+  　ここからは、サーバでの設定作業に戻ります。サーバでの作業は[http://d.hatena.ne.jp/perlcodesample/20090104/1230713670:title=OpenSSHの導入]を見てください。
+</p>
+<p>
+  ##TeraTermからSSHで接続
+</p>
+<p>
+  　サーバでの設定作業が終われば、TeraTermでSSH接続です。TeraTermを起動して、サーバのIPアドレスを入力して、SSHにチェックを入れてOKを押します。SSH versionが SSH2 になっていることも確認しておきます。
+</p>
+<p>
+  　セキュリティ警告が出るかもしれませんが、OKを押します。
+</p>
+<p>
+  　
+</p>
+<p>
+  　SSH認証の画面がでるので、ユーザ名とパスフレーズを入力します。RSA/DSAにチェックを入れて、先ほど保存した秘密鍵( Private key file )を選択します。OKを押します。(画面が止まった場合は、TeraTermを再起動します。)
+</p>
+<p>
+  　接続できない場合は、/var/log/secure にエラーメッセージがでているはずです。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>【Perl】【Mojolicious】Webアプリを「デバッガ」で簡単にデバッグする方法 - PerlゼミのLinux入門</title>
+<meta name="description" content="![WIN_20170119_23_30_43_Pro.jpg](https://qiita-image-store.s3.amazonaws.com/0/155418/54e08b7e-610c-7b77-fdc1-be2f0a076b62.jpeg)">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812190040.html">【Perl】【Mojolicious】Webアプリを「デバッガ」で簡単にデバッグする方法</a></h2>
+<p>
+  ![WIN_20170119_23_30_43_Pro.jpg](https://qiita-image-store.s3.amazonaws.com/0/155418/54e08b7e-610c-7b77-fdc1-be2f0a076b62.jpeg)
+</p>
+<p>
+  Webアプリって目で見て確認するだけ? でも、本当に困ったときは、大事な部分は、プログラムの内部の動きも見てみたい。そんなときありますよね。
+</p>
+<p>
+  # Mojoliciousのデバッグ
+</p>
+<p>
+  <strong>Mojolicious</strong>ではスクリプトを簡単に<strong>デバッグ</strong>することができます。とても短い記述で試験をかけるというのがうれしいですね。
+</p>
+<p>
+  まずはMojolicious::Liteで作成した簡単なWebアプリです。
+</p>
+<p>
+  ```
+</p>
+<p>
+  use Mojolicious::Lite;
+</p>
+<p>
+  get '/' => sub {
+</p>
+  my $self = shift;
+  $DB::single = 1;    
+  $self->render(text => 'Hello');
+<p>
+  };
+</p>
+<p>
+  app->start;
+</p>
+<p>
+  ```
+</p>
+<p>
+  このファイルを「myapp.pl」という名前で保存してください。注目するポイントは<b>「$DB::single = 1」</b>という記述です。これはスクリプトの中にブレークポイントを埋め込むための記法です。デバッガはこの行を見つけるとその位置でストップします。
+</p>
+<p>
+  次に試験用のディレクトリを作成します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  mkdir t
+</p>
+<p>
+  ```
+</p>
+<p>
+  tというディレクトリの中に試験用のスクリプトを配置します。このディレクトリの中に「basic.t」という名前のスクリプトを作成してみてください。
+</p>
+<p>
+  ## URLにHTTPアクセスするためのプログラム
+</p>
+<p>
+  では、試験スクリプトを書いてみましょう。
+</p>
+<p>
+  ```
+</p>
+<p>
+  use Test::More 'no_plan';
+</p>
+<p>
+  use strict;
+</p>
+<p>
+  use warnings;
+</p>
+<p>
+  use utf8;
+</p>
+<p>
+  use Test::Mojo;
+</p>
+<p>
+  use FindBin;
+</p>
+<p>
+  $ENV{MOJO_HOME} = "$FindBin::Bin/..";
+</p>
+<p>
+  require "$ENV{MOJO_HOME}/myapp.pl";
+</p>
+<p>
+  my $t = Test::Mojo->new;
+</p>
+<p>
+  $t->get_ok('/');
+</p>
+<p>
+  ```
+</p>
+<p>
+  このスクリプトはMojolicious::LiteのPODに記述されている自動試験用のスクリプトですが、デバッグを行うためにも利用することができます。
+</p>
+<p>
+  <b>「$t->get_ok('/')」</b>という記述で実際に「/」にアクセスした場合の処理が実行されるからです。
+</p>
+<p>
+  次にこのテストスクリプトををデバッガを使って起動しましょう。実行するディレクトリは、tディレクトリの中ではなくて、スクリプトのおいてあるディレクトリから行うのがよいでしょう。
+</p>
+<p>
+  ```
+</p>
+<p>
+  perl -d t/basic.t 
+</p>
+<p>
+  ```
+</p>
+<p>
+  libディレクトリの中にモジュールを配置してある場合は次のようにlibディレクトリをモジュールの検索パスに追加してあげます。
+</p>
+<p>
+  ```
+</p>
+<p>
+  perl -d -Ilib t/basic.t 
+</p>
+<p>
+  ```
+</p>
+<p>
+  # ブレークポイントで止まるには
+</p>
+<p>
+  デバッガが起動したら「c」コマンドで「$DB::single = 1」と記述したブレークポイントまで進みます。
+</p>
+<p>
+  ```
+</p>
+<p>
+  c
+</p>
+<p>
+  ```
+</p>
+<p>
+  デバッグをしたい位置に到着することができます。
+</p>
+<p>
+  ```
+</p>
+<p>
+  5
+</p>
+<p>
+  6:          $DB::single = 1;
+</p>
+<p>
+  7
+</p>
+<p>
+  8==>        $self->render(text => 'Hello');
+</p>
+<p>
+  9:      };
+</p>
+<p>
+  10
+</p>
+<p>
+  11:     app->start;
+</p>
+<p>
+  ```
+</p>
+<p>
+  このテクニックを覚えておけば、Mojolicious::Liteの開発はいっそう楽なものになります。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

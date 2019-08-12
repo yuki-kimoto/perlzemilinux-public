@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>なぜPerlは「標準」で組み込みの関数やライブラリが少ないのか - PerlゼミのLinux入門</title>
+<meta name="description" content="なぜPerlは「標準」で組み込みの関数やライブラリが少ないのか。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812190031.html">なぜPerlは「標準」で組み込みの関数やライブラリが少ないのか</a></h2>
+<p>
+  なぜPerlは「標準」で組み込みの関数やライブラリが少ないのか。
+</p>
+<p>
+  ##Perlで標準モジュールが増えることはあまりなし
+</p>
+<p>
+  Perlのリリースを長い間見ていますが、標準モジュールが増えるということは、あまりないです。
+</p>
+<p>
+  本当に有用なモジュールだと感じたのは、Perl 5.10で導入された日付と時刻のライブラリである、Time::Pieceくらいでしょうか。
+</p>
+<p>
+  ##むしろ小さくしたいのが、現在のPerl開発チームの意向
+</p>
+<p>
+  少し驚いたのは、Perl 5.22で、長年標準モジュールだった「CGI.pm」がコアから外れたことです。
+</p>
+<p>
+  他の標準モジュールでも、使い道がほぼないと判断されるものについては、削除されてきている流れです。
+</p>
+<p>
+  互換性がなくなるわではなくって、Perlコアから削除されたモジュールは、CPANからインストールすれば、そのまま動きます。
+</p>
+<p>
+  ##コア開発者の負担を軽減したい
+</p>
+<p>
+  ライブラリをコアに含めるということは、たくさんのライブラリの管理をPerlコアで行う必要があるということです。
+</p>
+<p>
+  Perlのコアのライブラリは、CPANとコアの両方で、二重に管理されています。これは「デュアルライフモジュール」と呼ばれます。
+</p>
+<p>
+  これは、Perlのリリースごとにアップグレードしなくてはいけないので、コア開発者の負担にもなります。Perlコアはすでに複雑なので、なるべく管理する部分を少なくしたいという意図があると思います。
+</p>
+<p>
+  方向性としては、コアのライブラリは増やさずに、小さくして、必要であればCPANから利用してねというのが、Perlコア開発者の考え方だろうと思います。
+</p>
+<p>
+  ライブラリを拡大するときには、たくさんの政治的な問題を抱え込みますし、入ったライブラリの互換性を崩すことができなくなります。
+</p>
+<p>
+  僕は、このPerlの方針は好きですけどね。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Gitをソースからインストールする - PerlゼミのLinux入門</title>
+<meta name="description" content="(CentOS 5.7で確認)">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812181642.html">Gitをソースからインストールする</a></h2>
+<p>
+  (CentOS 5.7で確認)
+</p>
+<p>
+  　CentOSにGitをソースからインストールする方法です。
+</p>
+<p>
+  ```
+</p>
+<p>
+  cd /usr/local/src
+</p>
+<p>
+  wget http://git-core.googlecode.com/files/git-1.7.9.3.tar.gz
+</p>
+<p>
+  tar xzvf git-1.7.9.3.tar.gz
+</p>
+<p>
+  cd git-1.7.9.3
+</p>
+<p>
+  ./configure
+</p>
+<p>
+  make
+</p>
+<p>
+  make install
+</p>
+<p>
+  ```
+</p>
+<p>
+  　ユーザーはrootでの作業です。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

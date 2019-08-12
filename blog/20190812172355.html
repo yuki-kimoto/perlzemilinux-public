@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>sambaの導入 | Perl環境構築 - PerlゼミのLinux入門</title>
+<meta name="description" content="sambaはネットワークで接続されたLinuxのファイルシステムを、Windowsのファイルシステムであるかのように扱うことができるアプリケーションです。sambaを導入すれば、Windows上でフォルダを開いて、Linux上のファイルにアクセスできます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812172355.html">sambaの導入 | Perl環境構築</a></h2>
+<p>
+  　sambaはネットワークで接続されたLinuxのファイルシステムを、Windowsのファイルシステムであるかのように扱うことができるアプリケーションです。sambaを導入すれば、Windows上でフォルダを開いて、Linux上のファイルにアクセスできます。
+</p>
+<p>
+  ##Samba関連のパッケージ
+</p>
+<p>
+  |samba-common|必須|
+</p>
+<p>
+  |samba|必須|
+</p>
+<p>
+  |samba-client|Sambaのクライアント|
+</p>
+<p>
+  |samba-swat|SambaをWebアプリケーションを通して操作する|
+</p>
+<p>
+  ##Sambaのインストール
+</p>
+<p>
+  　この中で、samba-commonとsambaが必須ですがいちおう全部入れておきましょう。
+</p>
+<p>
+  ```
+</p>
+<p>
+  # インストール
+</p>
+<p>
+  yum -y install samba-common
+</p>
+<p>
+  yum -y install samba
+</p>
+<p>
+  yum -y install samba-client
+</p>
+<p>
+  yum -y install samba-swat
+</p>
+<p>
+  # インストール後の確認
+</p>
+<p>
+  rpm -qa | grep samba
+</p>
+<p>
+  # 確認項目
+</p>
+<p>
+  # samba-swat-3.0.28a-1.fc7
+</p>
+<p>
+  # samba-common-3.0.28a-1.fc7
+</p>
+<p>
+  # samba-client-3.0.28a-1.fc7
+</p>
+<p>
+  # samba-3.0.28a-1.fc7
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##サービス起動スクリプト
+</p>
+<p>
+  　サービス起動スクリプトを見ればいろいろな情報がわかります。
+</p>
+<p>
+  ```
+</p>
+<p>
+  # サービス起動スクリプトを見る。
+</p>
+<p>
+  view /etc/init.d/smb
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##Sambaの自動起動の設定
+</p>
+<p>
+  ```
+</p>
+<p>
+  # サービスに追加( sambaのサービス名はsmb)
+</p>
+<p>
+  chkconfig --add smb
+</p>
+<p>
+  # mysqlがサービスに追加されたことの確認
+</p>
+<p>
+  chkconfig --list | grep smb
+</p>
+<p>
+  # ランレベルを指定した自動起動の設定
+</p>
+<p>
+  chkconfig --level 35 smb on
+</p>
+<p>
+  # mysqlの自動起動が有効になっているかの確認
+</p>
+<p>
+  chkconfig --list | grep smb
+</p>
+<p>
+  # 確認項目
+</p>
+<p>
+  # smb             0:off   1:off   2:off   3:on    4:off   5:on    6:off
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##Sambaを起動する
+</p>
+<p>
+  ```
+</p>
+<p>
+  # 起動
+</p>
+<p>
+  service smb start
+</p>
+<p>
+  # 起動の確認
+</p>
+<p>
+  service --status-all | grep smb
+</p>
+<p>
+  # 確認項目
+</p>
+<p>
+  # smbd (pid 5057 5041) を実行中...
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##sambaの設定ファイル
+</p>
+<p>
+  　sambaの設定ファイルは以下です。
+</p>
+<p>
+  ```
+</p>
+<p>
+  /etc/samba/smb.conf
+</p>
+<p>
+  ```
+</p>
+<p>
+  　まず設定ファイルを変更します。
+</p>
+<p>
+  ##設定の確認
+</p>
+<p>
+  　testparm -sv コマンドで、sambaの設定を確認できます。
+</p>
+<p>
+  ```
+</p>
+<p>
+  # 設定の確認
+</p>
+<p>
+  testparm -sv
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##sambaのログファイル
+</p>
+<p>
+  sambaのログファイルは
+</p>
+<p>
+  ```
+</p>
+<p>
+  /var/log/samba
+</p>
+<p>
+  ```
+</p>
+<p>
+  以下にあります
+</p>
+<p>
+  ##sambaユーザの作成
+</p>
+<p>
+  　sambaのためのユーザを作成する必要があります。Unixのログインユーザとは別に作成する必要があります。
+</p>
+<p>
+  ```
+</p>
+<p>
+  # 追加する場合
+</p>
+<p>
+  pdbedit -a -u ユーザ名
+</p>
+<p>
+  # 削除する場合
+</p>
+<p>
+  pdbedit -x ユーザ名
+</p>
+<p>
+  # ユーザーの一覧表示
+</p>
+<p>
+  pdbedit -L
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##sambaの再起動
+</p>
+<p>
+  ```
+</p>
+<p>
+  service smb restart
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##Windows上からファイルにアクセス
+</p>
+<p>
+  ```
+</p>
+<p>
+  \\IPアドレス
+</p>
+<p>
+  \\192.168.0.2
+</p>
+<p>
+  ```
+</p>
+<p>
+  とアドレスバーに入力します。デフォルトでは、ユーザのホームディレクトリが見えるはずです。これでsambaを使えるようになるまでの設定は終了です。
+</p>
+<p>
+  ##ワークグループ名を変更する。
+</p>
+<p>
+  　MYGROUPというのはデフォルトのワークグループ名です。これを変更するには設定ファイルの
+</p>
+<p>
+  ```
+</p>
+<p>
+  workgroup = MYGROUP
+</p>
+<p>
+  ```
+</p>
+<p>
+  を変更します。その後smbとnmbを再起動します。
+</p>
+<p>
+  ##ホームディレクトリ以外にアクセスする
+</p>
+<p>
+  　デフォルトでは、ホームディレクトリしか見えませんが、設定ファイルに以下の項目を加えると指定したディレクトリ以下のファイルが見えるようになります。[]のなかは、共有フォルダ名です。pathが、実際のパスです。
+</p>
+<p>
+  ```
+</p>
+<p>
+  [etc]
+</p>
+        comment = Etc Directories
+        browseable = yes
+        writable = yes
+        path = /etc
+<p>
+  ```
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

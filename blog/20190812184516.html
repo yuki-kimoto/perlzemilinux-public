@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>viエディタでテキストを編集しよう - PerlゼミのLinux入門</title>
+<meta name="description" content="ではviエディタを使ってテキストを編集してみましょう。今回は必要最低限必要なことを書きますね。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812184516.html">viエディタでテキストを編集しよう</a></h2>
+<p>
+  　ではviエディタを使ってテキストを編集してみましょう。今回は必要最低限必要なことを書きますね。
+</p>
+<p>
+  　前回と同じようにまず最初にviエディタを起動してみましょう。
+</p>
+<p>
+  ```
+</p>
+<p>
+  vi foo.txt
+</p>
+<p>
+  ```
+</p>
+<p>
+  　起動しましたね。
+</p>
+<p>
+  **編集モード
+</p>
+<p>
+  　viエディタは最初は、コマンドモードで起動します。viではコマンドモードと編集モードという二つのモードがあります。最初はコマンドモードになっているので、編集モードにする必要があります。
+</p>
+<p>
+  　編集モードにするためには、<b>i</b>を押します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  i
+</p>
+<p>
+  ```
+</p>
+<p>
+  　すると文字を入力できる<b>編集モード</b>に切り替わります。iを押した後は、自由に編集できることがわかると思います。
+</p>
+<p>
+  　編集した内容を保存したいときは、コマンドモードになってから<b>w</b>コマンドを使います。コマンドモードになるにはまずEscキーを押すのでした。
+</p>
+<p>
+  ```
+</p>
+<p>
+  :w
+</p>
+<p>
+  ```
+</p>
+<p>
+  　上記のように入力してEnterを押すとテキストが保存できます。編集するときはまたiを押して、編集モードに切り替えます。
+</p>
+<p>
+  　保存して終了したいときは、前回学んだように以下のようにします。
+</p>
+<p>
+  ```
+</p>
+<p>
+  :wq
+</p>
+<p>
+  ```
+</p>
+<p>
+  　これでなんとか設定ファイルを編集できるようになりましたね。便利なコマンドについては、のちのち覚えてもよいし、すぐに覚えてもよいと思います。
+</p>
+<p>
+  　では次回は補講として、viの便利なコマンドを紹介したいと思います。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

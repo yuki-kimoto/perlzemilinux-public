@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>初めてのHello World (2) - main関数 - PerlゼミのLinux入門</title>
+<meta name="description" content="では続きを見ていきましょう。前回のコードです。今回はmain関数の中身について解説します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812182934.html">初めてのHello World (2) - main関数</a></h2>
+<p>
+  　では続きを見ていきましょう。前回のコードです。今回はmain関数の中身について解説します。
+</p>
+<p>
+  ```c:
+</p>
+<p>
+  #include <stdio.h>
+</p>
+<p>
+  // エントリポイント
+</p>
+<p>
+  int main (void) {
+</p>
+  
+  // Hello World!を出力
+  printf("Hello World!\n");
+  
+  // 正常に終了したことを知らせる
+  return 0;
+<p>
+  }
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##main関数
+</p>
+<p>
+  　C言語ではプログラムにmain関数を書く必要があります。
+</p>
+<p>
+  ```c:
+</p>
+<p>
+  int main (void) {
+</p>
+  
+  // ...
+  
+  return 0;
+<p>
+  }
+</p>
+<p>
+  ```
+</p>
+<p>
+  　Perlにはmain関数のようなものはなく、いきなり実行文を書くことができますが、C言語では<b>main関数</b>がエントリポイントになります。
+</p>
+<p>
+  ###intはmain関数の戻り値の型
+</p>
+<p>
+  　<b>int</b>はmain関数の戻り値の型です。型については、今後にお話します。なぜintかという理由は、どうやらCの標準規格でintを返すことになっているみたいです。
+</p>
+<p>
+  　<b>return</b>を使って<b>0</b>を返します。0は一般的に正常終了を意味します。
+</p>
+<p>
+  ###コメント
+</p>
+<p>
+  　C言語の<b>コメント</b>は「//」です。
+</p>
+<p>
+  ```c:
+</p>
+<p>
+  // Hello World!を出力
+</p>
+<p>
+  ```
+</p>
+<p>
+  ###Hello Worldの出力
+</p>
+<p>
+  　「Hello World」と文字列を出力するためには、<b>printf</b>関数を使用します。
+</p>
+<p>
+  ```c:
+</p>
+<p>
+  printf("Hello World!\n");
+</p>
+<p>
+  ```
+</p>
+<p>
+  　printf関数は、文字列を受け取って、標準出力に出力する関数です。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

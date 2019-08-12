@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>さくらVPSで「Perl + Mojolicious」Webアプリ開発 第8回 足りないPerlモジュールのインストール - PerlゼミのLinux入門</title>
+<meta name="description" content="さて次の作業ですが、CentOS6のPerl5.10.1には、Perlの標準モジュールの一部が含まれていません。これはrpmで別パッケージとして管理されているようですので、それをインストールしましょう。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812184533.html">さくらVPSで「Perl + Mojolicious」Webアプリ開発 第8回 足りないPerlモジュールのインストール</a></h2>
+<p>
+  　さて次の作業ですが、CentOS6のPerl5.10.1には、Perlの標準モジュールの一部が含まれていません。これはrpmで別パッケージとして管理されているようですので、それをインストールしましょう。
+</p>
+<p>
+  　パッケージ名はperl-codeです。作業はrootユーザーで行いましょう。
+</p>
+<p>
+  ```
+</p>
+<p>
+  #
+</p>
+<p>
+  ```
+</p>
+<p>
+  　のように行の先頭が#になっていてrootユーザーであることを確認しましょう。
+</p>
+<p>
+  ##RPMというのはCentOSにおけるライブラリの管理の仕組みのこと
+</p>
+<p>
+  　RPMというのは RPM Package Managerの略で、CentOSでライブラリを管理する仕組みのことです。RPMで管理されているパッケージは<b>yum</b>というコマンドを使ってインターネットからインストールすることができます。
+</p>
+<p>
+  ```
+</p>
+<p>
+  yumコマンドでRPMで管理されたパッケージをインターネットからインストールできる
+</p>
+<p>
+  ```
+</p>
+<p>
+  ##Perlの足りないコアモジュールのインストール
+</p>
+<p>
+  　yumコマンドを使ってPerlの足りないコアモジュールをインストールしましょう。installというサブコマンドでインターネット上からRPMパッケージをインストールできます。-yというオプションは、すべてのコマンドに自動的に「はい」と答えるオプションです。
+</p>
+<p>
+  ```
+</p>
+<p>
+  yum -y install perl-core
+</p>
+<p>
+  ```
+</p>
+<p>
+  　このコマンドは手動で実行することもできますが、リモートコンソールから貼り付けることもできます。リモートコンソールのタイトルバーのIPアドレスが書かれている部分の右に貼り付けボタンがあるので利用できます。
+</p>
+<p>
+  ```
+</p>
+<p>
+  リモートコンソールには、貼り付けボタンがあるので、有効に利用する
+</p>
+<p>
+  ```
+</p>
+<p>
+  　以下のように表示されればインストールが完了します。
+</p>
+<p>
+  ```
+</p>
+<p>
+  Installed:
+</p>
+  perl-core.x86_64 0:5.10.1-119.el6_1.1
+<p>
+  Dependency Installed:
+</p>
+  perl-Archive-Extract.x86_64 1:0.38-119.el6_1.1
+  perl-Archive-Tar.x86_64 0:1.58-119.el6_1.1
+  perl-CPAN.x86_64 0:1.9402-119.el6_1.1
+  perl-CPANPLUS.x86_64 0:0.88-119.el6_1.1
+  perl-DBD-SQLite.x86_64 0:1.27-3.el6
+  perl-DBI.x86_64 0:1.609-4.el6
+  perl-DBIx-Simple.noarch 0:1.32-3.el6
+  perl-Digest-SHA.x86_64 1:5.47-119.el6_1.1
+  perl-ExtUtils-CBuilder.x86_64 1:0.27-119.el6_1.1
+  perl-ExtUtils-Embed.x86_64 0:1.28-119.el6_1.1
+  perl-ExtUtils-MakeMaker.x86_64 0:6.55-119.el6_1.1
+  perl-ExtUtils-ParseXS.x86_64 1:2.2003.0-119.el6_1.1
+  perl-File-Fetch.x86_64 0:0.26-119.el6_1.1
+  perl-IO-Zlib.x86_64 1:1.09-119.el6_1.1
+  perl-IPC-Cmd.x86_64 1:0.56-119.el6_1.1
+  perl-Locale-Maketext-Simple.x86_64 1:0.18-119.el6_1.1
+  perl-Log-Message.x86_64 1:0.02-119.el6_1.1
+  perl-Log-Message-Simple.x86_64 0:0.04-119.el6_1.1
+  perl-Module-Build.x86_64 1:0.3500-119.el6_1.1
+  perl-Module-CoreList.x86_64 0:2.18-119.el6_1.1
+  perl-Module-Load.x86_64 1:0.16-119.el6_1.1
+  perl-Module-Load-Conditional.x86_64 0:0.30-119.el6_1.1
+  perl-Module-Loaded.x86_64 1:0.02-119.el6_1.1
+  perl-Object-Accessor.x86_64 1:0.34-119.el6_1.1
+  perl-Package-Constants.x86_64 1:0.02-119.el6_1.1
+  perl-Params-Check.x86_64 1:0.26-119.el6_1.1
+  perl-Parse-CPAN-Meta.x86_64 1:1.40-119.el6_1.1
+  perl-Term-UI.x86_64 0:0.20-119.el6_1.1
+  perl-Test-Harness.x86_64 0:3.17-119.el6_1.1
+  perl-Test-Simple.x86_64 0:0.92-119.el6_1.1
+  perl-Time-Piece.x86_64 0:1.15-119.el6_1.1
+  perl-devel.x86_64 4:5.10.1-119.el6_1.1
+  perl-parent.x86_64 1:0.221-119.el6_1.1
+<p>
+  Complete!
+</p>
+<p>
+  ```
+</p>
+<p>
+  　では次回は本当にいよいよ、Webアプリケーションをこの環境で実行してみましょう。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

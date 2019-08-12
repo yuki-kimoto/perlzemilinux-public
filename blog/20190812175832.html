@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>sshで公開鍵認証を行うときに指定するオプション -i - PerlゼミのLinux入門</title>
+<meta name="description" content="(CentOS 5.7で確認)">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">PerlゼミのLinux入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190812175832.html">sshで公開鍵認証を行うときに指定するオプション -i</a></h2>
+<p>
+  (CentOS 5.7で確認)
+</p>
+<p>
+  　sshで公開鍵認証による接続を行うときは<strong>i</strong>オプションを指定して接続を行います。
+</p>
+<p>
+  ```
+</p>
+<p>
+  ssh -i ~/.ssh/id_dsa ホスト名
+</p>
+<p>
+  ```
+</p>
+<p>
+  　<strong>i</strong>オプションで、秘密鍵のパスを指定することができます。<strong>i</strong>オプションが省略された場合は<b>~/.ssh/id_rsa</b>あるいは<b>~/.ssh/id_dsa</b>が利用されます。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>
