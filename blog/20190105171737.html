@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Apacheの情報 | CentOSサーバー構築 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content=".htaccessとは簡単にいうとApacheの設定ファイルを上書きするためのファイルです。Apacheの基本的な設定はhttpd.confで行います。この設定に何か追加が必要な場合は対象のディレクトリ.htaccessファイルを置くことで設定を変更したり、上書いたりすることができます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190105171737.html">Apacheの情報 | CentOSサーバー構築</a></h2>
+<h3>.htaccessとは / Apacheメモ</h3>
+<p>
+  　.htaccessとは簡単にいうとApacheの設定ファイルを上書きするためのファイルです。Apacheの基本的な設定はhttpd.confで行います。この設定に何か追加が必要な場合は対象のディレクトリ.htaccessファイルを置くことで設定を変更したり、上書いたりすることができます。
+</p>
+<p>
+  　.htaccessファイルにはhttpd.confで記述したディレクティブの一部を記述することができます。どのディレクティブを記述することができるかはマニュアルに記載があります。たとえばRedirectディレクティブの場合を見てみましょう。
+</p>
+<p>
+  Redirectディレクティブ
+</p>
+<p>
+  http://httpd.apache.org/docs/2.0/ja/mod/mod_alias.html#redirect
+</p>
+<p>
+  　項目にコンテキストというものがあります。この部分に.htaccessという項目があれば.htaccessで記述することのできるディレクティブであるということがわかります。
+</p>
+<h4>.htaccessの効果のある範囲</h4>
+<p>
+  　.htaccessは.htaccessを置いたディレクトリとサブディレクトリのすべてに対して効果を持ちます。.htaccessを置いたディレクトリだけに効果があるのではないので注意しましょう。
+</p>
+<h4>.htaccessは基本的には使わない</h4>
+<p>
+  　.htaccessを使用する必要があるのは基本的にレンタルサーバなどを借りていて自分でWebサーバを構築していない場合だけです。この場合はhttpd.confを自分で設定することができないからです。
+</p>
+<p>
+  　各ディレクトリにhttpd.confを置くとApacheがこのファイルを参照するためパフォーマンスが落ちるようです。ですので、自分でサーバを構築している場合はhttpd.confに設定を書くようにします。
+</p>
+<p>
+  　.htaccessを使う一番多い場面はアクセス制御を行う場合です。データを格納しておくファイルを置くディレクトリなどインターネットに公開したくないディレクトリに対して.htaccessを使用すればアクセス制御を行うことができます。
+</p>
+<h4>.htaccessに一般的に抱くイメージ</h4>
+<p>
+  　また.htaccessという名前から多くの人が誤解してしまうのは、.htaccessはアクセス制御のためのファイルだということです。ここで解説したようにこれは間違いで、.htaccessはhttpd.confの設定を上書きするためのファイルです。アクセス制御はひとつの機能として行うことができるだけで.htaccessがアクセス制御のためのファイルなのではありません。
+</p>
+<h3>ScriptAlias CGIを実行するURLとディレクトリのマッピング</h3>
+<p>
+  　ScriptAliasはCGIを実行するURLとディレクトリをマッピングするためのディレクティブです。
+</p>
+<p>
+  http.confの中でデフォルトで次のように設定されているはずです。
+</p>
+<pre>
+ScriptAlias /cgi-bin/ "/var/www/cgi-bin/"
+</pre>
+<p>
+  　この記述を行うと/var/www/cgi-bin/配下のファイルはCGIスクリプトであるとみなされます。また/cgi-bin/というURLが/var/www/cgi-bin/にマッピングされます。たとえば
+</p>
+<pre>
+/var/www/cgi-bin/sample.cgi
+</pre>
+<p>
+  というCGIスクリプトはブラウザから
+</p>
+<pre>
+http://somehost/cgi-bin/sample.cgi
+</pre>
+<p>
+  というURLで実行することができます。
+</p>
+<h3>アクセス制御</h3>
+<h4>アクセス制御の基本</h4>
+<p>
+  　Apacheのアクセス制御の考え方を最初に書いておきます。まずWebサーバの設定でインターネットに対して公開するためのディレクトリというものを指定します。これがドキュメントルートと呼ばれるディレクトリになります。ドキュメントルート配下のディレクトリインターネット上に公開されたどの人もファイルの内容を見ることができます。
+</p>
+<p>
+  　反対にドキュメントルート配下に置かれていないファイルはインターネット上から見ることはできません。
+</p>
+<p>
+  　ドキュメントルートの設定はhttpd.confでDocumentRootディレクティブによって行います。
+</p>
+<pre>
+&lt;h3&gt; ドキュメントルートを指定するための設定&lt;/h3&gt;
+DocumentRoot "/var/www/html"
+</pre>
+<pre>
+&lt;h3&gt;上のように記述すると /var/www/html だけがインターネットに公開される&lt;/h3&gt;
++--root--+--dir1
+|        |
+|        +--dir2
+|
++--etc--+--dir1
+|       |
+|       +--dir2
+|
++--var--www--+--html &lt;--このディレクトリ配下だけがインターネットに公開される
+             |
+             +--error
+             |
+             +--data
+</pre>
+<p>
+  　/var/www/html配下のすべてのファイルをインターネットから見ることができ、それ以外のディレクトリはインターネットから見ることができません。
+</p>
+<h4>インターネットから見えても良いファイルと見えてはいけないファイル</h4>
+<p>
+  　インターネットから見えても良いファイルと見えてはいけないファイルがあります。見えても良いファイルはHTMLファイル(.html)、画像ファイル(.gif,.jpeg,.png)、動画ファイル(.mgg)、JavaScript(.js)、CSSファイル(.css)などです。
+</p>
+<p>
+  　これらは公開してこそ意味があるファイルなので当然といえば当然です。
+</p>
+<p>
+  　反対に見えてはいけないファイルはCGIスクリプト(.cgi)、PHPの実行ファイル(.php)、JSPファイル(.jsp)などの実行ファイルです。これらは実行されなければならず中身を見られてはいけません。これらのファイルにアクセスされた場合はそのスクリプトを実行する設定を行う必要があります。
+</p>
+<p>
+  　もうひとつ見られてはいけないファイルはスクリプトからアクセスするデータを格納するファイルです。これにはMySQLのデータベースファイルなどがあります。またデータベースに接続するパスワードを格納したファイルも見られてはいけません。
+</p>
+<p>
+  　このようなファイルにはインターネットからアクセスできないようにアクセス制御を行う必要があります。
+</p>
+<h4>アクセスを拒否する設定</h4>
+<p>
+  　ひとつの例としてdataというディレクトリに対してアクセスを拒否する設定を行います。ファイルの構成としてはdataディレクトリ配下に.htaccessを置きます。そしてこの.htaccess1の中にアクセスを拒否する設定を行います。
+</p>
+<pre>
+var--www--html--+--index.html
+                |
+                +--img--+--image1.png
+                |       |
+                |       +--iname2.png
+                |
+                |
+                +--data--+--data.txt
+                         |                  
+                         +--password.txt
+                         |
+                         +--.htaccess   .htaccessを適切に記述するとdata配下の
+                                        ファイル(data.txtとpassword.txt)
+                                        にアクセスできなくなる。
+</pre>
+<p>
+  .htaccessファイルはの記述は次のようになります。
+</p>
+<pre>
+Deny form all
+</pre>
+<p>
+  　これはすべてのIPアドレスからのアクセスを拒否するという意味になります。これでdataディレクトリ配下へのアクセスはできなくなります。
+</p>
+<h4>.htaccessの配置する場合の注意点</h4>
+<p>
+  　.htaccessに関する注意点がひとつあります。それはApacheのデフォルトの設定ではドキュメントルート配下での.htaccessの設置は意味を持たない設定になっているということです。これでは.htaccessを設定しても意味がありません。
+</p>
+<p>
+  　ですので.htaccessのアクセス制御に関するディレクティブだけが意味を持つような設定にhttpd.confを書き換える必要があります。
+</p>
+<p>
+  　ドキュメントルートのディレクトリのAllowOverRideの部分がNoneという.htaccessを無効にする設定になっているので、Limitというアクセス制御のディレクティブだけが意味を持つように変更します。
+</p>
+<pre>
+&lt;Directory "/var/www/html"&gt;
+    #
+    # ...
+
+    AllowOverride None
+
+    #
+    # ...
+
+&lt;/Directory&gt;
+</pre>
+<p>
+  　これを以下のように変更します。
+</p>
+<pre>
+&lt;Directory "/var/www/html"&gt;
+    #
+    # ...
+
+    AllowOverride Limit
+
+    #
+    # ...
+
+&lt;/Directory&gt;
+</pre>
+<h3>ドキュメントルート配下でCGIの実行を許可する</h3>
+<p>
+  　デフォルトではドキュメントルート配下でCGIを実行することができません。ドキュメントルート配下でCGIを実行するためには以下の設定をhttpd.confファイルで行います。
+</p>
+<h4>ExecCGIをドキュメントルートのOptionsディレクティブに追加</h4>
+<p>
+  　ExecCGIをドキュメントルートのOptionsディレクティブに追加します。次の例はドキュメントルートが「/var/www/html」の場合の例です。
+</p>
+<p>
+  　デフォルトでは以下のようになっています。
+</p>
+<pre>
+&lt;Directory "/var/www/html"&gt;
+
+#
+&lt;h3&gt; ..&lt;/h3&gt;
+
+    Options Indexes FollowSymLinks
+
+#
+&lt;h3&gt; ..&lt;/h3&gt;
+
+&lt;/Directory&gt;
+</pre>
+<p>
+  　OptionsディレクティブにExecCGIを追加します。
+</p>
+<pre>
+&lt;Directory "/var/www/html"&gt;
+
+#
+&lt;h3&gt; ..&lt;/h3&gt;
+
+    Options Indexes FollowSymLinks ExecCGI
+
+#
+&lt;h3&gt; ..&lt;/h3&gt;
+
+&lt;/Directory&gt;
+</pre>
+<p>
+  　これでドキュメントルート配下でCGIを実行することができるようになります。
+</p>
+<h4>拡張の動作に関する設定</h4>
+<p>
+  　「.cgi」という拡張の場合はCGIスクリプトとして実行される設定を行うには「AddHandler」ディレクティブを使用します。これはApacheのデフォルトの設定のはずですので確認だけしておきましょう。以下のような記述がhttpd.confの中にあるはずです。
+</p>
+<pre>
+AddHandler cgi-script .cgi
+</pre>
+<h3>Apacheのバージョンを調べる</h3>
+<p>
+  　Apcaheのバージョンを調べるには「httpd -v」を使用します。
+</p>
+<pre>
+httpd -v
+</pre>
+<p>
+  　次のような出力を得ることができます。
+</p>
+<pre>
+Server version: Apache/2.2.8 (Unix)
+Server built:   Jan 24 2008 10:44:19
+</pre>
+<h3>バーチャルホストで複数IPアドレスに対応した複数のパスの設定</h3>
+<p>
+  　<strong>バーチャルホスト</strong>で<strong>複数IPアドレス</strong>に対応して複数パスの設定を行う例です。
+</p>
+<pre>
+&lt;VirtualHost *:80&gt;
+
+    ProxyPass /app1 http://localhost:3000
+    ProxyPassReverse /app1 http://localhost:3000
+
+    ProxyPass /app2 http://localhost:3001
+    ProxyPassReverse /app2 http://localhost:3001
+
+&lt;/VirtualHost&gt;
+</pre>
+<p>
+  　「*:80」と指定することですべてのIPアドレスからの80番ポートへの接続を受けることができます。リバースプロキシとして設定するので「ProxyPass」と「ProxyPassReverse」の両方を指定します。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

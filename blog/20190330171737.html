@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>viエディタでテキストを編集しよう - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="ではviエディタを使ってテキストを編集してみましょう。今回は必要最低限必要なことを書きますね。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190330171737.html">viエディタでテキストを編集しよう</a></h2>
+<p>
+  　ではviエディタを使ってテキストを編集してみましょう。今回は必要最低限必要なことを書きますね。
+</p>
+<p>
+  　前回と同じようにまず最初にviエディタを起動してみましょう。
+</p>
+<pre>
+vi foo.txt
+</pre>
+<p>
+  　起動しましたね。
+</p>
+<h3>編集モード</h3>
+<p>
+  　viエディタは最初は、コマンドモードで起動します。viではコマンドモードと編集モードという二つのモードがあります。最初はコマンドモードになっているので、編集モードにする必要があります。
+</p>
+<p>
+  　編集モードにするためには、<b>i</b>を押します。
+</p>
+<pre>
+i
+</pre>
+<p>
+  　すると文字を入力できる<b>編集モード</b>に切り替わります。iを押した後は、自由に編集できることがわかると思います。
+</p>
+<p>
+  　編集した内容を保存したいときは、コマンドモードになってから<b>w</b>コマンドを使います。コマンドモードになるにはまずEscキーを押すのでした。
+</p>
+<pre>
+:w
+</pre>
+<p>
+  　上記のように入力してEnterを押すとテキストが保存できます。編集するときはまたiを押して、編集モードに切り替えます。
+</p>
+<p>
+  　保存して終了したいときは、前回学んだように以下のようにします。
+</p>
+<pre>
+:wq
+</pre>
+<p>
+  　これでなんとか設定ファイルを編集できるようになりましたね。便利なコマンドについては、のちのち覚えてもよいし、すぐに覚えてもよいと思います。
+</p>
+<p>
+  　では次回は補講として、viの便利なコマンドを紹介したいと思います。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

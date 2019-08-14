@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Linux入門 - Perlゼミ基礎講座</title>
-<meta name="description" content="Perlゼミが提供するLinuxの入門講座です。">
+<title>yum - パッケージをインストールする | CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="yumはCentOSで、パッケージをインストールするためのコマンドです。">
   </head>
   <body>
     <div class="container">
@@ -26,16 +26,25 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Linux入門 - PerlゼミでLinuxについて学ぼう</a></h2>
+    <h2><a href="/blog/20190207171737.html">yum - パッケージをインストールする | CentOS</a></h2>
 <p>
-  Perlゼミが提供するLinuxの入門講座です。
+  　<strong>yum</strong>はCentOSで、パッケージをインストールするためのコマンドです。
 </p>
-<p>
-  Windowsでも手軽に始めることができます。
-</p>
-<p>
-  <a href="/list.html">記事一覧</a>
-</p>
+<h3>インストール・アップデート・アンインストール</h3>
+<pre>
+&lt;h3&gt; インストール&lt;/h3&gt;
+yum install パッケージ
+
+&lt;h3&gt; アップデート&lt;/h3&gt;
+yum update パッケージ
+
+&lt;h3&gt; アンインストール&lt;/h3&gt;
+yum remove パッケージ
+</pre>
+ yオプションで質問に自動的にイエスと答えることができます。
+<pre>
+yum -y install パッケージ
+</pre>
 
   </div>
   <div class="bottom">

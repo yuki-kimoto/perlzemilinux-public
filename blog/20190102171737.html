@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Linux入門 - Perlゼミ基礎講座</title>
-<meta name="description" content="Perlゼミが提供するLinuxの入門講座です。">
+<title>論理ボリューム(LV)を作成する / CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="(CentOS5.7で確認)">
   </head>
   <body>
     <div class="container">
@@ -26,16 +26,28 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Linux入門 - PerlゼミでLinuxについて学ぼう</a></h2>
+    <h2><a href="/blog/20190102171737.html">論理ボリューム(LV)を作成する / CentOS</a></h2>
 <p>
-  Perlゼミが提供するLinuxの入門講座です。
+  (CentOS5.7で確認)
 </p>
 <p>
-  Windowsでも手軽に始めることができます。
+  　<strong>論理ボリューム</strong>(LV)を作成するには<strong>lvcreate</strong>コマンドを使用します。
 </p>
+<pre>
+lvcreate -L 容量 -n 論理ボリューム ボリュームグループ
+</pre>
 <p>
-  <a href="/list.html">記事一覧</a>
+  　105Gの容量で、VolGroup00というボリュームグループの上に、LogVol04という論理ボリュームを作成するサンプルです。
 </p>
+<pre>
+lvcreate -L 95G -n LogVol04 VolGroup00
+</pre>
+<p>
+  　作成した論理ボリュームは<b>lvdisplay</b>コマンドで確認することができます。
+</p>
+<pre>
+lvdisplay
+</pre>
 
   </div>
   <div class="bottom">

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>さくらVPSで「Perl + Mojolicious」Webアプリ開発 第3回 VPSを申し込もう - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="ではさくらVPSの月額980円の一番安いプランを申し込んでみましょう。申し込んでみないことには始まりません。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190321171737.html">さくらVPSで「Perl + Mojolicious」Webアプリ開発 第3回 VPSを申し込もう</a></h2>
+<p>
+  　ではさくらVPSの月額980円の一番安いプランを申し込んでみましょう。申し込んでみないことには始まりません。
+</p>
+<h3>さくらVPSの申し込み</h3>
+<p>
+  　まずはさくらVPSを申し込みましょう。
+</p>
+<p>
+  さくらVPS
+</p>
+<p>
+  http://vps.sakura.ad.jp
+</p>
+<p>
+  　980円のプランが一番安いプランです。Webサービスが成長してきたら、性能やメモリやハードディス容量のよいプランに引っ越すこともできますね。
+</p>
+<p>
+  　とりあえずがんばって申し込みが完了するところまでたどりつこう。申し込みしたときのIDとかパスワードは忘れやすいので、きちんと探せる場所にメモしましょう。これ本当に大事。しばらくIDを見ていないと、本当にどこにいったかわからなくなる。
+</p>
+<h3>お申込受付完了のお知らせ</h3>
+<p>
+  　さて、申し込みを完了すると「お申込受付完了のお知らせ」がメールで届きます。
+</p>
+<pre>
+ =============================================================
+ ◎ 会員登録情報
+
+    会員ID         ：  amlxxxxx
+    ご契約者名     ：  木本 裕紀 様
+    電子メール     ：  kimoto.yuki@gmail.com
+
+ ◎ サービス情報
+
+    サービス名     ：  さくらのVPS(v3) 1G
+    サービスコード ：  112400xxxxxx
+    お申込日       ：  2012/05/11
+
+ ※以下の会員メニューよりお申込状況の確認が可能です。
+
+    https://secure.sakura.ad.jp/menu/
+
+   会員IDとパスワードをご入力の上、ご利用ください。
+
+ =============================================================
+</pre>
+<p>
+  　これはしっかり覚えておかないと特に忘れやすい。メールに書かれたURLから、<b>https://secure.sakura.ad.jp/menu/</b>というリンクをしっかりブックマークしておきましょう。このページの上部のリンクの中にある「契約情報」というリンクからVPSの設定やドメインの設定をすることになるので大切です。
+</p>
+<h3>[さくらのVPS] 仮登録完了のお知らせ</h3>
+<p>
+  　登録を完了してしばらくすると、「[さくらのVPS] 仮登録完了のお知らせ」がメールで届きます。
+</p>
+<pre>
+《サーバ出荷情報》
+
+ [サーバ基本情報]
+  IPアドレス：49.212.148.xxx
+
+ [管理用ユーザ]
+  ユーザ名      ：root
+  初期パスワード：########
+
+《VPSコントロールパネル ログイン情報》
+
+ VPSコントロールパネルでは、仮想サーバのリセットやリモート
+ コンソールでの接続、OSの再インストールなどを行うことができます。
+
+    URL       ： https://secure.sakura.ad.jp/vpscontrol/
+    IPアドレス： 49.212.148.xxx
+    パスワード： ######*
+</pre>
+<p>
+  　メールを見ると、上記のような情報が載っている。IPアドレスというのは、VPSのサーバーが存在する場所のようなものです。このIPアドレスを使ってアクセスして、サーバーの設定なんかをすることになります。
+</p>
+<p>
+  　サーバーの設定をおこなうのは<b>https://secure.sakura.ad.jp/vpscontrol/</b>というコントロールパネルから行うので、きっちりブックマークしておきましょう。
+</p>
+<p>
+  　rootというユーザー名は、VPSの管理者としてのユーザー名です。Linux/Unixで使われる管理者としてのユーザーではないので注意しましょう。VPSのコントロールパネルからログインするためのユーザー名とパスワードになります。OSのインストール、再インストールなどができる権限なので、大切に保管しましょう。
+</p>
+<h3>会員IDとパスワード、VPSのrootユーザーとパスワードはきっちりと保存</h3>
+<p>
+  　僕の経験では、1～2週間ログインしないと、どこいったけな状態になります。だから、すぐに探せるように、きっちりとメモしておくことは大切です。
+</p>
+<p>
+  　次は、VPSでのOSの起動ですね。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

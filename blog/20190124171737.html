@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>ディスクの使用状況をディレクトリごとに確認する du / CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="ディスクの使用状況をディレクトリごとに確認するにはduコマンドを使用します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190124171737.html">ディスクの使用状況をディレクトリごとに確認する du / CentOS</a></h2>
+<p>
+  　ディスクの使用状況をディレクトリごとに確認するには<strong>du</strong>コマンドを使用します。
+</p>
+<pre>
+du ディレクトリ
+</pre>
+<p>
+  　<strong>-h</strong>オプションを使用すると単位が見やすくなります。
+</p>
+<pre>
+du -h ディレクトリ
+</pre>
+<p>
+  　使用状況を上位から順番に表示するにはsortとheadを組み合わせます。
+</p>
+<pre>
+du | sort -rn | head -20
+</pre>
+<p>
+  　次のように出力されます。
+</p>
+<pre>
+1345204 .
+1271656 ./lib
+1245524 ./lib/mysql
+67100   ./cache
+65784   ./cache/yum
+31912   ./cache/yum/dag
+25200   ./cache/yum/base
+23928   ./lib/rpm
+10740   ./lib/mysql/foo
+7708    ./cache/yum/updates
+3456    ./log
+2152    ./www
+1876    ./lib/mlocate
+1812    ./www/icons
+1252    ./log/audit
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

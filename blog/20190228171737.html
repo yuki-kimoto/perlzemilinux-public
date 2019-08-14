@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>ファイル(blob)のサイズを取得する / Git - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="gitで管理されているあるファイルのサイズを取得するにはどうすればよいでしょう。gitではファイルはblobという名前で呼ばれます。blobのサイズを取得するにはgit cat-fileコマンドで-sオプションを利用します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190228171737.html">ファイル(blob)のサイズを取得する / Git</a></h2>
+<p>
+  　gitで管理されているあるファイルのサイズを取得するにはどうすればよいでしょう。gitではファイルはblobという名前で呼ばれます。blobのサイズを取得するには<strong>git cat-file</strong>コマンドで<strong>-s</strong>オプションを利用します。
+</p>
+<pre>
+git cat-file -s master:README
+</pre>
+<p>
+  　注意しなればいけないことは、ファイル名そのものではなくてオブジェクト名を指定しないといけません。オブジェクト名は<b>リビジョン:ファイル名</b>で指定できます。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Linuxの基本的なコマンドを覚えよう その1 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="Linuxで作業をするとなると、便利なコマンドを覚えておくと作業が効率的にはかどります。そんな便利なコマンドをいくつか紹介します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190402171737.html">Linuxの基本的なコマンドを覚えよう その1</a></h2>
+<p>
+  　Linuxで作業をするとなると、便利なコマンドを覚えておくと作業が効率的にはかどります。そんな便利なコマンドをいくつか紹介します。
+</p>
+<h3>カレントディレクトリのパスを表示</h3>
+<p>
+  　カレントディレクトリというのは、現在作業しているディレクトリのことです。<b>pwd</b>コマンドを使うとカレントディレクトリのパスを表示できます。
+</p>
+<pre>
+pwd
+</pre>
+<p>
+  　次のようにカレントディレクトリのパスが表示されます。
+</p>
+<pre>
+/home/kimoto
+</pre>
+<h3>カレントディレクトリの変更</h3>
+<p>
+  　カレントディレクトリを移動するには<b>cd</b>コマンドを使います。
+</p>
+<pre>
+cd ディレクトリ名
+</pre>
+<p>
+  　ディレクトリ名は、カレントディレクトリを基準にした相対パスあるいは、完全なパスを記述する絶対パスの両方でしてすることができます。
+</p>
+<p>
+  　たとえば「/home/kimoto」というカレントディレクトリで作業している場合に、この直下にある「labo」というディレクトリに移動したい場合は次のようにします。
+</p>
+<pre>
+cd labo
+</pre>
+<p>
+  　また絶対パスを指定して移動することもできます。
+</p>
+<pre>
+cd /home/kimoto/labo
+</pre>
+<h4>ホームディレクトリの簡略表記</h4>
+<p>
+  　cdコマンドのテクニックをいくつか紹介します。「~」というディレクトリ名を利用するとユーザーのホームディレクトリに移動することができます。
+</p>
+<pre>
+cd ~
+</pre>
+<p>
+  　もしユーザーがkimotoである場合は次の指定と同じ意味になります。
+</p>
+<pre>
+cd /home/kimoto
+</pre>
+<h4>ワイルドカードを使って楽に指定する</h4>
+<p>
+  　実はcdで移動するときは、ワイルドカードを利用すれば、ディレクトリ名のすべての名前を指定する必要はありません。
+</p>
+<pre>
+cd la*
+</pre>
+<p>
+  　<b>*</b>というのがワイルドカードで、「la*」という指定を行うと、もし「labo」というディレクトリがあればそこに移動できます。すべての名前をタイピングしたり、コピーアンドペーストしたりするのが、めんどうなときは便利に使えるテクニックです。
+</p>
+<h3>ディレクトリに含まれるファイル一覧を表示する</h3>
+<p>
+  　ディレクトリに含まれるファイル一覧(ディレクトリも含む)を表示するには<b>ls</b>コマンドを使用します。
+</p>
+<pre>
+ls
+</pre>
+<p>
+  　次のようにファイルの一覧が表示されます。
+</p>
+<pre>
+README  lib script
+</pre>
+<h4>詳細を見る</h4>
+<p>
+  　ファイルのパーミッションやファイルのサイズなどの情報を含めるには<b>l</b>オプションを使用します。
+</p>
+<pre>
+ls -l
+</pre>
+<p>
+  　次のようにファイルの詳細情報をみることができます。
+</p>
+<pre>
+-rw-rw-r-- 1 kimoto kimoto    588  6月 16 13:19 README
+drwxrwxr-x 3 kimoto kimoto   4096  6月 16 16:39 lib
+drwxrwxr-x 2 kimoto kimoto   4096  6月 25 19:21 script
+</pre>
+<p>
+  　一番左側にあるのがパーミッションの設定です。パーミッションというのは、ファイルに対するアクセス権限のことです。この連載で後ほど考え方を紹介したいと思います。
+</p>
+<h4>隠しファイルも見る</h4>
+<p>
+  　lsコマンドは、.(ドット)で始まる隠しファイルをデフォルトでは表示しません。隠しファイルを含めて表示するには、<b>a</b>オプションを使用します。
+</p>
+<pre>
+ls -a
+</pre>
+<p>
+  　このようにすると隠しファイルも表示することができます。
+</p>
+<p>
+  　Linuxではオプションは複数を指定することもできます。たとえば、詳細表示と隠しファイルの表示のオプションを両方指定することができます。
+</p>
+<pre>
+ls -al
+</pre>
+<h4>ワイルドカードで表示するファイルを絞り込む</h4>
+<p>
+  　ワイルドカードを利用すると表示するファイルを絞り込むことができます。
+</p>
+<pre>
+ls 2012*
+</pre>
+<p>
+  　上記のように指定すると、2012で始まるファイルだけを表示させることができます。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

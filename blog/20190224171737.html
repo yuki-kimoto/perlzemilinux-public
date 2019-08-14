@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>gitのrebaseは作業中のブランチにmasterブランチを取り込むためのよい手段 / Git - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="gitにはrebaseというコマンドがある。でもまだrebaseコマンドの使う場面を理解していないん人は多いんじゃないかと思う。またrebaseは使い方を誤ると危険だということは本当だけれど、それは使う場面を間違えているのだと思う。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190224171737.html">gitのrebaseは作業中のブランチにmasterブランチを取り込むためのよい手段 / Git</a></h2>
+<p>
+  　gitにはrebaseというコマンドがある。でもまだrebaseコマンドの使う場面を理解していないん人は多いんじゃないかと思う。またrebaseは使い方を誤ると危険だということは本当だけれど、それは使う場面を間違えているのだと思う。
+</p>
+<h3>rebaseはいつ使うか</h3>
+<p>
+  　rebaseはmasterブランチを派生させて作ったブランチ(fooとする)に、masterの新しい変更を取り込みたい場合に使います。
+</p>
+<p>
+  　まず最初にmasterからfooというブランチを作成すると以下のような状態になります。
+</p>
+<pre>
+ *---*---* master
+         |
+         * foo
+</pre>
+<p>
+  　あなたはfooブランチで開発しています。fooブランチはすすんでいきますが、masterブランチも他の開発者の変更を取り込んですすんでいきます。以下のような状態になります。
+</p>
+<pre>
+ *---*---*---*---* master
+         |
+         *---*---* foo
+</pre>
+<p>
+  　でも個々でmasterブランチで行われた変更を取り込みたくなったとします。ここでmasterをマージ(merge)することは避けたほうがよいでしょう。相互にマージしあうのは、コミット履歴をきれいに保つという面ではよくないです。masterがfooをマージするのはOKですが、fooがmasterをマージするのはやめておいたほうがよいでしょう。
+</p>
+<p>
+  　でもfooがmasterの変更を取り込みたいと思うときがあると思います。このような場合にrebaseを使います。rebaseを行うと、面白いことに、masterの先頭にfooブランチを付け替えてくれます。
+</p>
+<pre>
+ *---*---*---*---* master
+                 |
+                 *---*---* foo
+</pre>
+<p>
+  　つまりmasterの先頭を元にしてfooブランチを作って、あなたの一連の変更を加えた状態にしてくれるということです。こうしておくとfooブランチをmasterにマージする作業がきれいに行えます。
+</p>
+<h3>rebaseでは競合が発生するときがある</h3>
+<p>
+  　rebaseでもマージ(merge)をするときと同じように競合が発生することがあります。masterでの変更とfooでの変更がぶつかっている場合は、普通に起こりえることです。こういう場合は競合を解消するようにソースコードを修正してから「git rebase --continue」を行います。
+</p>
+<h3>rebaseはコミット履歴を書き換えるので元には戻せない(しにくい?)</h3>
+<p>
+  　rebaseはコミット履歴を書き換えます。ですから、rebase前に戻るということは、可能であるにしても、行いにくいので、その状態のブランチを一度別名で保存しておくことをおすすめします。
+</p>
+<pre>
+&lt;h3&gt; barを作って&lt;/h3&gt;
+ *---*---*---*---* master
+         |
+         *---*---* foo
+                 |
+                 * bar
+
+&lt;h3&gt; fooをrebase&lt;/h3&gt;
+ *---*---*---*---* master
+         |       |
+         |       *---*---* foo
+         |       
+         *---*---* bar
+
+</pre>
+<p>
+  　これで何か変なことが起こっても元に戻れますね。
+</p>
+<h3>rebaseはmasterブランチでは行わないこと</h3>
+<p>
+  　rebaseはコミット履歴を書き換えます。つまり、コミットの継続性がないということです。masterでrebaseを行ってしまうと、masterを参照している他の人が困ってしまいます。ですからmasterブランチではrebaseは使わないようにしましょう。
+</p>
+<p>
+  　rebaseはブランチで作業する人にとっては、ときどき必要になって、必須で覚えておきたほうがよい機能かと思います。どうやって作業中のブランチにmasterブランチの変更を取り込んだらいいんだって悩む前に覚えておくのがよいでしょう。
+</p>
+<h3>rebaseがうまくいかないときはmergeすればよい</h3>
+<p>
+  　とはいえrebaseしても、ソースコードがごちゃまぜになってしまって、うまくいかないことがときどきあります。そういうときは、コミット履歴よりも修正ができるかどうかという観点のほうが重要ですので、コミット履歴はごちゃっと混ざってしまってもmergeで解決するのがよいでしょう。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

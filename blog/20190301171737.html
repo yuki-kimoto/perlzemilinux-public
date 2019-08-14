@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Linux入門 - Perlゼミ基礎講座</title>
-<meta name="description" content="Perlゼミが提供するLinuxの入門講座です。">
+<title>GitでSSHを使って通信する場合のURL - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="GitでSSHを使って通信する場合のURLの指定のサンプル。">
   </head>
   <body>
     <div class="container">
@@ -26,16 +26,33 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Linux入門 - PerlゼミでLinuxについて学ぼう</a></h2>
+    <h2><a href="/blog/20190301171737.html">GitでSSHを使って通信する場合のURL</a></h2>
 <p>
-  Perlゼミが提供するLinuxの入門講座です。
+  　<strong>Git</strong>で<strong>SSH</strong>を使って通信する場合の<strong>URL</strong>の指定のサンプル。
 </p>
+<pre>
+ssh://manager@192.168.1.201:12345/rep/myproject.git
+</pre>
 <p>
-  Windowsでも手軽に始めることができます。
+  　フォーマットは次のとおり。
 </p>
+<pre>
+ユーザー名@アドレス:ディレクトリのパス
+</pre>
 <p>
-  <a href="/list.html">記事一覧</a>
+  　いつくかのサンプル。
 </p>
+<pre>
+git clone ssh://manager@192.168.1.201:12345/rep/myproject.git
+git push ssh://manager@192.168.1.201:12345/rep/myproject.git
+</pre>
+<p>
+  　pushの操作などは「git remote add」コマンドで登録してから行うのが普通。
+</p>
+<pre>
+git remote add origin ssh://manager@192.168.1.201:12345/rep/myproject.git
+git push origin master
+</pre>
 
   </div>
   <div class="bottom">

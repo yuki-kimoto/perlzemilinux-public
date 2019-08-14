@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Perlの「Mojolicious」で「JSON」を描画する方法 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="Web APIを発行するときはJSONを使うのが便利。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190428171737.html">Perlの「Mojolicious」で「JSON」を描画する方法</a></h2>
+<p>
+  Web APIを発行するときはJSONを使うのが便利。
+</p>
+<p>
+  PerlのMojoliciousを使って、JSONデータを描画してみよう。
+</p>
+<h3>renderメソッドでJSON描画</h3>
+<p>
+  JSONを描画するにはMojolicious::Controllerクラスのrenderメソッドの<strong>json</strong>オプションを使用します。
+</p>
+<pre>
+my $data = {name =&gt; 'Ken', age =&gt; 19};
+$c-&gt;render(json =&gt; $data);
+</pre>
+<p>
+  Perlのデータを渡すとJSONとして描画されます。
+</p>
+<pre>
+// JSON
+{"name" : "Ken", "age" : 19}
+</pre>
+<p>
+  Perlのデータに含む文字列は内部文字列である必要があることに注意してください。Perlの内部文字列は自動的にUTF-8バイト文字列に変換されます。
+</p>
+<p>
+  以下はMojoliciousとMojolicious::Liteのサンプルです。
+</p>
+<h3> Mojolicious::Liteのサンプル</h3>
+<pre>
+&lt;h3&gt; Mojolicious::Lite&lt;/h3&gt;
+get '/' =&gt; sub {
+  my $self = shift;
+  my $data = {name =&gt; 'Ken', age =&gt; 19};
+  $self-&gt;render(json =&gt; $data);
+};
+
+&lt;h3&gt; Mojoliciousのサンプル&lt;/h3&gt;
+
+&lt;h3&gt; Mojolicious&lt;/h3&gt;
+package MyApp::Picture;
+
+use Mojo::Base 'Mojolicious::Controller';
+
+sub json_data {
+  my $self = shift;
+  my $data = {name =&gt; 'Ken', age =&gt; 19};
+  $self-&gt;render(json =&gt; $data);
+}
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

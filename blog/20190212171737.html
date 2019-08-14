@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>iptablesで特定のIPアドレスからの接続を受け入れる | CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="iptablesで特定のIPアドレスからの接続を受け入れるには以下のように記述します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190212171737.html">iptablesで特定のIPアドレスからの接続を受け入れる | CentOS</a></h2>
+<p>
+  　<strong>iptables</strong>で<strong>特定のIPアドレス</strong>からの接続を受け入れるには以下のように記述します。
+</p>
+<pre>
+&lt;h3&gt; IPアドレス 180.43.31.180 からの接続を許可&lt;/h3&gt;
+-A INPUT -m state --state NEW -m tcp -p tcp -s 180.43.31.180 -m multiport --dports 0:65535 -j ACCEPT
+</pre>
+<p>
+  　<strong>-m multiport</strong>と<strong>--dports</strong>オプションを指定すると、複数のポート番号をまとめて指定できます。
+</p>
+<p>
+  　またCentOSではINPUTチェーンとFORWARDチェーンは、RH-Firewall-1-INPUTという名前でまとめる慣習があるかと思いますので、以下のように書くのがよいでしょう。
+</p>
+<pre>
+&lt;h3&gt; INPUTチェーンとFORWARDチェーンをまとめる&lt;/h3&gt;
+-A INPUT -j RH-Firewall-1-INPUT
+-A FORWARD -j RH-Firewall-1-INPUT
+
+&lt;h3&gt; IPアドレス 180.43.31.180 からの接続を許可&lt;/h3&gt;
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp -s 180.43.31.180 -m multiport --dports 0:65535 -j ACCEPT
+</pre>
+<p>
+  　補足として、--dportsオプションは、カンマ区切りで複数のポート番号を指定したり、コロンを使って、範囲を指定してポート番号を指定したりできます。
+</p>
+<pre>
+&lt;h3&gt; 1, 2, 3から10&lt;/h3&gt;
+--dports 1,2,3:10
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

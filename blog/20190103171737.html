@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>論理ボリュームの作成とファイルシステムのフォーマットの手順 | CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="論理ボリュームを作成するにはlvcreateコマンドを使用します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190103171737.html">論理ボリュームの作成とファイルシステムのフォーマットの手順 | CentOS</a></h2>
+<p>
+  　<strong>論理ボリューム</strong>を<strong>作成</strong>するには<strong>lvcreate</strong>コマンドを使用します。
+</p>
+<pre>
+lvcreate -L 95G -n LogVol04 VolGroup00
+</pre>
+<p>
+  　ファイルシステムをフォーマットします。
+</p>
+<pre>
+mkfs.ext3 -j /dev/VolGroup00/LogVol04
+</pre>
+<p>
+  　ファイルシステムをマウントします。(もともとディレクトリの中にあるファイルは「cp -Rp」などでどこかにコピーしておきましょう。)
+</p>
+<pre>
+mount /dev/VolGroup00/LogVol04 /var/lib/mysql
+</pre>
+<p>
+  　ファイルシステムの自動マウントの設定を行います。
+</p>
+<pre>
+&lt;h3&gt; ファイルの自動マウントの設定ファイル&lt;/h3&gt;
+vi /etc/fstab
+</pre>
+<p>
+  　以下の項目を追加。
+</p>
+<pre>
+/dev/VolGroup00/LogVol04	/var/lib/mysql	ext3	defaults	1	2
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>digを使ってDNSサーバーの設定が正しいかを確認する / CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="(CentOS5.7で確認)">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190118171737.html">digを使ってDNSサーバーの設定が正しいかを確認する / CentOS</a></h2>
+<p>
+  (CentOS5.7で確認)
+</p>
+<p>
+  　DNSサーバーの設定を行ったときに、設定が正しいかどうかを確認したい場合があります。digというコマンドを使います。
+</p>
+<pre>
+dig ドメイン名
+</pre>
+<p>
+  　以下のように使います。
+</p>
+<pre>
+dig perlcodesample.com
+</pre>
+<p>
+  　ドメインの設定はゾーンファイルと呼ばれるものに記述されていますが、各レコードの設定を知ることができます。
+</p>
+<pre>
+; &lt;&lt;&gt;&gt; DiG 9.3.6-P1-RedHat-9.3.6-4.P1.el5_4.2 &lt;&lt;&gt;&gt; perlcodesample.com
+;; global options:  printcmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 33098
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;perlcodesample.com.            IN      A
+
+;; ANSWER SECTION:
+perlcodesample.com.     3600    IN      A       59.106.185.196
+
+;; AUTHORITY SECTION:
+perlcodesample.com.     3600    IN      NS      ns1.dns.ne.jp.
+perlcodesample.com.     3600    IN      NS      ns2.dns.ne.jp.
+
+;; Query time: 72 msec
+;; SERVER: 192.168.5.2#53(192.168.5.2)
+;; WHEN: Tue Jan  8 11:23:09 2013
+;; MSG SIZE  rcvd: 97
+</pre>
+<p>
+  　<b>ANSWER SECTION</b>を見ると、<b>perlcodesample.com</b>というドメインが、<b>59.106.185.196</b>というIPアドレスを指していることがわかります。
+</p>
+<p>
+  　<b>AUTHORITY SECTION</b>を見ると、どのDNSサーバーに対して問い合わせているかを確認することができます。<b>ns1.dns.ne.jp</b>と<b>ns2.dns.ne.jp</b>になっています。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

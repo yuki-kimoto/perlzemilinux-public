@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>【Perl】どんな環境でも動く「インストーラブルWebアプリ」を30分で作る方法 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="!WIN_20170117_23_02_20_Pro.jpg">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190425171737.html">【Perl】どんな環境でも動く「インストーラブルWebアプリ」を30分で作る方法</a></h2>
+<p>
+  !<a href="https://qiita-image-store.s3.amazonaws.com/0/155418/eb1c247c-aaac-d569-8fca-33f40ed1be87.jpeg">WIN_20170117_23_02_20_Pro.jpg</a>
+</p>
+<p>
+  「インストーラブルWebアプリ」というのは、gitなんかで、ソースコードをとってきって、ワンコマンドで簡単に、Webアプリのインストールが完了するものをいうことにする。
+</p>
+<h3> まずはMojoliciousでアプリを書こう</h3>
+<p>
+  Mojoliciousだと小さなアプリが簡単にできる。
+</p>
+<pre>
+use Mojolicious::Lite;
+
+get '/' =&gt; {text =&gt; 'こんにちは'};
+
+app-&gt;start;
+</pre>
+<p>
+  MojoliciousはPerlでWebフレームワークだ。
+</p>
+<h3> cpanmをダウンロード</h3>
+<p>
+  cpanmは、Perlのモジュールをインストールするためのツールなんだけど、これは、たった一枚のファイルでできている。つまり、ダウンロードして、配布に含めておくといい。
+</p>
+<pre>
+curl -L https://cpanmin.us/ -o cpanm
+</pre>
+<h3> cpanfileを作成</h3>
+<p>
+  cpanfileは、インストールしたいモジュールの設定が書ける。こんな風に。必要なものは全部書こう。
+</p>
+<pre>
+requires 'Mojolicious', '== 6.57';
+requires 'Time::HiRes', '== 1.9732';
+requires 'DBD::SQLite', '== 1.50';
+requires 'DBI', '== 1.634';
+</pre>
+<p>
+  そして、cpanmから以下のオプションで、起動すれば、extlib以下に必要なモジュールが入る。
+</p>
+<pre>
+perl -Iextlib/lib/perl5 cpanm -L extlib --installdeps .
+</pre>
+<h3> hypnotoadでサーバー立ち上げ</h3>
+<p>
+  最後にMojoliciousのhypnotoadコマンドを使うとWebアプリが立ち上がる。
+</p>
+<pre>
+DIR=$(dirname $0)
+PERL5LIB="$DIR/extlib/lib/perl5"
+export PERL5LIB
+exec $DIR/extlib/bin/hypnotoad $* $DIR/script/gitprep
+</pre>
+<h3> まとめ</h3>
+<p>
+  Perlを使うとどんな環境でも利用できるインストールがワンコマンドでできるWebアプリを、簡単に書けるよ
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>プロセスの存在確認を行う方法 kill -0 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="プロセスの存在を確認するためにはkillコマンドを使ってオプションに0を指定します。killに0オプションを指定する場合はプロセスは終了したりはしませんので安心してください。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190205171737.html">プロセスの存在確認を行う方法 kill -0</a></h2>
+<p>
+  　プロセスの存在を確認するためには<b>kill</b>コマンドを使ってオプションに<b>0</b>を指定します。killに<b>0</b>オプションを指定する場合はプロセスは終了したりはしませんので安心してください。
+</p>
+<pre>
+kill -0 プロセス番号
+</pre>
+<p>
+  　プロセスが存在するとコマンドが成功し何も出力しません。コマンドが失敗するとそのようなプロセスはないというメッセージがかえってきます。
+</p>
+<p>
+  　これは<b>$?</b>を調べることで確認できます。成功した場合は<b>0</b>で、失敗した場合は<b>1</b>になります。
+</p>
+<p>
+  　以下がサンプルのスクリプトです。
+</p>
+<pre>
+kill -0 16033 &gt; /dev/null 2&gt;&1
+
+if [ $? = 0 ]; then
+  echo "exists";
+else
+  echo "not exists"
+fi
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

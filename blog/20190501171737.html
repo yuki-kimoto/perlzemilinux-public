@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>静的コンポーネントとJavaScriptの動的コンポーネントを共有する方法 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="静的コンポーネントとJSの動的コンポーネントを共有する方法を考えてみた。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190501171737.html">静的コンポーネントとJavaScriptの動的コンポーネントを共有する方法</a></h2>
+<p>
+  静的コンポーネントとJSの動的コンポーネントを共有する方法を考えてみた。
+</p>
+<h3> 動機</h3>
+<p>
+  動的に生成するコンポーネントと静的に生成するコンポーネントが共有できれば、ソースコードの管理がとても楽になると考えた。
+</p>
+<h3> デモ</h3>
+<p>
+  作成したサンプルのデモはこちら。ボタンを押すとURLが動的に書き変わります。見た目にはわかりずらいですが、静的コンポーネントとJSの動的コンポーネントが共有されています。
+</p>
+<p>
+  <a href="http://perlcodesample.sakura.ne.jp/examples/20170502.cgi">デモはこちら</a>
+</p>
+<h3> 概要</h3>
+<li>使っているJSのライブラリはjQueryだけ。</li>
+<li>コンポーネント全体をJavaScriptを含めて描画。</li>
+<li>パラメーターの違いだけでajaxリクエストを投げ、個々の要素についてはJavaScriptで操作していない。</li>
+<li>ページ全体のHTMLの生成もajaxによるJSONの生成も単一のファイルの中で行っている</li>
+<p>
+  ***利点としてソースコードが非常に簡潔になる。***
+</p>
+<p>
+  ***初回描画が静的に行われるのでSEO的にもばっちり***
+</p>
+<p>
+  不安な点はJavaScriptに詳しくないので、このコードに問題点が含まれているかがわからない。詳しい人いたら教えてください。
+</p>
+<h3> ソースコード</h3>
+<p>
+  静的コンポーネントとJSの動的コンポーネントを共有したサンプルです。JSとPerlとMojolicious::Liteを使って書いています。
+</p>
+<pre>
+use Mojolicious::Lite;
+
+any '/' =&gt; sub {
+  my $self = shift;
+  
+  $self-&gt;render_maybe('index');
+};
+
+app-&gt;start;
+
+__DATA__
+
+@@ index.html.ep
+&lt;%
+  my $components = {};
+  my $http_url = 'http://some.com';
+  my $https_url = 'https://some.com';
+%&gt;
+
+% $components-&gt;{'url-bar'} = begin
+  %= javascript begin
+    $(document).ready(function () {
+      $('#url-bar').find('button').on('click', function () {
+        
+        var param = {};
+        
+        // Set parameter
+        param['component-name'] = 'url-bar';
+        
+        if ($(this).attr('id') === 'url-bar-https') {
+          param['url'] = '&lt;%= $https_url %&gt;';
+        }
+        else {
+          param['url'] = '&lt;%= $http_url %&gt;';
+        }
+        
+        $.post('&lt;%= url_for %&gt;', param, function (result) {
+          $('#' + param['component-name']).html(result['html']);
+        });
+      });
+    });
+  % end
+  &lt;div&gt;
+    &lt;button id="url-bar-http"&gt;HTTP&lt;/button&gt;
+    &lt;button id="url-bar-https"&gt;HTTPS&lt;/button&gt;
+    &lt;%= text_field 'url' =&gt; param('url') // $http_url %&gt;
+  &lt;/div&gt;
+% end
+
+&lt;%
+  # コンポーネントの描画処理
+  if ($self-&gt;req-&gt;method eq 'POST') {
+    my $component_name = param('component-name') // '';
+    my $component = $components-&gt;{$component_name};
+    
+    if ($component) {
+      my $html = $component-&gt;();
+      
+      $self-&gt;render(json =&gt; {html =&gt; $html});
+      return;
+    }
+    else {
+      $self-&gt;reply-&gt;not_found;
+      return;
+    }
+  }
+%&gt;
+
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;静的コンポーネントとJSの動的コンポーネントを共有する方法&lt;/title&gt;
+    &lt;%= javascript '/mojo/jquery/jquery.js' %&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    
+    &lt;h1&gt;静的コンポーネントとJSの動的コンポーネントを共有する方法&lt;/h1&gt;
+    
+    &lt;div id="url-bar"&gt;
+      %= $components-&gt;{'url-bar'}-&gt;();
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>
+  ソースコードワンポイント。
+</p>
+<li>render_maybeを使うと、HTMLとJSONが選択的に描画できる。</li>
+<li>Mojoliciousのブロック機能を使って、描画するコンポーネントを作成</li>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

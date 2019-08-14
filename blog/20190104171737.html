@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>sambaの導入 | Perl環境構築 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="sambaはネットワークで接続されたLinuxのファイルシステムを、Windowsのファイルシステムであるかのように扱うことができるアプリケーションです。sambaを導入すれば、Windows上でフォルダを開いて、Linux上のファイルにアクセスできます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190104171737.html">sambaの導入 | Perl環境構築</a></h2>
+<p>
+  　sambaはネットワークで接続されたLinuxのファイルシステムを、Windowsのファイルシステムであるかのように扱うことができるアプリケーションです。sambaを導入すれば、Windows上でフォルダを開いて、Linux上のファイルにアクセスできます。
+</p>
+<h3>Samba関連のパッケージ</h3>
+<p>
+  |samba-common|必須|
+</p>
+<p>
+  |samba|必須|
+</p>
+<p>
+  |samba-client|Sambaのクライアント|
+</p>
+<p>
+  |samba-swat|SambaをWebアプリケーションを通して操作する|
+</p>
+<h3>Sambaのインストール</h3>
+<p>
+  　この中で、samba-commonとsambaが必須ですがいちおう全部入れておきましょう。
+</p>
+<pre>
+&lt;h3&gt; インストール&lt;/h3&gt;
+yum -y install samba-common
+yum -y install samba
+yum -y install samba-client
+yum -y install samba-swat
+
+&lt;h3&gt; インストール後の確認&lt;/h3&gt;
+rpm -qa | grep samba
+
+&lt;h3&gt; 確認項目&lt;/h3&gt;
+&lt;h3&gt; samba-swat-3.0.28a-1.fc7&lt;/h3&gt;
+&lt;h3&gt; samba-common-3.0.28a-1.fc7&lt;/h3&gt;
+&lt;h3&gt; samba-client-3.0.28a-1.fc7&lt;/h3&gt;
+&lt;h3&gt; samba-3.0.28a-1.fc7&lt;/h3&gt;
+
+</pre>
+<h3>サービス起動スクリプト</h3>
+<p>
+  　サービス起動スクリプトを見ればいろいろな情報がわかります。
+</p>
+<pre>
+&lt;h3&gt; サービス起動スクリプトを見る。&lt;/h3&gt;
+view /etc/init.d/smb
+</pre>
+<h3>Sambaの自動起動の設定</h3>
+<pre>
+&lt;h3&gt; サービスに追加( sambaのサービス名はsmb)&lt;/h3&gt;
+chkconfig --add smb
+
+&lt;h3&gt; mysqlがサービスに追加されたことの確認&lt;/h3&gt;
+chkconfig --list | grep smb
+
+&lt;h3&gt; ランレベルを指定した自動起動の設定&lt;/h3&gt;
+chkconfig --level 35 smb on
+
+&lt;h3&gt; mysqlの自動起動が有効になっているかの確認&lt;/h3&gt;
+chkconfig --list | grep smb
+
+&lt;h3&gt; 確認項目&lt;/h3&gt;
+&lt;h3&gt; smb             0:off   1:off   2:off   3:on    4:off   5:on    6:off&lt;/h3&gt;
+</pre>
+<h3>Sambaを起動する</h3>
+<pre>
+&lt;h3&gt; 起動&lt;/h3&gt;
+service smb start
+
+&lt;h3&gt; 起動の確認&lt;/h3&gt;
+service --status-all | grep smb
+
+&lt;h3&gt; 確認項目&lt;/h3&gt;
+&lt;h3&gt; smbd (pid 5057 5041) を実行中...&lt;/h3&gt;
+</pre>
+<h3>sambaの設定ファイル</h3>
+<p>
+  　sambaの設定ファイルは以下です。
+</p>
+<pre>
+/etc/samba/smb.conf
+</pre>
+<p>
+  　まず設定ファイルを変更します。
+</p>
+<h3>設定の確認</h3>
+<p>
+  　testparm -sv コマンドで、sambaの設定を確認できます。
+</p>
+<pre>
+&lt;h3&gt; 設定の確認&lt;/h3&gt;
+testparm -sv
+</pre>
+<h3>sambaのログファイル</h3>
+<p>
+  sambaのログファイルは
+</p>
+<pre>
+/var/log/samba
+</pre>
+<p>
+  以下にあります
+</p>
+<h3>sambaユーザの作成</h3>
+<p>
+  　sambaのためのユーザを作成する必要があります。Unixのログインユーザとは別に作成する必要があります。
+</p>
+<pre>
+&lt;h3&gt; 追加する場合&lt;/h3&gt;
+pdbedit -a -u ユーザ名
+
+&lt;h3&gt; 削除する場合&lt;/h3&gt;
+pdbedit -x ユーザ名
+
+&lt;h3&gt; ユーザーの一覧表示&lt;/h3&gt;
+pdbedit -L
+</pre>
+<h3>sambaの再起動</h3>
+<pre>
+service smb restart
+</pre>
+<h3>Windows上からファイルにアクセス</h3>
+<pre>
+\\IPアドレス
+\\192.168.0.2
+</pre>
+<p>
+  とアドレスバーに入力します。デフォルトでは、ユーザのホームディレクトリが見えるはずです。これでsambaを使えるようになるまでの設定は終了です。
+</p>
+<h3>ワークグループ名を変更する。</h3>
+<p>
+  　MYGROUPというのはデフォルトのワークグループ名です。これを変更するには設定ファイルの
+</p>
+<pre>
+workgroup = MYGROUP
+</pre>
+<p>
+  を変更します。その後smbとnmbを再起動します。
+</p>
+<h3>ホームディレクトリ以外にアクセスする</h3>
+<p>
+  　デフォルトでは、ホームディレクトリしか見えませんが、設定ファイルに以下の項目を加えると指定したディレクトリ以下のファイルが見えるようになります。[]のなかは、共有フォルダ名です。pathが、実際のパスです。
+</p>
+<pre>
+[etc]
+        comment = Etc Directories
+        browseable = yes
+        writable = yes
+        path = /etc
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

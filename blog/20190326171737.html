@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>さくらVPSで「Perl + Mojolicious」Webアプリ開発 第9回 Webアプリケーションをデプロイしてみる - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="今日はついにWebアプリケーションを実際に動かしてURLを指定してアクセスできるようにしてみたいと思います。ついにこの時がきました。Webアプリケーションを本番環境に配置することは、デプロイという言葉で呼ばることが多いですので、覚えておきましょう。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190326171737.html">さくらVPSで「Perl + Mojolicious」Webアプリ開発 第9回 Webアプリケーションをデプロイしてみる</a></h2>
+<p>
+  　今日はついにWebアプリケーションを実際に動かしてURLを指定してアクセスできるようにしてみたいと思います。ついにこの時がきました。Webアプリケーションを本番環境に配置することは、デプロイという言葉で呼ばることが多いですので、覚えておきましょう。
+</p>
+<p>
+  　これが、できると後は、環境を整えたり、テクニックを覚えたりして、Webアプリケーションを発展させていくだけです。
+</p>
+<p>
+  　Webアプリケーションは、僕が準備してダウンロードできるようにしてあります。このアプリケーションをダウンロードして、動かしてみましょう。
+</p>
+<p>
+  　まず最初に<b>webapp</b>というユーザーになりましょう。Webアプリケーションはrootユーザーではなく、webappユーザーで実行します。
+</p>
+<pre>
+su - webapp
+</pre>
+<p>
+  　次の手順をリモートコンソールで実行してみてください。リモートコンソールの上部のタイトルバーにあるペーストボタンを使って、コマンドを貼り付けて実行していくのがおすすめです。コマンドを一つ貼り付けるたびにEnterキーを押して実行していきます。
+</p>
+<pre>
+curl -kL https://github.com/downloads/yuki-kimoto/webminiapp/webminiapp-0.01.tar.gz &gt; webminiapp-0.01.tar.gz
+tar xf webminiapp-0.01.tar.gz
+cd webminiapp-0.01
+./webminiapp
+</pre>
+<p>
+  　4つのコマンドがあるので順に説明しましょう。一行目は長いので複数行になっていると思うので注意してください。ひとつのコマンドです。
+</p>
+<h4>Webアプリケーションのダウンロード</h4>
+<p>
+  　まず最初にすることはWebアプリケーションのダウンロードです。
+</p>
+<pre>
+curl -kL https://github.com/downloads/yuki-kimoto/webminiapp/webminiapp-0.01.tar.gz &gt; webminiapp-0.01.tar.gz
+</pre>
+<p>
+  　curlというコマンドはWeb上のコンテンツをダウンロードするためのコマンドです。
+</p>
+<pre>
+curl オプション URL
+</pre>
+<p>
+  　<b>-kL</b>というのは<b>-k</b>というオプションと<b>-L</b>というオプションを指定するという意味です。<b>-k -L</b>と書くのと同じ意味になります。<b>-k</b>オプションは、セキュアな接続をしないという意味になり、<b>-L</b>はリダイレクトを行うという意味になります。深い意味は今は覚えなくてもよいです。ふーんという感じでよいです。
+</p>
+<p>
+  　最後にある<b>&gt;</b>は、リダイレクトを行うという意味で、URLで指定したコンテンツを出力するファイル名を指定しています。
+</p>
+<p>
+  　これでローカルディレクトリに<b>webminiapp-0.01.tar.gz</b>というファイルができます。
+</p>
+<h4>ダウンロードしたファイルの展開</h4>
+<p>
+  　次はダウンロードしたファイルを展開します。
+</p>
+<pre>
+tar xf webminiapp-0.01.tar.gz
+</pre>
+<p>
+  　tarコマンドは、TAR形式で圧縮されたファイルを展開するためのコマンドです。
+</p>
+<pre>
+tar オプション ファイル名
+</pre>
+<p>
+  　<b>x</b>オプションは、gz形式で圧縮されている場合にも展開することを行うオプションで、<b>f</b>はファイルに対して行うということを意味しています。
+</p>
+<p>
+  　Windowsでもzip形式というものがありますが、実はこれは複数ファイルのアーカイブ化と圧縮を一緒になっている形式です。Linuxでは、複数ファイルを一つのファイルにまとめるのにtar形式というものが用いられます。これはtarコマンドによって作成することができます。また圧縮をするのにgz形式がよく用いられます。これはgzipコマンドによって実行できます。
+</p>
+<p>
+  　拡張子が<b>.tar.gz</b>となっている場合はtarコマンドでTAR形式にアーカイブ化され、gzipコマンドでgz形式に圧縮されたという意味です。上記のコマンドによって、展開することができ<b>webminiapp-0.01</b>というディレクトリができます。
+</p>
+<pre>
+webminiapp-0.01
+</pre>
+<h4>カレントディレクトリの変更</h4>
+<p>
+  　カレントディレクトは<b>cd</b>コマンドで変更できます。これはWindowsと同じですね。
+</p>
+<pre>
+cd webminiapp-0.01
+</pre>
+<h4>Webアプリケーションの実行</h4>
+<p>
+  　Webアプリケーションを起動します。次のコマンドでWebアプリケーションを起動できます。
+</p>
+<pre>
+./webminiapp
+</pre>
+<p>
+  　では以下のURLにアクセスしてみてください。「Hello World!」と表示されたら成功です。
+</p>
+<pre>
+http://あなたのIPアドレス:8080/
+</pre>
+<p>
+  　これでWebアプリケーションが実行できましたね。
+</p>
+<p>
+  　8080というのはポート番号です。Webアプリケーションが8080というポート番号で起動しているので、8080にアクセスしています。
+</p>
+<p>
+  　普段は以下のような感じで指定しますね。
+</p>
+<pre>
+http://あなたのIPアドレス
+</pre>
+<p>
+  　実はこれは以下の記述の省略系になっています。
+</p>
+<pre>
+http://あなたのIPアドレス:80
+</pre>
+<p>
+  　省略するとポート番号が80番でアクセスするという意味になります。
+</p>
+<p>
+  　もしアプリケーションを停止させたい場合は<b>--stop</b>オプションで停止できます。
+</p>
+<pre>
+./webminiapp --stop
+</pre>
+<p>
+  　またログをは以下のファイルに出力されます。
+</p>
+<pre>
+log/production.log
+</pre>
+<p>
+  　moreコマンドを使えば、ログを見ることもできます。
+</p>
+<pre>
+more log/production.log
+</pre>
+<p>
+  　スペースキーでログが進み、qを押すと続きをみるのをキャンセルできます。
+</p>
+<h3>ポート番号80番でWebアプリケーションにアクセスする</h3>
+<p>
+  　でもやっぱり80番ポートで、Webアプリケーションを実行したいですね。方法はいくつかあるのですが、ここでは応用が利かないけれど一番簡単な、ポートフォーワードという方法を試してみましょう。
+</p>
+<p>
+  　8080でアプリケーションが起動しているので、80番ポートにアクセスがあった場合に8080に転送すればよいわけですね。
+</p>
+<p>
+  　これはrootユーザーで作業します。
+</p>
+<pre>
+su -
+</pre>
+<p>
+  　以下のコマンドを実行します。iptablesというコマンドを使います。
+</p>
+<pre>
+iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+/etc/rc.d/init.d/iptables save
+service iptables restart
+</pre>
+<h4>ポートフォワード</h4>
+<p>
+  　一つ目のコマンドでポートフォワードの設定をしています。80番ポートへのアクセスを8080に転送します。
+</p>
+<pre>
+iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+</pre>
+<h4>内容の保存</h4>
+<p>
+  　設定した内容を保存しています。
+</p>
+<pre>
+/etc/rc.d/init.d/iptables save
+</pre>
+<h4>iptablesの再起動</h4>
+<p>
+  　iptablesを再起動しています。
+</p>
+<pre>
+service iptables restart
+</pre>
+<h4>80番ポートでアクセスしてみる</h4>
+<p>
+  　以下のURLでHello Worldと表示されれば成功です。お疲れ様でした。
+</p>
+<pre>
+http://あなたのIPアドレス
+</pre>
+<h4>ポートフォワードの設定を下に戻す</h4>
+<p>
+  　元に戻したいときは次のコマンドを実行してくださいね。後に戻すことになると思います。
+</p>
+<pre>
+iptables -t nat -F PREROUTING
+/etc/rc.d/init.d/iptables save
+service iptables restart
+</pre>
+<p>
+  　<b>-F</b>オプションで設定を元に戻せます。ターゲットは<b>-t</b>オプションで<b>nat</b>テーブルを指定して、<b>PREROUTING</b>というチェーンの設定を戻すという意味になります。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

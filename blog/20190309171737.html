@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Linux入門 - Perlゼミ基礎講座</title>
-<meta name="description" content="Perlゼミが提供するLinuxの入門講座です。">
+<title>コミット数を取得する方法 / Gitメモ - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="あるブランチのコミット数を取得するには次のようにする。">
   </head>
   <body>
     <div class="container">
@@ -26,15 +26,31 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Linux入門 - PerlゼミでLinuxについて学ぼう</a></h2>
+    <h2><a href="/blog/20190309171737.html">コミット数を取得する方法 / Gitメモ</a></h2>
 <p>
-  Perlゼミが提供するLinuxの入門講座です。
+  　あるブランチのコミット数を取得するには次のようにする。
+</p>
+<pre>
+git shortlog -s ブランチ名
+</pre>
+<p>
+  　ブランチ名を省略した場合は、現在のブランチになる。
 </p>
 <p>
-  Windowsでも手軽に始めることができます。
+  　自分がgitリポジトリのディレクトにいない場合は<b>--git-dir</b>オプションというのでディレクトリを指定できる。
 </p>
+<pre>
+git --git-dir=ディレクトリ名 shortlog -s ブランチ名
+</pre>
 <p>
-  <a href="/list.html">記事一覧</a>
+  　次のような出力が得られる。
+</p>
+<pre>
+    25  Yuki Kimoto
+     1  root
+</pre>
+<p>
+  　コミットした回数とコミットしたユーザーの名前がでてくる。コミット数の合計を出したい場合は、左の値を足し算すればよい。
 </p>
 
   </div>

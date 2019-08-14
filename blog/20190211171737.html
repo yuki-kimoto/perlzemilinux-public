@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>サービス起動スクリプト / CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="(CentOS5.7で確認)">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190211171737.html">サービス起動スクリプト / CentOS</a></h2>
+<p>
+  (CentOS5.7で確認)
+</p>
+<p>
+  　<strong>サービス起動スクリプト</strong>とは、サービスを開始するときやサービスを停止するときに利用されるシェルスクリプトです。サービス起動スクリプトの中を見れば、サービス名やコンフィグファイルの位置などの情報を見ることができます。
+</p>
+<p>
+  　新しいサービス(Webサーバやデータベースサーバ、SSHサーバなど)をインストールした場合は、サービス起動スクリプトの中をのぞけば、関連するファイルがどこにあるのかを知ることができます。
+</p>
+<h3>サービス起動スクリプトのあるディレクトリ</h3>
+<p>
+  　サービス起動スクリプトは以下のディレクトリに格納されます。この中にあるファイルをのぞけば、さまざまなことがわかります。
+</p>
+<pre>
+/etc/init.d
+</pre>
+<p>
+  　このディレクトリにあるファイルはたとえば、以下のようになっており、chkconfigでサービスを登録したりserviceコマンドでサービスを開始・停止する場合のサービス名になります。
+</p>
+<pre>
+auditd        halt       mdmonitor   network      rsyslog         vncserver
+avahi-daemon  ip6tables  messagebus  ntpd         setroubleshoot  xfs
+firstboot     iptables   netconsole  ntpdate      smolt           xinetd
+functions     killall    netfs       rdisc        sshd
+haldaemon     mcstrans   netplugd    restorecond  udev-post
+</pre>
+<h3>サービス起動スクリプトの内容</h3>
+<p>
+  　たとえばsshdのサービス起動スクリプトの内容を見てみるとどのランレベルで自動起動すればよいのか、コンフィグファイルはどこにあるかなどという情報を見ることができます。
+</p>
+<pre>
+view /etc/init.d/sshd
+</pre>
+<pre>
+&lt;h3&gt;!/bin/bash&lt;/h3&gt;
+#
+&lt;h3&gt; Init file for OpenSSH server daemon&lt;/h3&gt;
+#
+&lt;h3&gt; chkconfig: 2345 55 25&lt;/h3&gt;
+&lt;h3&gt; description: OpenSSH server daemon&lt;/h3&gt;
+#
+&lt;h3&gt; processname: sshd&lt;/h3&gt;
+&lt;h3&gt; config: /etc/ssh/ssh_host_key&lt;/h3&gt;
+&lt;h3&gt; config: /etc/ssh/ssh_host_key.pub&lt;/h3&gt;
+&lt;h3&gt; config: /etc/ssh/ssh_random_seed&lt;/h3&gt;
+&lt;h3&gt; config: /etc/ssh/sshd_config&lt;/h3&gt;
+&lt;h3&gt; pidfile: /var/run/sshd.pid&lt;/h3&gt;
+</pre>
+<p>
+  　chkconfig の直後の2345というのが、chkconfigコマンドで自動起動の設定が推奨されるランレベルです。configとなっている部分がこのアプリケーションの設定ファイルの格納場所です。
+</p>
+<p>
+  　sshdのサービス起動スクリプトに限らず他のスクリプトも同じようになっています。設定ファイルの位置を忘れたら、サービス起動スクリプトを見ればわかるということを覚えておくととても便利です。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

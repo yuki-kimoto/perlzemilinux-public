@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Perlで超簡単ファイル入出力「ダイヤモンド演算子とリダイレクトがあればopen関数なんていらないのさ」 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="ファイル入出力といえば、open関数を使わないと思っているあなた、Perlではもっと簡単な方法が用意されているのよ。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190420171737.html">Perlで超簡単ファイル入出力「ダイヤモンド演算子とリダイレクトがあればopen関数なんていらないのさ」</a></h2>
+<p>
+  ファイル入出力といえば、open関数を使わないと思っているあなた、Perlではもっと簡単な方法が用意されているのよ。
+</p>
+<h3>ダイヤモンド演算子</h3>
+<p>
+  「ダイヤモンド演算子」を使うと、標準入力あるいは、コマンドライン引数で受け取ったファイルから読み込める
+</p>
+<pre>
+&lt;h3&gt; コマンドライン引数からファイルを渡す&lt;/h3&gt;
+perl script.pl file.txt
+あるいは
+&lt;h3&gt; 標準入力からファイルを渡す&lt;/h3&gt;
+cat file.txt &gt; perl script.pl
+</pre>
+<p>
+  そして、スクリプトの方はこんな感じ。
+</p>
+<pre>
+&lt;h3&gt; ダイヤモンド演算子を使って行読み込み&lt;/h3&gt;
+while (my $line = &lt;&gt;) {
+  chomp $line;
+  print "$line add some thing\n";
+}
+</pre>
+<p>
+  open関数を使って、読み込み用にファイルオープンしなくってもいいんよね。
+</p>
+<h3>リダイレクトでファイルへ出力</h3>
+<p>
+  リダイレクトというLinuxやWindowsに標準で備わっている機能を使えば、print関数の出力を、ファイルにリダイレクトできる。
+</p>
+<p>
+  リダイレクトっていうのは、たとえば、画面のへの出力を、ファイルへの出力に切り替える機能だ。
+</p>
+<p>
+  先ほどのコマンドにちょっとつけたそう。「>」という記号を。
+</p>
+<pre>
+&lt;h3&gt; コマンドライン引数からファイルを渡す&lt;/h3&gt;
+perl script.pl file.txt &gt; output.txt
+あるいは
+&lt;h3&gt; 標準入力からファイルを渡す&lt;/h3&gt;
+cat file.txt &gt; perl script.pl &gt; output.txt
+</pre>
+<p>
+  これで、ファイルに出力できるんだね。
+</p>
+<p>
+  open関数を使わなくっても、ファイル入出力できるって、知ってた?
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Linuxの基本的なコマンドを覚えよう その2 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="さてそれでは作業をするにあたって便利になるコマンドをどんどん覚えていきましょう。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190403171737.html">Linuxの基本的なコマンドを覚えよう その2</a></h2>
+<p>
+  　さてそれでは作業をするにあたって便利になるコマンドをどんどん覚えていきましょう。
+</p>
+<h3>文字列の検索 grep</h3>
+<p>
+  　grepコマンドは、コマンドの中でも頻繁に使うコマンドです。grepはテキストファイルの中に、指定した文字列が含まれている場合に、その行を表示してくれます。
+</p>
+<pre>
+grep 文字列 テキストファイル
+</pre>
+<p>
+  　たとえばテキストファイル(foo.txt)が次のようなものだったとしましょう。
+</p>
+<pre>
+cat is animal
+dog is animal
+mouse is animal
+cat だ。
+</pre>
+<p>
+  　このテキストファイルからcatを含む行を取り出したいとするなら、次のように書きます。
+</p>
+<pre>
+grep cat foo.txt
+</pre>
+<p>
+  　出力結果は次のようになります。
+</p>
+<pre>
+cat is animal
+cat だ。
+</pre>
+<h4>他のコマンドと組み合わせる</h4>
+<p>
+  　grepは他のコマンドと組み合わせるととても便利です。たとえばlsコマンドと組み合わせてみましょう。
+</p>
+<pre>
+ls | grep log
+</pre>
+<p>
+  　lsはファイルの一覧を表示するコマンドです。そして後ろに続くの<b>|</b>はパイプと呼ばれるもので、lsの出力を次のコマンドの入力に渡すことができます。
+</p>
+<p>
+  　上記のコマンドを実行すると、ファイル一覧の中からlogというファイル名を含むものだけを抽出することができます。
+</p>
+<p>
+  　lsだけではなくて、他のコマンドとも組み合わせることができます。
+</p>
+<p>
+  　もしスペースを含む文字列を指定した場合はダブルクォートで文字列を囲みます。
+</p>
+<pre>
+grep "cat is" foo.txt
+</pre>
+<h4>正規表現を使う</h4>
+<p>
+  　grepでは、抽出条件として正規表現を指定することができます。
+</p>
+<pre>
+grep "^cat" foo.txt
+</pre>
+<p>
+  　反対に、文字列で検索する場合は「-F」オプションが利用できます。
+</p>
+<pre>
+grep "cat" foo.txt
+</pre>
+<h4>サブディレクトリすべてから検索</h4>
+<p>
+  　grepには大変便利な機能があります。それはサブディレクトリを含めて再帰的に、検索してくれる機能です。<b>r</b>オプションを使用します。
+</p>
+<pre>
+grep -r cat dir1
+</pre>
+<p>
+  　dir1というディレクトリ以下に含まれているテキストファイルの中からcatを含む行を表示してくれます。
+</p>
+<p>
+  　以下のように複数のディレクトリを指定することも可能です。
+</p>
+<pre>
+grep -r cat dir1 dir2
+</pre>
+<h3>環境変数を見る</h3>
+<p>
+  　環境変数を見るには、<b>env</b>を使用します。
+</p>
+<pre>
+env
+</pre>
+<p>
+  　環境変数は、アプリケーションなどで利用される設定が格納するための変数です。
+</p>
+<pre>
+HOSTNAME=www345u.sakura.ne.jp
+SHELL=/bin/bash
+OLDPWD=/home/kimoto/labo
+USER=kimoto
+</pre>
+<h4>環境変数の設定 env</h4>
+<p>
+  　環境変数を設定するには次のようにします。
+</p>
+<pre>
+export APP_NAME=myapp
+</pre>
+<p>
+  　環境変数は一般的には大文字です。自分で好きな名前をつけることができます。設定した環境変数は、現在のシェルの中でだけ有効です。つまり、一度ログアウトしたり、端末を終了したりすれば、設定はなくなります。
+</p>
+<p>
+  　デフォルトの設定として、環境変数を設定したい場合は、シェルの設定ファイルで定義する必要があります。シェルの設定ファイルは、ホームディレクトリにある<b>.bashrc</b>です。
+</p>
+<pre>
+vi ~/.bashrc
+</pre>
+<p>
+  　この設定ファイルの中には、環境変数の設定や、コマンドを記述することができます。
+</p>
+<h3>コマンドのパスを調べる which</h3>
+<p>
+  　コマンドのパスを調べるには、<b>which</b>を使用します。たとえばperlというコマンドは実際何を実行しているのかを知ることができます。
+</p>
+<pre>
+which perl
+</pre>
+<p>
+  　すると以下のように実際に実行しているアプリケーションのパスが表示されます。
+</p>
+<pre>
+~/perl5/perlbrew/perls/perl-5.14.2/bin/perl
+</pre>
+<h3>ファイルの内容を出力</h3>
+<p>
+  　ファイルの内容を出力するには<b>cat</b>を使います。
+</p>
+<pre>
+cat ファイル
+</pre>
+<h3>テキストファイルを先頭から見る more</h3>
+<p>
+  　テキストファイルの先頭の部分だけ見たい場合は<b>more</b>を使います。
+</p>
+<pre>
+more テキストファイル
+</pre>
+<p>
+  　Enterを押していくと、ページが進んでいきます。終わりたいときは<b>q</b>を押します。
+</p>
+<h3>テキストファイルの末尾を見る tail</h3>
+<p>
+  　テキストファイルの末尾を見るには<b>tail</b>を使用します。
+</p>
+<pre>
+tail テキストファイル
+</pre>
+<p>
+  　tailには便利なオプションがあって、ファイルを監視して、ファイルの末尾に文字列が追加された場合に、表示し続けてくれる<b>f</b>オプションがあります。ログを監視するのに便利です。
+</p>
+<pre>
+tail -f developmen.log
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

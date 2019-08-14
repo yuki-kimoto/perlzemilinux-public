@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Mojoliciousの「url_with」メソッドは「クエリ文字列」を引き継いでくれるので超便利 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="今日の「Mojolicious」のTipsは「url_with」メソッドです。url_withメソッドは、現在のクエリパラメータをそのまま復元してくれます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190413171737.html">Mojoliciousの「url_with」メソッドは「クエリ文字列」を引き継いでくれるので超便利</a></h2>
+<p>
+  今日の「Mojolicious」のTipsは「url_with」メソッドです。url_withメソッドは、現在のクエリパラメータをそのまま復元してくれます。
+</p>
+<pre>
+&lt;h3&gt; アクセスURLが「/foo?a=1&b=2」ならそれをそのまま復元&lt;/h3&gt;
+url_with
+</pre>
+<p>
+  これは、ページネーションを作成しているときに特に便利で、クエリ文字列を引き継ぎつつ、ページの変更だけを簡単に行うことができます。
+</p>
+<pre>
+&lt;h3&gt;「/foo?a=1&b=2&page=2」になる&lt;/h3&gt;
+url_with-&gt;query([page =&gt; 2]);
+</pre>
+<p>
+  Perlのページネーションモジュールには「<a href="http://search.cpan.org/dist/Data-Page/lib/Data/Page.pm">Data::Page</a>」というのがありますけど、これとの相性がばっちりです。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

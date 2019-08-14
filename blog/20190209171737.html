@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>chkconfig - サービスの自動起動の設定 / CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="(CentOS5.7で確認)">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190209171737.html">chkconfig - サービスの自動起動の設定 / CentOS</a></h2>
+<p>
+  (CentOS5.7で確認)
+</p>
+<p>
+  　<strong>chkconfig</strong>コマンドは、サービス管理のためのコマンドです。サービスの自動起動の設定を行うことができます。サービスとは、バックグラウンドで起動するアプリケーションのことです。HTTPサーバやデータベースサーバなどがあります。OSの起動後に自動的に起動したいサービスはchkconfigを使えば設定できます。
+</p>
+<h3>サービスの追加、削除、一覧</h3>
+<p>
+  　サービスに追加、削除、一覧は以下のコマンドで行います。
+</p>
+<pre>
+&lt;h3&gt; サービスの一覧に追加する。&lt;/h3&gt;
+chkconfig --add サービス名
+
+&lt;h3&gt; サービスの一覧から削除する。&lt;/h3&gt;
+chkconfig --del サービス名
+
+&lt;h3&gt; サービスの状態の一覧を見る&lt;/h3&gt;
+chkconfig --list
+
+&lt;h3&gt; あるサービスについての状態を見る&lt;/h3&gt;
+chkconfig --list サービス名
+</pre>
+<h3>サービスの自動起動の設定</h3>
+<p>
+  　サービスの自動起動の設定はランレベルごとに設定します。ランレベルというのは、Linuxの概念で、カーネルがどのような状態であるかを表す用語です。0～6までのランレベルがあります。
+</p>
+<pre>
+&lt;h3&gt; ランレベルの一覧&lt;/h3&gt;
+0 : シャットダウンに向かう状態
+1 : シングルユーザモード
+2 : 使用されない
+3 : 標準的な状態
+4 : 使用されない
+5 : GUIでログインする状態
+6 : 再起動に向かう状態
+</pre>
+<p>
+  　一般的に自動起動を設定する必要があるのは、3と5です。3の標準的な状態と5のGUIの場合に、サービスの自動起動をonにしておけばよいです。
+</p>
+<h3>サービスの自動起動の設定</h3>
+<p>
+  　サービスの自動起動の設定は --level オプションで行います
+</p>
+<pre>
+&lt;h3&gt; ランレベルを指定した自動起動の設定&lt;/h3&gt;
+chkconfig --leve ランレベル サービス名 onかoff
+</pre>
+<p>
+  　httpdのランレベル3と5で自動起動を行う設定です。
+</p>
+<pre>
+&lt;h3&gt; onにする場合&lt;/h3&gt;
+chkconfig --level 35 httpd on
+
+&lt;h3&gt; offにする場合&lt;/h3&gt;
+chkconfig --level 35 httpd off
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

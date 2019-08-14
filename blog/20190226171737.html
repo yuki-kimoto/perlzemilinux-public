@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Linux入門 - Perlゼミ基礎講座</title>
-<meta name="description" content="Perlゼミが提供するLinuxの入門講座です。">
+<title>Gitをソースからインストールする - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="(CentOS 5.7で確認)">
   </head>
   <body>
     <div class="container">
@@ -26,15 +26,24 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Linux入門 - PerlゼミでLinuxについて学ぼう</a></h2>
+    <h2><a href="/blog/20190226171737.html">Gitをソースからインストールする</a></h2>
 <p>
-  Perlゼミが提供するLinuxの入門講座です。
+  (CentOS 5.7で確認)
 </p>
 <p>
-  Windowsでも手軽に始めることができます。
+  　CentOSにGitをソースからインストールする方法です。
 </p>
+<pre>
+cd /usr/local/src
+wget http://git-core.googlecode.com/files/git-1.7.9.3.tar.gz
+tar xzvf git-1.7.9.3.tar.gz
+cd git-1.7.9.3
+./configure
+make
+make install
+</pre>
 <p>
-  <a href="/list.html">記事一覧</a>
+  　ユーザーはrootでの作業です。
 </p>
 
   </div>

@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Linux入門 - Perlゼミ基礎講座</title>
-<meta name="description" content="Perlゼミが提供するLinuxの入門講座です。">
+<title>参照先のDNSサーバーのIPアドレスを調べる / CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="(CentOS5.7で確認)">
   </head>
   <body>
     <div class="container">
@@ -26,16 +26,23 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Linux入門 - PerlゼミでLinuxについて学ぼう</a></h2>
+    <h2><a href="/blog/20190117171737.html">参照先のDNSサーバーのIPアドレスを調べる / CentOS</a></h2>
 <p>
-  Perlゼミが提供するLinuxの入門講座です。
+  (CentOS5.7で確認)
 </p>
 <p>
-  Windowsでも手軽に始めることができます。
+  　CentOSで参照先のDNSサーバーのIPアドレスを調べるには<b>/etc/resolv.conf</b>というファイルの中身を確認します。
 </p>
+<pre>
+cat /etc/resolv.conf
+</pre>
 <p>
-  <a href="/list.html">記事一覧</a>
+  　以下のようにDNSサーバーのIPアドレスが表示されます。
 </p>
+<pre>
+nameserver 192.168.0.1
+nameserver 192.168.0.2
+</pre>
 
   </div>
   <div class="bottom">

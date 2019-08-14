@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Windowsでmakeできる環境を作成する - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="Unix、Linux、Macではmakeというプログラムが付属していますので、makeを行うためのプログラムを特別にインストールする必要はありません。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190419171737.html">Windowsでmakeできる環境を作成する</a></h2>
+<p>
+  　Unix、Linux、Macではmakeというプログラムが付属していますので、makeを行うためのプログラムを特別にインストールする必要はありません。
+</p>
+<p>
+  　Windows環境ではmakeができる環境がありません。makeが必要なCPANモジュールをインストールするには、Windows用のmakeプログラム( nmake )をインストールする必要があります。
+</p>
+<h3>nmakeのインストール</h3>
+<h4>nmakeのダウンロード</h4>
+<p>
+  　Windows用のmakeプログラムとしてnmakeと呼ばれるものがあるのでインストールします。
+</p>
+<p>
+  　以下のページがnmakeをインストールするための解説のページです。
+</p>
+<p>
+  <a href="http://johnbokma.com/perl/make-for-windows.html">Make for Windows: NMake</a>
+</p>
+<p>
+  このページの「Downloading NMake」という見出しの
+</p>
+<p>
+  <a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q132084">Microsoft Knowledge Base, article 132084</a>
+</p>
+<p>
+  というページに行きます。
+</p>
+<p>
+  ここで、中ほどにある
+</p>
+<p>
+  <a href="http://download.microsoft.com/download/vc15/patch/1.52/w95/en-us/nmake15.exe">Nmake15.exe</a>
+</p>
+<p>
+  からnmakeの圧縮ファイルをダウンロードします。( 2008年10月27日 )
+</p>
+<h4>nmakeの解凍</h4>
+<p>
+  　ダウンロードしたNmake15.exeをダブルクリックすると解凍されて、NMAKE.EXE と NMAKE.ERR というファイルが作成されます。
+</p>
+<h4>nmakeのインストール</h4>
+<p>
+  　インストール作業としては、Perlの本体がおかれているディレクトリに NMAKE.EXE と NMAKE.ERR というファイルをコピーするだけです。
+</p>
+<p>
+  　私の場合は、
+</p>
+<p>
+  C:\Perl\bin
+</p>
+<p>
+  　というパスでした。ここにコピーします。これでインストールは完了です。
+</p>
+<h4>注意点</h4>
+<p>
+  　nmakeというプログラムは、perlのモジュールをインストールするとき以外にも使用されます。そのため、C:\Perl\binというディレクトリにおいておくことは、どちらかといえば不適切です。(私は C:\Perl\binにおきっぱなしですが... )
+</p>
+<p>
+  　C:\nmakeというディレクトリを作って、環境変数PATHを設定しておくのがよいかもしれません。
+</p>
+<p>
+  　また、Visual Studio や Visual C++ をインストールしている人はもうすでに、nmakeがインストールされているようです。( もしかしたら何の作業もいらないかもしれませんし、何か作業がいるかもしれませんがわたしが持っていないためよくわかりません。)
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

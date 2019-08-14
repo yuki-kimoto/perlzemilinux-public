@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>gitでマージする前に、タグをつけておくとすぐに戻せて、大失敗が回避できる - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="今僕はstatic-perlという、Perl上で動く静的な型を持つVMを持った言語バーチャルマシンを作成しています。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190421171737.html">gitでマージする前に、タグをつけておくとすぐに戻せて、大失敗が回避できる</a></h2>
+<p>
+  今僕は<a href="https://github.com/yuki-kimoto/static-perl">static-perl</a>という、Perl上で動く静的な型を持つVMを持った言語バーチャルマシンを作成しています。
+</p>
+<p>
+  オープンソースで開発していて、他の開発者の方からpull requestを受け取っているのだけれど、pull requestをマージする前に必ずやっていることがある。
+</p>
+<h3>マージする前にタグをつけておく</h3>
+<p>
+  いまmasterブランチにいたとして「foo」という他の開発者が作ってくれたブランチをマージする。
+</p>
+<pre>
+git merge foo
+</pre>
+<p>
+  でも、マージって、思ってもみないものだったりするときに、戻すのが結構めんどうなんだよね。「あー、戻すのどうすんだっけなぁ。失敗したなぁ。」
+</p>
+<p>
+  でも、そういう場合に備えて、**タグを先につけておくとすぐに戻せるよ**。
+</p>
+<pre>
+git tag 20170107
+</pre>
+<p>
+  マージする前にタグをつけておく。するとマージに失敗しても、
+</p>
+<pre>
+git reset --hard 201701017
+</pre>
+<p>
+  とすると、あら不思議、元通り!
+</p>
+<h3>追記「ORIG_HEADでも戻れるという情報をいただきました」</h3>
+<p>
+  タグを使わなくても、git reset --hard ORIG_HEADでいいはずです。ORIG_HEADはgit mergeのときに作成されるシンボリック参照で、この記事で言っているタグと同様のコミットを指します。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

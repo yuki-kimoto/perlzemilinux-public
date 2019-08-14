@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Vimの基本コマンド - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="Vimの設定ファイルはホームディレクトリの">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190112171737.html">Vimの基本コマンド</a></h2>
+<h3>Vimの設定ファイル</h3>
+<p>
+  　Vimの設定ファイルはホームディレクトリの
+</p>
+<p>
+  >|perl|
+</p>
+<p>
+  .vimrc
+</p>
+<pre>
+
+　ない場合は新規に作成する。
+
+&lt;h3&gt;Vimコマンド( キーボード )&lt;/h3&gt;
+
+&lt;h4&gt; 移動系コマンド&lt;/h4&gt;
+
+|h  	|← |
+|j 	|↓ |
+|k 	|↑ |
+|l 	|→ |
+|b 	|次の単語の先頭に移動 |
+|w 	|前の単語の先頭に移動 |
+|^      |行の先頭へ移動|
+|$      |行の末尾へ移動|
+|G 	|最終行に移動 |
+|nG 	|n 行目に移動 |
+
+&lt;h4&gt; スクロール系コマンド&lt;/h4&gt;
+
+| Ctrl + f | 1ページ前へスクロール|
+| Ctrl + u | 半ページ前へスクロール|
+| Ctrl + b | 1ページ後へスクロール|
+| Ctrl + d | 半ページ後へスクロール|
+
+&lt;h4&gt; 「元に戻す」と「やり直す」コマンド&lt;/h4&gt;
+
+|u|元に戻す|
+|Ctrl + r|やり直す|
+
+&lt;h4&gt; 削除&lt;/h4&gt;
+
+|x |    一文字削除|
+|dd|    一行削除|
+|d0|  	カーソル位置から行頭までを削除|
+|d$| 	カーソル位置から行末までを削除|
+
+&lt;h4&gt;コピー＆ペースト&lt;/h4&gt;
+
++開始位置でmaでマークをつける( aという識別子でマークをつけると読む )
++終了位置でy'a とする。( aというマークの位置から現在位置までをコピーと読む )
++ペースト位置で p と入力する。( 貼り付けと読む )
+
+&lt;h3&gt;Vimコマンド( コロンを押してから : ) &lt;/h3&gt;
+
+&lt;h4&gt;保存と終了&lt;/h4&gt;
+</pre>
+<h3> 保存</h3>
+<p>
+  :w
+</p>
+<h3> 保存して終了</h3>
+<p>
+  :wq
+</p>
+<h3> 強制終了</h3>
+<p>
+  :q!
+</p>
+<pre>
+
+&lt;h4&gt;行番号表示。&lt;/h4&gt;
+</pre>
+<p>
+  :set number
+</p>
+<pre>
+
+&lt;h4&gt;perlを実行&lt;/h4&gt;
+
+</pre>
+<p>
+  !perl スクリプト名
+</p>
+<pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

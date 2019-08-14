@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>crontabの内容をバックアップする方法と読み込む方法 / CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="crontab -eを使って内容を編集するのですが、直接編集するよりも、ファイルとして保存しておいて読み込むほうが確実ですね。特にバージョン管理システムで保存してある場合は、読み込むと楽です。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190109171737.html">crontabの内容をバックアップする方法と読み込む方法 / CentOS</a></h2>
+<p>
+  　<b>crontab -e</b>を使って内容を編集するのですが、直接編集するよりも、ファイルとして保存しておいて読み込むほうが確実ですね。特にバージョン管理システムで保存してある場合は、読み込むと楽です。
+</p>
+<p>
+  　またバックアップなどを取っておくと、すぐに修正できてよいですね。
+</p>
+<h3>crontabの内容をバックアップして保存</h3>
+<p>
+  　<b>-l</b>オプションで内容を表示することができます。
+</p>
+<pre>
+crontab -l &gt; crontab.bak
+</pre>
+<h3>crontabにファイルに内容を読み込む</h3>
+<p>
+  　引数にファイルを指定するとcrontabに読み込むことができます。
+</p>
+<pre>
+crontab ファイル名
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

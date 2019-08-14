@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Linux入門 - Perlゼミ基礎講座</title>
-<meta name="description" content="Perlゼミが提供するLinuxの入門講座です。">
+<title>GitのリポジトリのURLを記述する / Git - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="gitweb.cgiを使っていると、SummaryページにURLという項目があることに気づくと思います。これを記述するには.gitリポジトリの下にcloneurlというファイルを配置して記述します。">
   </head>
   <body>
     <div class="container">
@@ -26,16 +26,20 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Linux入門 - PerlゼミでLinuxについて学ぼう</a></h2>
+    <h2><a href="/blog/20190306171737.html">GitのリポジトリのURLを記述する / Git</a></h2>
 <p>
-  Perlゼミが提供するLinuxの入門講座です。
+  　gitweb.cgiを使っていると、SummaryページにURLという項目があることに気づくと思います。これを記述するには<b>.git</b>リポジトリの下に<b>cloneurl</b>というファイルを配置して記述します。
 </p>
+<pre>
+.git/cloneurl
+</pre>
 <p>
-  Windowsでも手軽に始めることができます。
+  　一行に1つのURLを記述します。
 </p>
-<p>
-  <a href="/list.html">記事一覧</a>
-</p>
+<pre>
+http://somerep.git
+git://somerep.git
+</pre>
 
   </div>
   <div class="bottom">

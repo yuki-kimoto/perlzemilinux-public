@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Linux入門 - Perlゼミ基礎講座</title>
-<meta name="description" content="Perlゼミが提供するLinuxの入門講座です。">
+<title>デフォルトゲートウェイを調べる / CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="デフォルトゲートウェイを調べるにはrouteコマンドを利用します。">
   </head>
   <body>
     <div class="container">
@@ -26,16 +26,19 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Linux入門 - PerlゼミでLinuxについて学ぼう</a></h2>
+    <h2><a href="/blog/20190127171737.html">デフォルトゲートウェイを調べる / CentOS</a></h2>
 <p>
-  Perlゼミが提供するLinuxの入門講座です。
+  　<strong>デフォルトゲートウェイ</strong>を調べるには<strong>route</strong>コマンドを利用します。
 </p>
+<pre>
+route
+</pre>
 <p>
-  Windowsでも手軽に始めることができます。
+  　またデフォルトゲートウェイは以下のファイルを編集することで設定できます。
 </p>
-<p>
-  <a href="/list.html">記事一覧</a>
-</p>
+<pre>
+/etc/sysconfig/network
+</pre>
 
   </div>
   <div class="bottom">

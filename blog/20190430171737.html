@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>git statusの出力をショートフォーマットにする - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="GitPrepの開発の知見で得られたものを共有します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190430171737.html">git statusの出力をショートフォーマットにする</a></h2>
+<p>
+  <a href="https://github.com/yuki-kimoto/gitprep">GitPrep</a>の開発の知見で得られたものを共有します。
+</p>
+<p>
+  git statusで確認する場合に、何も変更がないことをプログラミングから知りたい場合があるとします。
+</p>
+<p>
+  このときに、普通のgit statusであれば、変更がない場合も、メッセージが表示されてしまいます。
+</p>
+<p>
+  git statusのショートフォーマットオプションを使用すれば、変更がない時は、何も出力されず、変更があるときだけ、出力できます。
+</p>
+<pre>
+git status -s
+git status --short
+</pre>
+<p>
+  変更がない場合は出力されない。
+</p>
+<p>
+  追加や変更がある場合は以下のように出力される。
+</p>
+<pre>
+M aaahhh.md
+?? ppp.md
+</pre>
+<p>
+  これを利用すると変更があるかないか、プログラム側から出力があるかどうかだけを確認するだけでいいので楽で安定的です。
+</p>
+<p>
+  <a href="https://github.com/yuki-kimoto/gitprep">GitPrep</a>のソースコードでWikiの内容に変更がないということを確認するために、利用しています。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

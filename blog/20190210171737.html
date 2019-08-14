@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Linux入門 - Perlゼミ基礎講座</title>
-<meta name="description" content="Perlゼミが提供するLinuxの入門講座です。">
+<title>service - サービスの起動と終了 | CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="(CentOS5.7で確認)">
   </head>
   <body>
     <div class="container">
@@ -26,16 +26,29 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Linux入門 - PerlゼミでLinuxについて学ぼう</a></h2>
+    <h2><a href="/blog/20190210171737.html">service - サービスの起動と終了 | CentOS</a></h2>
 <p>
-  Perlゼミが提供するLinuxの入門講座です。
+  (CentOS5.7で確認)
 </p>
 <p>
-  Windowsでも手軽に始めることができます。
+  　serviceはサービスを起動・終了するためのコマンドです。
 </p>
-<p>
-  <a href="/list.html">記事一覧</a>
-</p>
+<pre>
+&lt;h3&gt; サービスが開始しているかどうかの確認&lt;/h3&gt;
+service sshd status
+
+&lt;h3&gt; すべてのサービスでの確認&lt;/h3&gt;
+service --status-all
+
+&lt;h3&gt; サービスの開始&lt;/h3&gt;
+service sshd start
+
+&lt;h3&gt; サービスの停止&lt;/h3&gt;
+service sshd stop
+
+&lt;h3&gt; サービスの再起動&lt;/h3&gt;
+service sshd restart
+</pre>
 
   </div>
   <div class="bottom">

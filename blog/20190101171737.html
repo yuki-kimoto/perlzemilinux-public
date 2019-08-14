@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>ボリュームグループ(VG)の物理エクステント(PE)を確認する vgdisplay / CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="(CentOS5.7で確認)">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190101171737.html">ボリュームグループ(VG)の物理エクステント(PE)を確認する vgdisplay / CentOS</a></h2>
+<p>
+  (CentOS5.7で確認)
+</p>
+<p>
+  　<strong>LVM</strong>で、<strong>ボリュームグループ</strong>(VG)の物理エクステント(PE)を確認するには<strong>vgdisplay</strong>を使用します。
+</p>
+<pre>
+vgdisplay
+</pre>
+<p>
+  　出力結果の「PE Size」の部分を確認します。
+</p>
+<pre>
+  --- Volume group ---
+  VG Name               VolGroup00
+  System ID
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  5
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                4
+  Open LV               4
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               124.88 GB
+  PE Size               32.00 MB
+  Total PE              3996
+  Alloc PE / Size       384 / 12.00 GB
+  Free  PE / Size       3612 / 112.88 GB
+  VG UUID               qKFzQg-9G60-bpok-IVK9-IPRV-D3sb-b65eBo
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

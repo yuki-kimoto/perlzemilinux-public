@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>さくらVPSで「Perl + Mojolicious」Webアプリ開発 第4回 コントロールパネルからログインしよう - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="今回は、実際にコントロールパネルからログインしてみましょう。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190322171737.html">さくらVPSで「Perl + Mojolicious」Webアプリ開発 第4回 コントロールパネルからログインしよう</a></h2>
+<p>
+  　今回は、実際にコントロールパネルからログインしてみましょう。
+</p>
+<p>
+  コントロールパネル
+</p>
+<p>
+  https://secure.sakura.ad.jp/vpscontrol
+</p>
+<p>
+  　IPアドレスとパスワードを入力すれば、ログインできます。ログインしたら、ページ全体をさらっと見てみましょう。いくつかの機能が見えてますね。
+</p>
+<p>
+  　まずVPSホームって所になっていますね。
+</p>
+<pre>
+仮想サーバ情報
+IPアドレス	49.212.148.211
+ホスト名    	 www11197ue.sakura.ne.jp (標準)
+メモリ	1GB
+HDD	 100GB
+ステータス    	 停止
+仮想サーバ操作	    
+</pre>
+<h3>IPアドレス</h3>
+<p>
+  　基本的な用語がわからないと、なかなか勉強がはかどらないですね。IPアドレスっていうのは、コンピューターを識別するための番号のようなものです。まぁ、きちんというと、コンピュータにささっているネットワークカードにIPアドレスが割り振られています。
+</p>
+<p>
+  　サーバーにNIC(ネットワークカード)がささっていて、そこにIPアドレスが振られています。IPアドレスで、49.212.148.211というのを指定すれば、ルーターを伝って、そのIPアドレスまでたどりつけるんです。
+</p>
+<p>
+  　世界中どこにいてもたどり着けます。識別してアクセスできるってなかなか良く考えるとすごいですね。
+</p>
+<h3>ホスト名</h3>
+<p>
+  　初期設定は自動で割り振られたような名前になってますね。www11197ue.sakura.ne.jp。これを変更する方法はもちろんあるので、安心してください。
+</p>
+<p>
+  　ホスト名というのは、まぁドメイン名とここでは同じ意味でしょう。ドメイン名というのは、識別する名前で役割はIPアドレスと同じなのですが、IPアドレスは数値なので、文字列ではないんですね。
+</p>
+<p>
+  　ドメイン名はIPアドレスに紐づく形になっていて、基本は1対1で対応させる。DNSサーバーがこれを解決してくれる。つまり、www11197ue.sakura.ne.jpでアクセスすれば、それに対応するIPアドレスをDNSサーバーというものが教えてくれる。
+</p>
+<p>
+  　そして、IPアドレスがわかればサーバーにたどりつけるというわけ。
+</p>
+<h3>ステータス</h3>
+<p>
+  　ステータスは停止となっている。これは、まだOSが起動していないということです。次回は、OSを起動してみたいと思います。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>Linuxの基本的なコマンドを覚えよう その3 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="さてもう少し必要なコマンドを覚えていきましょうね。今回で終わるかなぁ。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190404171737.html">Linuxの基本的なコマンドを覚えよう その3</a></h2>
+<p>
+  　さてもう少し必要なコマンドを覚えていきましょうね。今回で終わるかなぁ。
+</p>
+<h3>ファイルの削除 rm</h3>
+<p>
+  　ファイルを削除するには<b>rm</b>を使用します。
+</p>
+<pre>
+rm ファイル名
+</pre>
+<p>
+  　ファイルの削除の確認なしに削除するには<b>f</b>オプションが利用できます。」
+</p>
+<pre>
+rm -f ファイル名
+</pre>
+<p>
+  　rmは注意して使ってください。rmコマンドで、ファイルを削除するときは、非常に神経質になってください。大切なファイルを削除すると元に戻すことができません。安易な気持ちで打たないほうがよく、3回くらいは確認して、ドキドキしながらやったほうがいいと思います。
+</p>
+<h3>ディレクトりの作成 mkdir</h3>
+<p>
+  　ディレクトリを作成するには<b>mkdir</b>を使用します。
+</p>
+<pre>
+mkdir dir1
+</pre>
+<h4>複数階層のディレクトリの作成</h4>
+<p>
+  　複数階層のディレクトリを一度に作成するのに<b>p</b>オプションを使うことができます。
+</p>
+<pre>
+mkdir -p dir1/dir2
+</pre>
+<h3>ディレクトリの削除 rmdir</h3>
+<p>
+  　ディレクトリを削除するには<b>rmdir</b>を使用します。
+</p>
+<pre>
+rmdir ディレクトリ名
+</pre>
+<p>
+  　ディレクトリが空のときだけrmdirは成功します。
+</p>
+<p>
+  　ディレクトリの中身も含めて、削除するにはrmコマンドの<b>r</b>オプションを使用します。
+</p>
+<pre>
+rm -r ディレクトリ名
+</pre>
+<p>
+  　削除するかの問い合わせをなしに削除するには<b>f</b>オプションを組み合わせて使います。
+</p>
+<pre>
+rm -rf ディレクトリ名
+</pre>
+<p>
+  　これも非常に慎重に行ってください。ディレクトリの中身が丸ごときえることになるので、システム管理者にとっては、覚悟して打つ必要のあるコマンドです。
+</p>
+<h3>システムをシャットダウンする shutdown</h3>
+<p>
+  　システムをシャットダウンするには<b>shutdown</b>を使います。
+</p>
+<pre>
+shutdown -h now
+</pre>
+<p>
+  　<b>-h</b>オプションはシステムをシャットダウンするためのオプションです。<b>now</b>を指定すると、すぐにシャットダウンが始まります。
+</p>
+<h3>システムを再起動する reboot</h3>
+<p>
+  　システムを再起動するには<b>reboot</b>コマンドを使用します。
+</p>
+<pre>
+reboot
+</pre>
+<h3>日付を表示する</h3>
+<p>
+  　日付を表示するには<b>data</b>コマンドを使用します。
+</p>
+<pre>
+date
+</pre>
+<p>
+  　1秒ごとに時刻を表示したい場合は次のように書くことができます。
+</p>
+<pre>
+while true
+do
+date
+sleep 1
+done
+</pre>
+<p>
+  　ctrl + c で止めることができます。sleepは、何もしないで指定された秒数だけ待つコマンドです。whileはシェルの構文で繰り返しを記述することができます。
+</p>
+<h3>ファイルを圧縮する gzip</h3>
+<p>
+  　圧縮というのは、ファイルのサイズを小さくするための操作のことです。圧縮を行うにはgzipコマンドを使用します。
+</p>
+<pre>
+gzip ファイル名
+</pre>
+<p>
+  　圧縮されたファイルの末尾には<b>.gz</b>という拡張子がつきます。
+</p>
+<p>
+  　たとえばdevelopment.logを圧縮すればdevelopment.log.gzになります。
+</p>
+<h3>圧縮されたファイルを解凍する gunzip</h3>
+<p>
+  　圧縮されたファイルを元に戻すには<b>gunzip</b>を使用します。
+</p>
+<pre>
+gunzip アッシュされたファイル
+</pre>
+<h3>ディレクトリをアーカイブ化する tar</h3>
+<p>
+  　アーカイブ化というのは、ディレクトリに含まれる複数のファイルをひとつのファイルに固めることです。tarコマンドを使用します。
+</p>
+<pre>
+tar fc アーカイブ名 ディレクトリ名 
+</pre>
+<p>
+  　<b>f</b>は対象がディレクトリの場合に使用する必要があります。<b>c</b>はアーカイブ化するときに指定する必要があります。アーカイブ名は普通は「ディレクト名.tar」を指定します。
+</p>
+<p>
+  　以下はサンプルです。
+</p>
+<pre>
+tar cf dir1.tar dir1
+</pre>
+<p>
+  　gzipによる圧縮も一度にできます。その場合はzオプションを指定します。
+</p>
+<pre>
+tar cfz dir1.tar.gz dir1
+</pre>
+<h4>アーカイブを展開する</h4>
+<p>
+  　アーカイブを展開するには<b>x</b>オプションを使用します。
+</p>
+<pre>
+tar xf アーカイブ名
+</pre>
+<p>
+  　以下ははサンプルです。
+</p>
+<pre>
+tar xf dir1.tar
+</pre>
+<p>
+  　アーカイブ化された後にgzipで圧縮されているファイルは<b>z</b>オプションを同時に指定することで、ディレクトリの状態まで展開することができます。
+</p>
+<pre>
+tar xfz dir1.tar.gz
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>C言語の開発環境のインストール - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="C言語のソースコードを実行するには、コンパイラと呼ばれるツールが必要になります。この開発環境をインストールするのは、現在ではとても簡単になっています。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190312171737.html">C言語の開発環境のインストール</a></h2>
+<p>
+  　C言語のソースコードを実行するには、コンパイラと呼ばれるツールが必要になります。この開発環境をインストールするのは、現在ではとても簡単になっています。
+</p>
+<h3>Linuxの場合</h3>
+<p>
+  　Linuxの場合は、gcc,makeと呼ばれるツールが、すでに入っていると思います。次のコマンドを実行して、インストールされていることを確認してみてください。
+</p>
+<pre>
+&lt;h3&gt; gccのバージョン確認&lt;/h3&gt;
+gcc -v
+</pre>
+<pre>
+&lt;h3&gt; makeのバージョン確認&lt;/h3&gt;
+make
+</pre>
+<h3>Windowsの場合</h3>
+<p>
+  　Windowsの場合は、実行環境がインストールされていませんが、ActivePerlを使っている場合であれば、cpanコマンドを実行したときにMinGWという開発環境が、自動でインストールされます。Strawvery Perlを利用しているときは、最初から開発環境がインストールされていると思います。
+</p>
+<p>
+  　ActivePerlを使っている場合は次のコマンドを実行してみて、MinGWをインストールしてみてください。
+</p>
+<pre>
+cpan
+</pre>
+<p>
+  　インストールが終われば「gcc」と「dmake」というコマンドが実行できるようになっていることを確認してみてください。
+</p>
+<pre>
+&lt;h3&gt; gccのバージョン確認&lt;/h3&gt;
+gcc -v
+</pre>
+<pre>
+&lt;h3&gt; makeのバージョン確認&lt;/h3&gt;
+dmake -V
+</pre>
+<h3>gccはコンパイルを行うツール</h3>
+<p>
+  　gccとは、C言語のソースファイルをコンパイルして、実行できるプログラムにするツールだと覚えておいてください。
+</p>
+<h3>makeはコンパイルを自動化するツール</h3>
+<p>
+  　Linuxではmakeというコマンド、Windowsではdmakeという名前になっていますが、これからの解説では、makeとだけ書きますので、Windowsの場合はdmakeに置き換えて読んでください。
+</p>
+<p>
+  　makeとは、コンパイルを自動化するためのツールです。C言語のソースファイルを書いているとたくさんのファイルをコンパイルする必要があります。さらに、実行ファイルにするためには、コンパイルされた複数のファイルを結びつけるリンクという作業をする必要があります。
+</p>
+<p>
+  　これらの作業を自動化してくれるツールがmakeです。
+</p>
+<p>
+  　これでC言語をコンパイルして、実行できる環境が整いました。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

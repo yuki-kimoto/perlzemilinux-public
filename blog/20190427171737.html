@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>【Perl】【初級】重複のない集合をどうやって表現するのか - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="!WIN_20170121_23_24_05_Pro.jpg">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190427171737.html">【Perl】【初級】重複のない集合をどうやって表現するのか</a></h2>
+<p>
+  !<a href="https://qiita-image-store.s3.amazonaws.com/0/155418/a158ae6a-97bd-4ea0-917a-abf158d69910.jpeg">WIN_20170121_23_24_05_Pro.jpg</a>
+</p>
+<p>
+  重複のない集合というのは「セット」と呼ばれたりしますけど、データ構造としては、どうやって表現するのいいんでしょうかね?
+</p>
+<p>
+  ちょっと難しい?
+</p>
+<h3> 配列は、重複管理してくれない</h3>
+<p>
+  たとえば配列でやろうとすると、追加するときに、重複をチェックしてくれませんよね。
+</p>
+<p>
+  3という数があったとして、3を新しく追加したら、そのまま追加されちゃう。これは配列は不適格
+</p>
+<pre>
+&lt;h3&gt; ひとつめ&lt;/h3&gt;
+push @nums, 3;
+
+&lt;h3&gt; あっ、重複しちゃった。&lt;/h3&gt;
+push @nums, 3;
+</pre>
+<h3> 連想配列は、連想配列だ</h3>
+<p>
+  連想配列はどうだろうか。連想配列は、名前の通り連想配列だね。キーと値のペアが複数あるデータ構造だ
+</p>
+<pre>
+my %student = (
+  name =&gt; '木本',
+  age =&gt; 37,
+  address =&gt; '東京都'
+);
+</pre>
+<p>
+  重複のない集合っていう感じはしないね。
+</p>
+<h3> 答えは「連想配列を工夫して使う」</h3>
+<p>
+  答えは「連想配列を工夫して使う」だ。<b>連想配列のキーの部分は重複がない。</b>
+</p>
+<pre>
+my %no_duplication = (
+  1 =&gt; 1,
+  5 =&gt; 1,
+  7 =&gt; 1
+);
+
+&lt;h3&gt; 新しいデータを追加、キーは変わらない&lt;/h3&gt;
+$no_duplication{5} = 1;
+</pre>
+<p>
+  そして、keys関数を使うと、重複のない集合を取り出せる。
+</p>
+<pre>
+&lt;h3&gt; 1, 5, 7が取り出せた!&lt;/h3&gt;
+my @keys = keys %no_duplications;
+</pre>
+<p>
+  やったね、これはすごく使用頻度の高いテクニックだから、覚えておいて損はない!
+</p>
+<hr>
+<p>
+  この記事は、2017年1月21日にPerlプログラマー「木本裕紀」が書きました。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

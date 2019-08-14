@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>初めてのHello World (3) - コンパイルと実行 - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="今回は、前回書いたコードをコンパイルして、実行してみます。このソースコードを「hello.c」という名前で保存してください。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20190315171737.html">初めてのHello World (3) - コンパイルと実行</a></h2>
+<p>
+  　今回は、前回書いたコードをコンパイルして、実行してみます。このソースコードを「hello.c」という名前で保存してください。
+</p>
+<pre>
+&lt;h3&gt;include &lt;stdio.h&gt;&lt;/h3&gt;
+
+// エントリポイント
+int main () {
+  
+  // Hello World!を出力
+  printf("Hello World!");
+  
+  // 正常に終了したことを知らせる
+  return 0;
+}
+</pre>
+<h3>ソースファイルのコンパイル</h3>
+<p>
+  　Perlでは、作成したスクリプトは「perl」コマンドで直接実行することができました。C言語では、<b>コンパイル</b>という作業が必要になります。
+</p>
+<p>
+  　コンパイルとは、ソースコードを、機械語で書かれたオブジェクトファイルと呼ばれるファイルに変換する作業のことです。最終的に、オブジェクトファイルは、実行ファイルに変更されますが、一段階目の作業として、コンパイルを行う必要があります。
+</p>
+<pre>
+　　　　　　(コンパイル)
+ソースファイル　→　オブジェクトファイル
+</pre>
+<p>
+  　コンパイルを行うには「gcc」というコマンドの<b>「-c」</b>オプションを使用します。
+</p>
+<pre>
+gcc -c hello.c
+</pre>
+<p>
+  　すると「hello.o」というオブジェクトファイルが作成されます。
+</p>
+<pre>
+hello.o
+</pre>
+<h3>実行ファイルの作成</h3>
+<p>
+  　今はひとつのソースコードから、ひとつのオブジェクトファイルを作成しましたが、規模が大きくなって、複数のソースコードから、複数のオブジェクトファイルが作成されたと想像してみてください。
+</p>
+<pre>
+code1.o
+code2.o
+</pre>
+<p>
+  　実行ファイルはこれらのオブジェクトファイルを結びつけることによって作成されます。この作業を<b>リンク</b>と呼びます。
+</p>
+<pre>
+code1.o　+　code2.o →　code(実行ファイル)
+</pre>
+<p>
+  　リンクを行って実行ファイルを作成するに「gcc」の「-o」コマンドを使用します。
+</p>
+<pre>
+gcc -o 生成される実行ファイル名 オブジェクトファイル1 オブジェクトファイル2
+</pre>
+<p>
+  　今回はオブジェクトファイルがひとつですので、次のようにします。
+</p>
+<pre>
+gcc -o hello hello.o
+</pre>
+<p>
+  　次のように実行ファイルが作成されます。Linuxにおいては「hello」という名前、Windowsにおいては「hello.exe」という名前になります。
+</p>
+<pre>
+&lt;h3&gt; Linux&lt;/h3&gt;
+hello
+
+&lt;h3&gt; Windows&lt;/h3&gt;
+hello.exe
+</pre>
+<h3>実行ファイルを実行する</h3>
+<p>
+  　では実行ファイルを実行してみましょう。Linuxでは、カレントディレクトリにある実行ファイルは、「./hello」のように「./」を前につけて実行する必要があります。Windowsでは「hello」あるいは「hello.exe」で実行できます。
+</p>
+<pre>
+&lt;h3&gt; Linux&lt;/h3&gt;
+./hello
+
+&lt;h3&gt; Windows&lt;/h3&gt;
+hello
+hello.exe
+</pre>
+<p>
+  　これで、コンパイルして、プログラムを実行できるようになりました。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://tutorial.perlzemi.com">Perlゼミ</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

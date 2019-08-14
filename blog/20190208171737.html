@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Linux入門 - Perlゼミ基礎講座</title>
-<meta name="description" content="Perlゼミが提供するLinuxの入門講座です。">
+<title>rpm - パッケージの管理 / CentOS - Linux入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="(CentOS5.7で確認)">
   </head>
   <body>
     <div class="container">
@@ -26,16 +26,24 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/">Linux入門 - PerlゼミでLinuxについて学ぼう</a></h2>
+    <h2><a href="/blog/20190208171737.html">rpm - パッケージの管理 / CentOS</a></h2>
 <p>
-  Perlゼミが提供するLinuxの入門講座です。
+  (CentOS5.7で確認)
 </p>
 <p>
-  Windowsでも手軽に始めることができます。
+  　<strong>rpm</strong>はパッケージ管理のためのコマンドです。インストールされているパッケージの存在を確認したり、パッケージを表示したりすることができます。
 </p>
-<p>
-  <a href="/list.html">記事一覧</a>
-</p>
+<h3>パッケージの確認</h3>
+<pre>
+&lt;h3&gt; パッケージが存在するかを確認する&lt;/h3&gt;
+rpm -q パッケージ名
+
+&lt;h3&gt; すべてのパッケージを表示する。&lt;/h3&gt;
+rpm -qa
+
+&lt;h3&gt; ある名前が含まれるパッケージ名を表示する。&lt;/h3&gt;
+rpm -qa | grep パッケージ名の一部
+</pre>
 
   </div>
   <div class="bottom">

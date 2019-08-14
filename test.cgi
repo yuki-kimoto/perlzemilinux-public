@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>Title - PerlゼミのLinux入門</title>
+<title>Title - Linux入門 - Perlゼミ基礎講座</title>
 <meta name="description" content="#!/usr/bin/env perl">
   </head>
   <body>
@@ -14,7 +14,7 @@
       <div class="header">
         <!-- header -->
 <h1>
-  <a href="/">PerlゼミのLinux入門</a>
+  <a href="/">Linux入門 - Perlゼミ基礎講座</a>
 </h1>
 
       </div>
