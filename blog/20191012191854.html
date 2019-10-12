@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>cdコマンド - カレントディレクトリの変更 - Linuxサーバー入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="cdコマンドを使うと、カレントディレクトリを変更することができます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - PerlゼミのLinux講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20191012191854.html">cdコマンド - カレントディレクトリの変更</a></h2>
+<p>
+  cdコマンドを使うと、カレントディレクトリを変更することができます。
+</p>
+<pre>
+cd ディレクトリ名
+</pre>
+<h4>ディレクトリ名を相対パスで指定</h4>
+<p>
+  cdコマンドで、「labo」というディレクトリにカレントディレクトリを変更するには次のコマンドを実行します。
+</p>
+<pre>
+cd labo
+</pre>
+<p>
+  これは、現在のカレントディレクトリを起点として、カレントディレクトリの現在の階層にある「labo」ディレクトリを、カレントディレクトリとするという意味です。
+</p>
+<p>
+  これを、ディレクトリ名を相対パスで指定するといいます。
+</p>
+<h4>ファイル名を絶対パスで指定</h4>
+<p>
+  cdコマンドでディレクトリ名を絶対パスで指定することもできます。
+</p>
+<p>
+  「/usr/local/lib」というディレクトリに移動するには以下のコマンドを実行します。
+</p>
+<pre>
+cd /usr/local/lib
+</pre>
+<p>
+  絶対パスは先頭が「/」で始まることが特徴です。cdコマンドは、先頭の「/」を見て、相対パスか絶対パスかを識別します。
+</p>
+<h3>カレントディレクトとは?</h3>
+<p>
+  カレントディレクトリというのは、現在作業中のディレクトリのことです。Linuxでいうディレクトリというのは、Windowsのフォルダと同じ意味だと考えてください。
+</p>
+<p>
+  Linuxにログインしたときは、ホームディレクトリと呼ばれる場所が、カレントディレクトリとなります。
+</p>
+<pre>
+/home/kimoto
+</pre>
+<p>
+  カレントディレクトリを表示するにはpwdコマンドが使えます。
+</p>
+<pre>
+pwd
+</pre>
+<p>
+  今いるディレクトリってどこだっけなとなったときは、pwdコマンドで確認できます。
+</p>
+<h3>特殊なディレクトリ名</h3>
+<p>
+  特殊なディレクトリ名として、次のディレクトリ名を覚えておきましょう。
+</p>
+<h4>現在のカレントディレクトリ - .</h4>
+<p>
+  「.」は、現在のカレントディレクトリを指す特殊なディレクトリ名です。
+</p>
+<pre>
+cd .
+</pre>
+<p>
+  これは、カレントディレクトリを現在のカレントディレクトリに変更するだけなので、何も起こりません。
+</p>
+<p>
+  でも、意味を覚えておいてください。cdコマンドでは特に意味がありませんが、意味を持つ場面があります。
+</p>
+<h4>親ディレクトリ - ..</h4>
+<p>
+  「..」は、親ディレクトリを指す特殊なディレクトリ名です。
+</p>
+<p>
+  カレントディレクトリを変更して、一階層上の親ディレクトリに戻りたい場合に、頻繁に利用します。
+</p>
+<pre>
+cd ..
+</pre>
+<h4>ホームディレクトリ - ~</h4>
+<p>
+  「~」は、ホームディレクトリを指す特殊なディレクトリ名です。
+</p>
+<pre>
+cd ~
+</pre>
+<p>
+  ユーザーが「kimoto」の場合は、ホームディレクトリは以下のように展開されます。
+</p>
+<pre>
+cd /home/kimoto
+</pre>
+<p>
+  特殊なディレクトリ「.」「..」「~」については、実際は、cdコマンドが解釈しているわけではなく、シェルが解釈しているのですが、cdコマンドで使用する頻度が高いので、紹介しました。
+</p>
+<h3>cdコマンドのサンプル</h3>
+<p>
+  ホームディレクトリにカレントディレクトリを変更して、そこにlaboディレクトリを作成して、laboディレクトリにカレントディレクトリを変更するサンプルです。
+</p>
+<pre>
+# ホームディレクトリにカレントディレクトリを変更
+cd ~
+
+# laboディレクトリを作成
+mkdir labo
+
+# laboにカレントディレクトリを変更
+cd labo
+
+# pwdコマンドで現在のカレントディレクトリをチェック
+pwd
+</pre>
+<p>
+  Perlゼミの環境では、以下のように表示されました。
+</p>
+<pre>
+/home/kimoto/labo
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="http://www.perlzemi.com">Perlゼミ公式</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>
