@@ -31,14 +31,14 @@
   今日の「Mojolicious」のTipsは「url_with」メソッドです。url_withメソッドは、現在のクエリパラメータをそのまま復元してくれます。
 </p>
 <pre>
-&lt;h3&gt; アクセスURLが「/foo?a=1&b=2」ならそれをそのまま復元&lt;/h3&gt;
+&lt;h3&gt; アクセスURLが「/foo?a=1&amp;b=2」ならそれをそのまま復元&lt;/h3&gt;
 url_with
 </pre>
 <p>
   これは、ページネーションを作成しているときに特に便利で、クエリ文字列を引き継ぎつつ、ページの変更だけを簡単に行うことができます。
 </p>
 <pre>
-&lt;h3&gt;「/foo?a=1&b=2&page=2」になる&lt;/h3&gt;
+&lt;h3&gt;「/foo?a=1&amp;b=2&amp;page=2」になる&lt;/h3&gt;
 url_with-&gt;query([page =&gt; 2]);
 </pre>
 <p>

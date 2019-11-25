@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>lsコマンド - ファイル一覧の表示 - Linuxサーバー入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="lsコマンドはファイル一覧を表示するためのLinuxコマンドです。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - PerlゼミのLinux講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20191126082723.html">lsコマンド - ファイル一覧の表示</a></h2>
+<p>
+  lsコマンドはファイル一覧を表示するためのLinuxコマンドです。
+</p>
+<pre>
+ls
+</pre>
+<p>
+  lsを実行したときの出力のサンプルです。ファイルとディレクトリの一覧が表示されます。
+</p>
+<pre>
+convert_markdown.pl  giblog.conf  lib  public  README  serve.pl  templates
+</pre>
+<h3>ファイルの詳細を表示 「-l」オプション</h3>
+<p>
+  「-l」オプションを使用すると、ファイル一覧を詳細表示できます。
+</p>
+<pre>
+ls -l
+</pre>
+<p>
+  「ls -l」を実行したときのファイル一覧の詳細表示です。
+</p>
+<pre>
+-rw-r--r-- 1 kimoto kimoto 1116 Aug 15 08:28 convert_markdown.pl
+-rw-r--r-- 1 kimoto kimoto  162 Sep 11 08:42 giblog.conf
+drwxrwxr-x 3 kimoto kimoto 4096 Aug 10 15:01 lib
+drwxrwxr-x 7 kimoto kimoto 4096 Aug 10 15:04 public
+-rw-r--r-- 1 kimoto kimoto  227 Aug 10 15:01 README
+-rw-r--r-- 1 kimoto kimoto  219 Aug 10 15:01 serve.pl
+drwxrwxr-x 5 kimoto kimoto 4096 Aug 10 15:01 templates
+</pre>
+<p>
+  左側には、ファイルのパーミッションが表示されます。次に、ユーザー名、グループ名、ファイルサイズ、更新日付、ファイル名と続きます。
+</p>
+<h3>ファイルサイズを単位をつけて表示する 「-h」オプション</h3>
+<p>
+  「-l」オプションと同時に「-h」オプションを使用すると、ファイルサイズに単位をつけることができます。大きなファイルサイズのときに確認するのに便利です。
+</p>
+<pre>
+ls -l -h
+</pre>
+<p>
+  または
+</p>
+</pre>
+<p>
+  ls -lh
+</p>
+</pre>
+<p>
+  オプションは、複数一度に指定することもできます。
+</p>
+<p>
+  ファイルサイズに単位をつけた場合の、出力結果です。
+</p>
+<pre>
+-rw-r--r-- 1 kimoto kimoto 1.1K Aug 15 08:28 convert_markdown.pl
+-rw-r--r-- 1 kimoto kimoto  162 Sep 11 08:42 giblog.conf
+drwxrwxr-x 3 kimoto kimoto 4.0K Aug 10 15:01 lib
+drwxrwxr-x 7 kimoto kimoto 4.0K Aug 10 15:04 public
+-rw-r--r-- 1 kimoto kimoto  227 Aug 10 15:01 README
+-rw-r--r-- 1 kimoto kimoto  219 Aug 10 15:01 serve.pl
+drwxrwxr-x 5 kimoto kimoto 4.0K Aug 10 15:01 templates
+</pre>
+<h3>隠しファイルを表示 「-a」オプション</h3>
+<p>
+  「-a」オプションを使用すると、「.」で始まる隠しファイルを表示することができます。
+</p>
+<pre>
+ls -a
+</pre>
+<p>
+  出力結果のサンプルです。
+</p>
+<pre>
+.  ..  convert_markdown.pl  giblog.conf  .git  .gitignore  lib  public  README  serve.pl  templates
+</pre>
+<p>
+  「-l」オプションと一緒に使うこともできます。
+</p>
+<pre>
+ls -la
+</pre>
+<p>
+  出力結果のサンプルです。
+</p>
+<pre>
+drwxrwxr-x  6 kimoto kimoto 4096 Aug 14 17:51 .
+drwxrwxr-x 40 kimoto kimoto 4096 Nov  9 10:08 ..
+-rw-r--r--  1 kimoto kimoto 1116 Aug 15 08:28 convert_markdown.pl
+-rw-r--r--  1 kimoto kimoto  162 Sep 11 08:42 giblog.conf
+drwxrwxr-x  8 kimoto kimoto 4096 Oct 12 19:52 .git
+-rw-r--r--  1 kimoto kimoto    8 Aug 10 15:01 .gitignore
+drwxrwxr-x  3 kimoto kimoto 4096 Aug 10 15:01 lib
+drwxrwxr-x  7 kimoto kimoto 4096 Aug 10 15:04 public
+-rw-r--r--  1 kimoto kimoto  227 Aug 10 15:01 README
+-rw-r--r--  1 kimoto kimoto  219 Aug 10 15:01 serve.pl
+drwxrwxr-x  5 kimoto kimoto 4096 Aug 10 15:01 templates
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="http://www.perlzemi.com">Perlゼミ公式</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>

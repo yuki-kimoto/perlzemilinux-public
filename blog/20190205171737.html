@@ -43,7 +43,7 @@ kill -0 プロセス番号
   　以下がサンプルのスクリプトです。
 </p>
 <pre>
-kill -0 16033 &gt; /dev/null 2&gt;&1
+kill -0 16033 &gt; /dev/null 2&gt;&amp;1
 
 if [ $? = 0 ]; then
   echo "exists";
