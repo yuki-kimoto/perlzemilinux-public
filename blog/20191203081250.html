@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>cpコマンド - ファイルをコピーする - Linuxサーバー入門 - Perlゼミ基礎講座</title>
+<meta name="description" content="cpコマンドを使用すると、ファイルをコピーすることができます。元のファイル名のファイル内容が、新しいファイル名でコピーされます。cpの名前はcopyに由来しています。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - PerlゼミのLinux講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20191203081250.html">cpコマンド - ファイルをコピーする</a></h2>
+<p>
+  cpコマンドを使用すると、ファイルをコピーすることができます。元のファイル名のファイル内容が、新しいファイル名でコピーされます。cpの名前はcopyに由来しています。
+</p>
+<pre>
+cp 元のファイル名 新しいファイル名
+</pre>
+<p>
+  cpコマンドでファイルのコピーを行うサンプルです。foo.txtの内容が、bar.txtにコピーされます。
+</p>
+<pre>
+cp foo.txt bar.txt
+</pre>
+<h3>ディレクトリをコピーする - cpコマンドの「-r」オプション</h3>
+<p>
+  ディレクトリをコピーするには「-r」オプションを使用します。rは、recursive(再帰的)に由来しています。
+</p>
+<pre>
+cp -r 元のディレクトリ名 新しいディレクトリ名
+</pre>
+<p>
+  ディレクトリのコピーという処理は、実際には、ファイルを再帰的にコピーするという処理なんです。
+</p>
+<p>
+  「cp -r」で、ディレクトリのコピーを行うサンプルです。dir1に含まれるすべてのファイルが、dir2にコピーされます。
+</p>
+<pre>
+cp dir1 dir2
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="http://www.perlzemi.com">Perlゼミ公式</a> & <a href="https://jp.giblog.net/">Giblog</a>
+
+      </div>
+    </div>
+  </body>
+</html>
