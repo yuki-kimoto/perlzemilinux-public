@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>rmコマンド - ファイルの削除 - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="rmコマンドを使用するとファイルを削除することができます。rmはremoveに由来しています。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - PerlゼミのLinux講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20191210081417.html">rmコマンド - ファイルの削除</a></h2>
+<p>
+  rmコマンドを使用するとファイルを削除することができます。rmはremoveに由来しています。
+</p>
+<pre>
+rm ファイル名
+</pre>
+<p>
+  rmコマンドを使ってfoo.txtというファイルを削除してみます。
+</p>
+<pre>
+rm foo.txt
+</pre>
+<h3>ディレクトリとその中身をすべて削除する - rmコマンドの「-r」オプション</h3>
+<p>
+  ディレクトリとその中身をすべて削除するには、rmコマンドの「-r」オプションを使用します。「-r」はrecursive(再帰的)に由来しています。
+</p>
+<pre>
+rm -r ディレクトリ名
+</pre>
+<p>
+  このコマンドは、ディレクトリとその中にあるファイルをすべて削除しますので気をつけて使いましょう。
+</p>
+<h3>強制的にファイルを削除する - rmコマンドの「-f」オプション</h3>
+<p>
+  rmコマンドでファイルを削除しようとした場合は、ファイルを削除するか確認を求められる場合があります。
+</p>
+<p>
+  そのような場合でも、確認をしないで消したい場合は、rmコマンドの「-f」オプションを使用します。「-f」はforce(強制的)に由来しています。
+</p>
+<pre>
+rm -rf ディレクトリ名
+</pre>
+<p>
+  このコマンドは、ディレクトリとその中にあるファイルをすべて確認なしに、削除しますので気をつけて使いましょう。
+</p>
+<h3>ヘルプを表示する --helpオプション</h3>
+<p>
+  ヘルプを表示するには「--help」オプションを使用します。
+</p>
+<pre>
+rm --help
+</pre>
+<p>
+  ヘルプが表示されます。
+</p>
+<pre>
+Usage: rm [OPTION]... FILE...
+Remove (unlink) the FILE(s).
+
+  -f, --force           ignore nonexistent files, never prompt
+  -i, --interactive     prompt before any removal
+      --no-preserve-root do not treat `/' specially (the default)
+      --preserve-root   fail to operate recursively on `/'
+  -r, -R, --recursive   remove directories and their contents recursively
+  -v, --verbose         explain what is being done
+      --help     display this help and exit
+      --version  output version information and exit
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a rel="nofollow" href="http://www.perlzemi.com">Perlゼミのプログラミングスクールはこちら</a> & <a rel="nofollow" href="https://jp.giblog.net/">このサイトはGiblogで製作されています</a>
+
+      </div>
+    </div>
+  </body>
+</html>
