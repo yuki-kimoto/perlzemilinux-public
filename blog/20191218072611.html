@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>カレントディレクトリとは - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="カレントディレクトリとは、現在作業を行っているディレクトリのことです。カレントは英語で「current」で「現在の」という意味です。Linuxにおけるディレクトリは、Windowsにおけるフォルダに該当します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - PerlゼミのLinux講座</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20191218072611.html">カレントディレクトリとは</a></h2>
+<p>
+  カレントディレクトリとは、現在作業を行っているディレクトリのことです。カレントは英語で「current」で「現在の」という意味です。Linuxにおけるディレクトリは、Windowsにおけるフォルダに該当します。
+</p>
+<h3>カレントディレクトリの変更</h3>
+<p>
+  カレントディレクトリを変更するには<a href="/blog/20191012191854.html">cdコマンド</a>を使用します。
+</p>
+<pre>
+cd /home/kimoto/labo
+</pre>
+<p>
+  「/home/kimoto/labo」というディレクトリが、カレントディレクトリになります。
+</p>
+<h3>カレントディレクトリからの相対パス指定</h3>
+<p>
+  カレントディレクトリが設定されている効果として、ファイル名が、カレントディレクトリから<a href="/blog/20191216082522.html">相対パス</a>で指定できます。
+</p>
+<p>
+  lsコマンドで「foo」というファイルを相対パスで指定してみましょう。
+</p>
+<pre>
+ls foo
+</pre>
+<p>
+  これは実際には以下のような<a href="/blog/20191217081903.html">絶対パス</a>で指定したのと同じ意味になります。
+</p>
+<pre>
+ls /home/kimoto/labo/foo
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a rel="nofollow" href="http://www.perlzemi.com">Perlゼミのプログラミングスクールはこちら</a> & <a rel="nofollow" href="https://jp.giblog.net/">このサイトはGiblogで製作されています</a>
+
+      </div>
+    </div>
+  </body>
+</html>
