@@ -14,7 +14,7 @@
       <div class="header">
         <!-- header -->
 <h1>
-  <a href="/">Linuxサーバー管理入門 - PerlゼミのLinux講座</a>
+  <a href="/">Linuxサーバー管理入門 - Linux講座ならPerlゼミ</a>
 </h1>
 
       </div>

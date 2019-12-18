@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>ペアレントディレクトリ - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="ペアレントディレクトリとは、現在のディレクトリから見て、ひとつ上の階層のディレクトリのことです。親ディレクトリとも呼ばれます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - Linux講座ならPerlゼミ</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20191219082642.html">ペアレントディレクトリ</a></h2>
+<p>
+  ペアレントディレクトリとは、現在のディレクトリから見て、ひとつ上の階層のディレクトリのことです。親ディレクトリとも呼ばれます。
+</p>
+<p>
+  たとえば以下のディレクトリがあったとします。
+</p>
+<pre>
+/home/kimoto/labo
+</pre>
+<p>
+  このディレクトリのペアレントディレクトリは、以下になります。
+</p>
+<pre>
+# ペアレントディレクトリ
+/home/kimoto
+</pre>
+<h3>ペアレントディレクトリのファイル名</h3>
+<p>
+  カレントディレクトリから見た、ペアレントディレクトリは「..」という特別なファイル名で表現されます。
+</p>
+<pre>
+# ペアレントディレクトリのファイル名
+..
+</pre>
+<h3>ペアレントディレクトリをカレントディレクトリを変更する</h3>
+<p>
+  ペアレントディレクトリにカレントディレクトリを変更するには、<a href="/blog/20191012191854.html">cdコマンド</a>の引数に「..」を与えます。
+</p>
+<pre>
+cd ..
+</pre>
+<p>
+  カレントディレクトリが「/home/kimoto/labo」だった場合は、カレントディレクトリが「/home/kimoto」に変更されます。
+</p>
+<h3>ペアレントディレクトリの存在を確認する</h3>
+<p>
+  ペアレントディレクトリは、実際に隠しファイルとして、カレントディレクトリの内容として存在しています。
+</p>
+<p>
+  <a href="/blog/20191126082723.html">lsコマンド</a>の「-a」オプションを使用して確認してみましょう。出力結果のサンプルです。
+</p>
+<pre>
+drwxrwxr-x  6 kimoto kimoto 4096 Aug 14 17:51 .
+drwxrwxr-x 40 kimoto kimoto 4096 Nov  9 10:08 ..
+-rw-r--r--  1 kimoto kimoto 1116 Aug 15 08:28 convert_markdown.pl
+-rw-r--r--  1 kimoto kimoto  162 Sep 11 08:42 giblog.conf
+drwxrwxr-x  8 kimoto kimoto 4096 Oct 12 19:52 .git
+-rw-r--r--  1 kimoto kimoto    8 Aug 10 15:01 .gitignore
+drwxrwxr-x  3 kimoto kimoto 4096 Aug 10 15:01 lib
+drwxrwxr-x  7 kimoto kimoto 4096 Aug 10 15:04 public
+-rw-r--r--  1 kimoto kimoto  227 Aug 10 15:01 README
+-rw-r--r--  1 kimoto kimoto  219 Aug 10 15:01 serve.pl
+drwxrwxr-x  5 kimoto kimoto 4096 Aug 10 15:01 templates
+</pre>
+<p>
+  「..」が表示されていますね。
+</p>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a rel="nofollow" href="http://www.perlzemi.com">Perlゼミのプログラミングスクールはこちら</a> & <a rel="nofollow" href="https://jp.giblog.net/">このサイトはGiblogで製作されています</a>
+
+      </div>
+    </div>
+  </body>
+</html>
