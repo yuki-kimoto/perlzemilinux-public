@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>隠しファイルとは - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="隠しファイルとは、Linuxにおいて「.」で始まるファイルのことです。通常は表示しておきたくないファイルやディレクトリに利用されます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - Linux講座ならPerlゼミ</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20191220091958.html">隠しファイルとは</a></h2>
+<p>
+  隠しファイルとは、Linuxにおいて「.」で始まるファイルのことです。通常は表示しておきたくないファイルやディレクトリに利用されます。
+</p>
+<pre>
+# 隠しファイル
+.foo
+.foo.txt
+</pre>
+<h3>隠しファイルの表示方法</h3>
+<p>
+  隠しファイルは<a href="/blog/20191126082723.html">lsコマンド</a>の「-a」オプションを使用すると表示することができます。「-a」は、allを意味しています。
+</p>
+<pre>
+ls -a
+</pre>
+<p>
+  出力結果のサンプルです。
+</p>
+<pre>
+[kimoto@www7402u ~]$ ls -a
+.              .cpan            kimopro.zip  .mysql_history  .sqlite_history
+..             .cpanm           labo         .netrc          .ssh
+.bash_history  .gconf           labo.tar.gz  oradiag_kimoto  test
+.bash_logout   .gconfd          .lesshst     perl5           tmp
+.bash_profile  .gitconfig       .lftp        .perlbrew       .vimrc
+.bashrc        .gnome2          lib          .perldl_hist    .w3m
+book           .gnome2_private  local        plan_delete     .xslate_cache
+.config        .gnupg           mbox         public_html
+</pre>
+<h3>隠しファイルの例</h3>
+<p>
+  Linuxでよく見かける隠しファイルの例です。
+</p>
+<h4>bashの設定ファイル</h4>
+<p>
+  bashの設定ファイルは、隠しファイルです。
+</p>
+<pre>
+.bash_profile
+.bashrc 
+</pre>
+<h4>sshのディレクトリ</h4>
+<p>
+  sshの設定ファイルなどが格納されているディレクトリは、隠しファイルです。
+</p>
+<pre>
+.ssh
+</pre>
+<h4>vimの設定ファイル</h4>
+<p>
+  vimの設定ファイルは、隠しファイルです。
+</p>
+<pre>
+.vimrc
+</pre>
+<h4>gitの情報ディレクトリ</h4>
+<p>
+  gitの情報が格納されているディレクトリは、隠しファイルです。
+</p>
+<pre>
+.git
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a rel="nofollow" href="http://www.perlzemi.com">Perlゼミのプログラミングスクールはこちら</a> & <a rel="nofollow" href="https://jp.giblog.net/">このサイトはGiblogで製作されています</a>
+
+      </div>
+    </div>
+  </body>
+</html>
