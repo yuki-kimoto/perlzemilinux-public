@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>ファイルとは - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="Linuxにおけるファイルとは何でしょうか?">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - Linux講座ならPerlゼミ</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20191223081048.html">ファイルとは</a></h2>
+<p>
+  Linuxにおけるファイルとは何でしょうか?
+</p>
+<h3>ファイルはデータを保存しておく場所</h3>
+<p>
+  ファイルには、テキストデータやバイナリデータなどのデータを保存しておくことができます。
+</p>
+<pre>
+# テキストデータ
+example.txt
+http.conf
+
+# 画像や音声や動画などのバイナリデータ
+image.png
+image.jpg
+music.mp3
+movie.mpg
+</pre>
+<p>
+  ファイルは、ハードディスクと呼ばれる保存領域に、データを保存しておくための優れた仕組みです。
+</p>
+<p>
+  ユーザーは、ハードディスクのことを考えなくとも、ファイルを意識するだけで、データをハードディスクに保存することができます。
+</p>
+<p>
+  これは、Linuxだけではなく、Windowsのファイルにおいても同じです。
+</p>
+<h3>パスとは</h3>
+<p>
+  Linuxにおけるファイル名は、パスを使って表現されます。パスは、ファイルがある場所を示します。パスには、絶対パスと相対パスがあります。
+</p>
+<h4>絶対パス</h4>
+<p>
+  先頭が「/」で始まっているパスを<a href="/blog/20191216082522.html">絶対パス</a>と呼ます。絶対パスは、Linuxのルートディレクトリ「/」から見た、ファイルの場所を一意的に表現します。
+</p>
+<pre>
+# 絶対パス
+/home/kimoto/foo.txt
+/var/log/httpd.log
+/usr/local/myapp/myapp.conf
+</pre>
+<p>
+  Linuxにおけるパスの区切り文字は、スラッシュ「/」です。Windowsにおけては、バックスラッシュ(円マーク)「\」です。この点がWindowsとは異なるということに注意してください。
+</p>
+<h4>相対パス</h4>
+<p>
+  先頭が「/」で始まっていないパスを<a href="/blog/20191216082522.html">相対パス</a>と呼ます。相対パスは、<a href="/blog/20191218072611.html">カレントディレクトリ</a>から見た、相対的なファイルの場所を表現します。
+</p>
+<pre>
+# 相対パス
+foo.txt
+labo/bar.txt
+</pre>
+<p>
+  カレントディレクトリが
+</p>
+<pre>
+/home/kimoto
+</pre>
+<p>
+  の場合は
+</p>
+<pre>
+foo.txt
+</pre>
+<p>
+  は
+</p>
+<pre>
+/home/kimoto/foo.txt
+</pre>
+<p>
+  を表現します。
+</p>
+<h3>ディレクトリもファイルの一種</h3>
+<p>
+  Linuxでは、ディレクトリも特別なファイルの一つとして扱われることに注意しましょう。ディレクトリとは、ファイルを階層的に表現する方法で、Windowsにおけるフォルダに該当します。
+</p>
+<p>
+  Linuxでファイルといった場合は、文脈によって、ディレクトリも含んだファイルか、テキストデータやバイナリデータを含んだ通常のファイルの両方を指すことがあるので注意しましょう。
+</p>
+<p>
+  たとえば「ファイル一覧」が見れますといった場合は、文脈によっては「ディレクトリなどの特別なファイルも含んだファイル一覧」という意味になります。
+</p>
+<p>
+  ディレクトリの中には、その階層の一つ下に存在するファイル名が、記述されています。
+</p>
+<pre>
+foo.txt
+test
+bar.png
+</pre>
+<p>
+  これは<a href="/blog/20191126082723.html">lsコマンド</a>を使って確認することができます。
+</p>
+<pre>
+ls /home/kimoto
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a rel="nofollow" href="http://www.perlzemi.com">Perlゼミのプログラミングスクールはこちら</a> & <a rel="nofollow" href="https://jp.giblog.net/">このサイトはGiblogで製作されています</a>
+
+      </div>
+    </div>
+  </body>
+</html>
