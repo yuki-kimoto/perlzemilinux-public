@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>ディレクトリとは - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="ディレクトリとは、ひとつ下の階層のファイル名の一覧が内容として書かれている特別なファイルのことです。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - Linux講座ならPerlゼミ</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20191224085237.html">ディレクトリとは</a></h2>
+<p>
+  ディレクトリとは、ひとつ下の階層のファイル名の一覧が内容として書かれている特別な<a href="/blog/20191223081048.html">ファイル</a>のことです。
+</p>
+<p>
+  特別な場合として、<a href="/blog/20191218072611.html">カレントディレクトリ</a>「.」と<a href="/blog/20191219082642.html">ペアレントディレクトリ</a>「..」も、ディレクトリにファイル名の一覧として書かれています。
+</p>
+<p>
+  パーミッション、所有者ユーザー、所有者グループ、ファイルサイズ、更新日時などのファイルに関連する情報は、inodeと呼ばれる仕組みで管理されています。
+</p>
+<p>
+  ディレクトリには、ファイル名に対応するinode番号が書き込まれているので、それらの情報を取得することもできます。
+</p>
+<h3>ディレクトリに書かれているファイル名の一覧</h3>
+<p>
+  <a href="/blog/20191126082723.html">lsコマンド</a>を使うと、ディレクトリに書かれているファイル一覧を取得できます。
+</p>
+<p>
+  ここでファイル一覧という言葉には、通常のファイルとディレクトリが含まれていることに注意してください。
+</p>
+<pre>
+ls
+</pre>
+<p>
+  lsコマンドの出力結果のサンプルです。foo.txtとbar.pngは、通常ファイルです。testはディレクトリです。
+</p>
+<pre>
+foo.txt
+test
+bar.png
+</pre>
+<p>
+  「-a」オプションを使うことで、<a href="/blog/20191220091958.html">隠しファイル</a>を含めたすべてのファイルを表示できます。
+</p>
+<pre>
+ls -a
+</pre>
+<pre>
+.
+..
+.bashrc
+foo.txt
+test
+bar.png
+</pre>
+<h3>ファイル情報を含めた詳細な情報を表示する</h3>
+<p>
+  lsコマンドの「-a」オプションを使うと、ファイル情報を含めた詳細な情報を表示することができます。
+</p>
+<pre>
+ls -a
+</pre>
+<p>
+  「ls -a」の出力結果のサンプルです。
+</p>
+<pre>
+-rw-rw-r--  1 kimoto kimoto         0 Dec 25 08:41 test.pl
+drwxrwxr-x 41 kimoto kimoto      4096 Dec 20 16:53 labo
+drwxr-xr-x  2 kimoto kimoto      4096 Apr  5  2019 lib
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a rel="nofollow" href="http://www.perlzemi.com">Perlゼミのプログラミングスクールはこちら</a> & <a rel="nofollow" href="https://jp.giblog.net/">このサイトはGiblogで製作されています</a>
+
+      </div>
+    </div>
+  </body>
+</html>
