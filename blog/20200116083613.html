@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>「Mojolicious::Lite」から「Mojolicious」へ成長させるプロセス その2「Mojoliciousアプリのひな型の作成」 - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
-<meta name="description" content="Mojolicious::Liteから、Mojoliciousに移行するときに、次にやることは、Mojoliciousのひな型を作ってあげること。">
+<title>CentOS 7でOSのバージョンを確認する - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="CentOS 7でOSのバージョンを確認するには「/etc/redhat-release」の中身をcatコマンドで確認します。">
   </head>
   <body>
     <div class="container">
@@ -26,29 +26,19 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20190416171737.html">「Mojolicious::Lite」から「Mojolicious」へ成長させるプロセス その2「Mojoliciousアプリのひな型の作成」</a></h2>
-<h3>Mojoliciousアプリのひな型を作成する</h3>
+    <h2><a href="/blog/20200116083613.html">CentOS 7でOSのバージョンを確認する</a></h2>
 <p>
-  Mojolicious::Liteから、Mojoliciousに移行するときに、次にやることは、Mojoliciousのひな型を作ってあげること。
-</p>
-<p>
-  これは、コマンドひとつでできる。
+  CentOS 7でOSのバージョンを確認するには「/etc/redhat-release」の中身を<a href="/blog/20200113083613.html">catコマンド</a>で確認します。
 </p>
 <pre>
-mojo generate app Myapp
+cat /etc/redhat-release
 </pre>
 <p>
-  「mojo generate app」コマンドを使うと、簡単にMojoliciousアプリケーションを作成できる。
+  出力結果は、以下のようになります。
 </p>
-<p>
-  アプリケーション名の先頭は大文字にしよう。
-</p>
-<p>
-  次回は、ルーターの移行方法を解説するよ。
-</p>
-<p>
-  (2016年12月30日「木本裕紀」が書きました。)
-</p>
+<pre>
+CentOS Linux release 7.2.1511 (Core)
+</pre>
 
   </div>
   <div class="bottom">
