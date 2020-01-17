@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>次期バージョン「Perl 5.26」先取り情報「インデント可能ヒアドキュメント」 - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
-<meta name="description" content="時期バージョンの「Perl 5.26」では、インデント可能なヒアドキュメントが書けるようになります。ぱちぱちぱちぱち。">
+<title>CentOS 7のApacheでHTTPS接続のためにmod_sslをインストールする - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="CentOS 7のApacheでHTTPS接続のためにmod_sslをインストールしましょう。">
   </head>
   <body>
     <div class="container">
@@ -26,28 +26,19 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20190409171737.html">次期バージョン「Perl 5.26」先取り情報「インデント可能ヒアドキュメント」</a></h2>
+    <h2><a href="/blog/20200112182708.html">CentOS 7のApacheでHTTPS接続のためにmod_sslをインストールする</a></h2>
 <p>
-  時期バージョンの「Perl 5.26」では、インデント可能なヒアドキュメントが書けるようになります。ぱちぱちぱちぱち。
+  CentOS 7のApacheでHTTPS接続のためにmod_sslをインストールしましょう。
+</p>
+<p>
+  HTTPS接続は、SSL接続ですので、mod_sslが必要です。
+</p>
+<p>
+  yumコマンドを使って、mod_sslをインストールしましょう。
 </p>
 <pre>
-print &lt;&lt;~EOF;
-  This is a here-doc
-  EOF
-}
+  sudo yum -y install mod_ssl
 </pre>
-<p>
-  記号は「~EOF」という感じで。お尻のEOFの位置が、そろえられる位置になります。
-</p>
-<p>
-  「これはPerlでは不可能といわれていた?」のだが、やってみるとできったっぽい。突然、リリースされた。
-</p>
-<p>
-  ここにドキュメントがある。
-</p>
-<p>
-  https://perl5.git.perl.org/perl.git/commitdiff/47eb44116b9aa0f7f4c7c732af48fc3dad2a7aa2
-</p>
 
   </div>
   <div class="bottom">
