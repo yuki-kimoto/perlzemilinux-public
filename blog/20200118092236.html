@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<title>CentOS7でsudoを使って一般ユーザーでroot権限コマンドを実行する方法 - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="CentOS7でsudoを使って一般ユーザーでroot権限コマンドを実行する方法を解説します。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - Linux講座ならPerlゼミ</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20200118092236.html">CentOS7でsudoを使って一般ユーザーでroot権限コマンドを実行する方法</a></h2>
+<p>
+  CentOS7でsudoを使って一般ユーザーでroot権限コマンドを実行する方法を解説します。
+</p>
+<p>
+  Webのドキュメントを見ていると、sudoを使っている例が多いですよね。最初は、なんだこりゃと思います。
+</p>
+<pre>
+sudo コマンド
+</pre>
+<p>
+  意味としては、root権限でしか実行できないコマンドを一般ユーザーで実行しているのだと解釈しましょう。
+</p>
+<p>
+  一般ユーザーがrootにスイッチして、コマンドを実行しているという感覚です。
+</p>
+<h3>CentOS 7で、一般ユーザーをsudoユーザーに追加する</h3>
+<p>
+  CentOS 7では、sudoは、最初から使えますが、一般ユーザーがroot権限でコマンドを実行できるようにするためには、sudoユーザーに追加する作業が必要です。
+</p>
+<p>
+  rootユーザーでまずログインします。
+</p>
+<pre>
+su -
+</pre>
+<p>
+  次にvisudoコマンドを使います。visudoコマンドは、sudoの設定ファイルを開くコマンドです。<a href="/blog/20190401171737.html">viエディタ</a>が立ち上がります。
+</p>
+<pre>
+visudo
+</pre>
+<p>
+  以下の行のコメントアウトをはずしましょう。wheelグループのユーザーは、すべてのコマンドを実行できるという意味です。
+</p>
+<pre>
+## Allows people in group wheel to run all commands
+# %wheel  ALL=(ALL)       ALL
+%wheel  ALL=(ALL)       ALL
+</pre>
+<p>
+  あなたのユーザーを、usermodコマンドを使って、wheelグループに追加します。
+</p>
+<pre>
+usermod -aG wheel kimoto
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a rel="nofollow" href="http://www.perlzemi.com">Perlゼミのプログラミングスクールはこちら</a> & <a rel="nofollow" href="https://jp.giblog.net/">このサイトはGiblogで製作されています</a>
+
+      </div>
+    </div>
+  </body>
+</html>
