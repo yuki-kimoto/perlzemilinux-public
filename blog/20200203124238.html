@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>コミット数を取得する方法 / Gitメモ - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
-<meta name="description" content="あるブランチのコミット数を取得するには次のようにする。">
+<title>tailコマンド - ファイルの末尾を出力 - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="tailコマンドを使用するとファイルの末尾の部分を出力することができます。ファイルの末尾だけを確認したい場合に使います。">
   </head>
   <body>
     <div class="container">
@@ -26,32 +26,37 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20190309171737.html">コミット数を取得する方法 / Gitメモ</a></h2>
+    <h2><a href="/blog/20200203124238.html">tailコマンド - ファイルの末尾を出力</a></h2>
 <p>
-  　あるブランチのコミット数を取得するには次のようにする。
+  tailコマンドを使用するとファイルの末尾の部分を出力することができます。ファイルの末尾だけを確認したい場合に使います。
 </p>
 <pre>
-git shortlog -s ブランチ名
+tail ファイル名
 </pre>
 <p>
-  　ブランチ名を省略した場合は、現在のブランチになる。
+  tailコマンドは、ファイルの全体を読み込むわけではないので、高速です。
 </p>
+<h3>tailコマンドのサンプル</h3>
 <p>
-  　自分がgitリポジトリのディレクトにいない場合は<b>--git-dir</b>オプションというのでディレクトリを指定できる。
+  foo.txtの末尾を表示するtailコマンドのサンプルです。
 </p>
 <pre>
-git --git-dir=ディレクトリ名 shortlog -s ブランチ名
+tail foo.txt
 </pre>
+<h3>末尾に表示する行数を指定する</h3>
 <p>
-  　次のような出力が得られる。
+  ハイフンの後ろに行数を指定することで、末尾に表示する行数を指定できます。以下の例は、末尾の20行を表示します。
 </p>
 <pre>
-    25  Yuki Kimoto
-     1  root
+tail -20 ファイル名
 </pre>
+<h3>ファイルの末尾を出力し続ける</h3>
 <p>
-  　コミットした回数とコミットしたユーザーの名前がでてくる。コミット数の合計を出したい場合は、左の値を足し算すればよい。
+  ファイルに更新があった場合に、ファイルの末尾を出力し続けるには「-f」オプションを使用します。
 </p>
+<pre>
+tail -f foo.txt
+</pre>
 
   </div>
   <div class="bottom">

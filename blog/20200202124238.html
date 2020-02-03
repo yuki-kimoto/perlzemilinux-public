@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/css/common.css">
 
-<title>コミット数を取得する方法 / Gitメモ - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
-<meta name="description" content="あるブランチのコミット数を取得するには次のようにする。">
+<title>headコマンド - ファイルの先頭を出力 - Linuxサーバー管理入門 - Linux講座ならPerlゼミ</title>
+<meta name="description" content="headコマンドを使用するとファイルの先頭の部分を出力することができます。ファイルの先頭だけを確認したい場合に使います。">
   </head>
   <body>
     <div class="container">
@@ -26,32 +26,30 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20190309171737.html">コミット数を取得する方法 / Gitメモ</a></h2>
+    <h2><a href="/blog/20200202124238.html">headコマンド - ファイルの先頭を出力</a></h2>
 <p>
-  　あるブランチのコミット数を取得するには次のようにする。
+  headコマンドを使用するとファイルの先頭の部分を出力することができます。ファイルの先頭だけを確認したい場合に使います。
 </p>
 <pre>
-git shortlog -s ブランチ名
+head ファイル名
 </pre>
 <p>
-  　ブランチ名を省略した場合は、現在のブランチになる。
+  headコマンドは、ファイルの全体を読み込むわけではないので、高速です。
 </p>
+<h3>headコマンドのサンプル</h3>
 <p>
-  　自分がgitリポジトリのディレクトにいない場合は<b>--git-dir</b>オプションというのでディレクトリを指定できる。
+  foo.txtの先頭を表示するheadコマンドのサンプルです。
 </p>
 <pre>
-git --git-dir=ディレクトリ名 shortlog -s ブランチ名
+head foo.txt
 </pre>
+<h3>先頭に表示する行数を指定する</h3>
 <p>
-  　次のような出力が得られる。
+  ハイフンの後ろに行数を指定することで、先頭に表示する行数を指定できます。以下の例は、先頭の20行を表示します。
 </p>
 <pre>
-    25  Yuki Kimoto
-     1  root
+head -20 ファイル名
 </pre>
-<p>
-  　コミットした回数とコミットしたユーザーの名前がでてくる。コミット数の合計を出したい場合は、左の値を足し算すればよい。
-</p>
 
   </div>
   <div class="bottom">
