@@ -27,7 +27,7 @@
   });
 </script>
 
-<title>Title - Linuxサーバー管理入門 - Linuxサーバー管理ならPerlゼミ</title>
+<title>Title - Linuxサーバー管理入門 - Linuxサーバー管理でPerlを使う</title>
 <meta name="description" content="#!/usr/bin/env perl">
   </head>
   <body>
@@ -35,7 +35,7 @@
       <div class="header">
         <!-- header -->
 <h1>
-  <a href="/">Linuxサーバー管理入門 - Linuxサーバー管理ならPerlゼミ</a>
+  <a href="/">Linuxサーバー管理入門 - Linuxサーバー管理でPerlを使う</a>
 </h1>
 
       </div>
