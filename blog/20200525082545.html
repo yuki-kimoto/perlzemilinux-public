@@ -27,7 +27,8 @@
   });
 </script>
 
-<title>TeraTermを使ったLinuxサーバーへの接続 - Linuxサーバー管理入門 - Linuxサーバー管理でPerlを使う</title>
+<title>TeraTermを使ったLinuxサーバーへのコマンド送信 - Linuxサーバー管理入門 - Linuxサーバー管理でPerlを使う</title>
+<meta name="description" content="TeraTermを使ってLinuxサーバーへ接続してみましょう。Linuxサーバーへ接続するには、SSHクライアントと呼ばれる種類のアプリケーションを使いまが、TeraTermはSSHクライアントの一つです。">
   </head>
   <body>
     <div class="container">
@@ -46,7 +47,72 @@
 
   </div>
   <div class="middle">
-    <h2><a href="/blog/20200525082545.html">TeraTermを使ったLinuxサーバーへの接続</a></h2>
+    <h2><a href="/blog/20200525082545.html">TeraTermを使ったLinuxサーバーへのコマンド送信</a></h2>
+<p>
+  TeraTermを使ってLinuxサーバーへ接続してみましょう。Linuxサーバーへ接続するには、SSHクライアントと呼ばれる種類のアプリケーションを使いまが、TeraTermはSSHクライアントの一つです。
+</p>
+<h3>TeraTermのダウンロード</h3>
+<p>
+  TeraTermをダウンロードします。
+</p>
+<p>
+  <a href="https://forest.watch.impress.co.jp/library/software/utf8teraterm/">TeraTermのダウンロード</a>
+</p>
+<h3>TeraTermのインストール</h3>
+<p>
+  インストーラーを使って、TeraTermをインストールしましょう。
+</p>
+<p>
+  そのまま進めていっても大丈夫ですが、「ttl」をTeraTermマクロに関連付けるのチェックだけをつけておくと、TeraTermマクロを実行できます。
+</p>
+<h3>SSH接続に必要な情報</h3>
+<p>
+  SSH接続に必要な情報は以下です。Linuxサーバーで、以下の情報を取得してください。ポート番号は特別に設定していなければ、22番です。
+</p>
+<ul>
+  <li>IPアドレス(59.106.185.121など)</li>
+  <li>ポート番号(デフォルトは22番)</li>
+  <li>ユーザー名(kimotoなど)</li>
+  <li>パスワード</li>
+</ul>
+<h3>TeraTermでの接続</h3>
+<p>
+  TeraTermを開きます。ホストの部分にIPアドレスを入れます。
+</p>
+<p>
+  TCPポートは22、サービスは、SSHでバージョンが2になっているのを確認しましょう。
+</p>
+<p>
+  OKを押します。
+</p>
+<p>
+  ユーザー名とパスワードの入力を求められるので、入力します。プレインパスワードを使うが選択されていることを確認してください。
+</p>
+<p>
+  接続完了です。TeraTermの端末からリモートのLinixサーバーにSSHを使って、コマンドを送信することができます。
+</p>
+<p>
+  コマンドを一つ実行してみましょう。ホームディレクトリにあるすべてのファイルを表示してみましょう。
+</p>
+<pre>
+ls -a
+</pre>
+<h3>TeraTermマクロ</h3>
+<p>
+  毎回接続を入力するのは面倒ですね。TeraTermには、TeraTermマクロと呼ばれる、接続処理などをスクリプトにして自動化できる仕組みが準備されています。
+</p>
+<p>
+  Linuxサーバーに接続するTeraTermマクロのサンプルです。名前は「開発サーバー.ttl」のようにしてください。
+</p>
+<pre>
+connect '59.106.185.121 /ssh /2 /auth=password /user=kimoto /passwd=gudyfuie&amp;A'
+</pre>
+<p>
+  Windowsの拡張子の表示設定は、拡張子を表示にしておきましょう。
+</p>
+<p>
+  ttlという拡張子に「Tera Term Macro Interpreter」を関連付けてください。プログラム名は「C:\Program Files (x86)\teraterm」の中にある「ttpmacro.exe」です。
+</p>
 
   </div>
   <div class="bottom">
