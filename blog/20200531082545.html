@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/linux-server-admin-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>duコマンド - ディレクトリ容量を確認する - Linuxサーバー管理入門 - Linuxサーバー管理でPerlを使う</title>
+<meta name="description" content="duコマンドでディレクトリ容量を確認することができます。ディレクトリ名が指定されない場合は、カレントディレクトリが対象になります。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門 - Linuxサーバー管理でPerlを使う</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20200531082545.html">duコマンド - ディレクトリ容量を確認する</a></h2>
+<p>
+  duコマンドでディレクトリ容量を確認することができます。ディレクトリ名が指定されない場合は、カレントディレクトリが対象になります。
+</p>
+<pre>
+du ディレクトリ名
+</pre>
+<p>
+  duで、ディレクトリ容量を確認するサンプルです。
+</p>
+<pre>
+
+</pre>
+<p>
+  出力結果のサンプルです。
+</p>
+<pre>
+468     templates/blog
+8       templates/static/images
+12      templates/static/css
+4       templates/static/blog
+192     templates/static/js/google-code-prettify
+292     templates/static/js
+324     templates/static
+28      templates/common
+828     templates
+</pre>
+<p>
+  ディレクトリとサブディレクトリごとに容量がキロバイト単位で表示されます。
+</p>
+<h3>単位つけてわかりやすく表示するには</h3>
+<p>
+  duコマンドの単位をわかりやすく表示するには「-h」オプションを使用します。
+</p>
+<pre>
+du -h
+</pre>
+<p>
+  出力結果には、単位がついています。
+</p>
+<pre>
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3.9G     0  3.9G   0% /dev
+tmpfs           794M  736K  793M   1% /run
+/dev/sda1        29G  4.1G   25G  15% /
+tmpfs           3.9G  8.0K  3.9G   1% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
+/dev/sda15      105M  3.6M  101M   4% /boot/efi
+/dev/sdc1      1007G   77M  956G   1% /datadrive
+/dev/sdb1        16G   45M   15G   1% /mnt
+tmpfs           794M     0  794M   0% /run/user/1001
+</pre>
+<h3>ディレクトリの使用状況を上位から並べる</h3>
+<p>
+  ディレクトリの使用状況上位から順番に表示するにはduコマンドにsortとheadを組み合わせます。容量が多いディレクトリを発見するのに便利です。
+</p>
+<pre>
+du templates | sort -rn | head -20
+</pre>
+<p>
+  出力結果が、ディレクトリ容量の多い順で出力されます。
+</p>
+<pre>
+824     templates
+464     templates/blog
+324     templates/static
+292     templates/static/js
+192     templates/static/js/google-code-prettify
+28      templates/common
+12      templates/static/css
+8       templates/static/images
+4       templates/static/blog
+&lt;pre&gt;
+
+duに「/」を指定して、しばらく待っておくと、システム全体で容量を消費しているディレクトリがわかるので、便利です。
+
+&lt;h3&gt;ディスクの容量を確認するには?&lt;/h3&gt;
+
+ディスクの容量を確認するにはdfコマンドを使用します。
+
+duコマンドはディレクトリ容量確認のコマンドで、ディスク容量の確認はdfコマンドを使うので、注意してください。
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="/blog/20200601093211.html"&gt;dfコマンド - ディスク容量を確認する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/list.html">記事一覧</a></li>
+  </ul>
+</div>
+
+<div class="side-list" style="margin-top:30px">
+  <div class="side-list-title">
+    Linux関連技術を学ぶ
+  </div>
+  <ul>
+    <li><a href="http://ubuntu.perlzemi.com/">Ubuntuサーバー構築</a></li>
+    <li><a href="http://centos.perlzemi.com/">CentOSサーバー構築</a></li>
+    <li><a href="https://tutorial.perlzemi.com/">Perlプログラミング入門</a></li>
+    <li><a href="https://web.perlzemi.com/">Webシステム開発</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <!-- footer -->
+<a href="https://kimoto-system.co.jp/message">サイト運営 木本システム <br>Copyright © Yuki Kimoto</a>
+
+      </div>
+    </div>
+  </body>
+</html>
