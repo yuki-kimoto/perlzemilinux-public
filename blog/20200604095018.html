@@ -27,8 +27,8 @@
   });
 </script>
 
-<title>chownコマンド - 所有者ユーザーを変更する - Linuxサーバー管理入門 - Linuxサーバー管理でPerlを使う</title>
-<meta name="description" content="chownコマンドを使うと、所有者ユーザーを変更することができます。">
+<title>chgrpコマンド - 所有者グループを変更する - Linuxサーバー管理入門 - Linuxサーバー管理でPerlを使う</title>
+<meta name="description" content="chgrpコマンドを使うと、所有者グループを変更することができます。">
   </head>
   <body>
     <div class="container">
@@ -66,44 +66,31 @@
     </li>
   </ul>
 </div>
-<h2><a href="/blog/20200603102015.html">chownコマンド - 所有者ユーザーを変更する</a></h2>
+<h2><a href="/blog/20200604095018.html">chgrpコマンド - 所有者グループを変更する</a></h2>
 <p>
-  chownコマンドを使うと、所有者ユーザーを変更することができます。
+  chgrpコマンドを使うと、所有者グループを変更することができます。
 </p>
 <pre>
-chown 所有者ユーザー ファイル名
+chgrp 所有者グループ ファイル名
 </pre>
 <p>
-  chownコマンドで、所有者ユーザーを変更するサンプルです。
+  chgrpコマンドで、所有者グループを「myapp」に変更するサンプルです。
 </p>
 <pre>
-chown kimoto file
+chgrp myapp file
 </pre>
 <p>
-  所有者ユーザーについてはパーミッションの記事を参考にしてください。
+  所有者グループについてはパーミッションの記事を参考にしてください。
 </p>
 <p>
   <a href="/blog/20200526082545.html">パーミッションとは</a>
 </p>
-<h3>所有者グループも変更する</h3>
+<h3>再帰的に所有者グループを変更する</h3>
 <p>
-  chownコマンドでは所有者ユーザーに加え所有者グループも変更することができます。
+  再帰的に所有者グループを変更するには「-R」オプションを使います。
 </p>
 <pre>
-chown 所有者ユーザー:所有者グループ ファイル名
-</pre>
-<p>
-  所有者ユーザーに加え、所有者グループを変更するサンプルです。
-</p>
-<pre>
-chown kimoto:myapp file
-</pre>
-<h3>再帰的に所有者ユーザーを変更する</h3>
-<p>
-  再帰的に所有者ユーザーを変更するには「-R」オプションを使います。
-</p>
-<pre>
-chown -R kimoto dir
+chgrp -R myapp dir
 </pre>
 
   </div>
