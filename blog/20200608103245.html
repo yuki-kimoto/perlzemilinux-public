@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/linux-server-admin-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>gzipコマンド -GZIP形式のファイルの圧縮 - Linuxサーバー管理入門 - Linux基礎・Linux接続方法・実用的なLinuxコマンド</title>
+<meta name="description" content="gzipコマンドで、ファイルをGZIP形式で圧縮できます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Linux</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/blog/20200211081227.html">
+        <span itemprop="name">Linuxコマンド</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+<h2><a href="/blog/20200608103245.html">gzipコマンド -GZIP形式のファイルの圧縮</a></h2>
+<p>
+  gzipコマンドで、ファイルを<a href="http://e-words.jp/w/GZIP.html">GZIP形式</a>で圧縮できます。
+</p>
+<pre>
+gzip ファイル名
+</pre>
+<p>
+  gipzでファイルを圧縮するサンプルです。
+</p>
+<p>
+  圧縮されたファイル名の拡張子は「.gz」になります。
+</p>
+<pre>
+gzip foo
+</pre>
+<p>
+  GZIP形式のファイルを解凍するには<a href="/blog/20200607103245.html">gunzip</a>コマンドを使用します。
+</p>
+<p>
+  <a href="/blog/20190129171737.html">tar</a>コマンドでも、GZIP形式で圧縮ができるので、tarコマンドのオプションを使って、ディレクトリをアーカイブ化・圧縮するのが、さらに一般的です。
+</p>
+<pre>
+tar cfz project.tar.gz project
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/">Linuxサーバー管理入門</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    Linux関連の研修教材
+  </div>
+  <ul>
+    <li><a href="http://ubuntu.perlzemi.com/">Ubuntuサーバー構築入門</a></li>
+    <li><a href="http://centos.perlzemi.com/">CentOSサーバー構築入門</a></li>
+    <li><a href="https://tutorial.perlzemi.com/">Perlプログラミング入門</a></li>
+    <li><a href="https://web.perlzemi.com/">Webシステム開発入門</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="kimoto_system_link">
+  <a href="https://kimoto-system.co.jp">
+    <img src="https://kimoto-system.co.jp/images/kimoto-system-logo.png" alt="Perl Webシステム開発">
+    Perl システム開発の木本システム株式会社<br>
+    
+    リアルタイムWebとクラウドサーバー対応の<br>
+    
+    Webシステム開発・業務システム開発<br>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
