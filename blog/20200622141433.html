@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/linux-server-admin-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>digコマンド - ドメインd名からIPアドレスを調べる。DNSサーバー情報問合わせ。 - Linuxサーバー管理入門 - Linuxの基礎と実用 | Perlゼミ</title>
+<meta name="description" content="digコマンドを使うと、DNSサーバー情報問合わせを行うことができます。最もよく使うのは、ドメイン名からIPアドレスの情報を取得したい場合です。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Linux</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/blog/20200211081227.html">
+        <span itemprop="name">Linuxコマンド</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+<h2><a href="/blog/20200622141433.html">digコマンド - ドメインd名からIPアドレスを調べる。DNSサーバー情報問合わせ。</a></h2>
+<p>
+  digコマンドを使うと、DNSサーバー情報問合わせを行うことができます。最もよく使うのは、ドメイン名からIPアドレスの情報を取得したい場合です。
+</p>
+<pre>
+dig ドメイン名
+</pre>
+<p>
+  digを使ってドメイン名を指定してIPアドレスの情報を取得するサンプルです。
+</p>
+<pre>
+dig linux.perlzemi.com
+</pre>
+<p>
+  digの出力結果です。IPアドレスがわかります。
+</p>
+<pre>
+; &lt;&lt;&gt;&gt; DiG 9.3.6-P1-RedHat-9.3.6-25.P1.el5_11.12 &lt;&lt;&gt;&gt; linux.perlzemi.com
+;; global options:  printcmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 50874
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;linux.perlzemi.com.            IN      A
+
+;; ANSWER SECTION:
+linux.perlzemi.com.     3600    IN      CNAME   sakurastd.perlzemi.com.
+sakurastd.perlzemi.com. 3600    IN      A       210.224.185.82
+
+;; Query time: 5 msec
+;; SERVER: 210.188.224.10#53(210.188.224.10)
+;; WHEN: Mon Jun 22 14:17:22 2020
+;; MSG SIZE  rcvd: 76
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/">Linuxサーバー管理入門</a></li>
+    <li><a href="/blog/20200211081227.html">Linuxコマンド</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    Linux関連の研修教材
+  </div>
+  <ul>
+    <li><a href="http://ubuntu.perlzemi.com/">Ubuntuサーバー構築入門</a></li>
+    <li><a href="http://centos.perlzemi.com/">CentOSサーバー構築入門</a></li>
+    <li><a href="https://tutorial.perlzemi.com/">Perlプログラミング入門</a></li>
+    <li><a href="https://web.perlzemi.com/">Webシステム開発入門</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="kimoto_system_link">
+  <a href="https://kimoto-system.co.jp">
+    <img src="https://kimoto-system.co.jp/images/kimoto-system-logo.png" alt="Perl Webシステム開発">
+    Perl システム開発の木本システム株式会社<br>
+    
+    リアルタイムWebとクラウドサーバー対応の<br>
+    
+    Webシステム開発・業務システム開発<br>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>

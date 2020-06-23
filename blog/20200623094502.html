@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/linux-server-admin-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>ssh-keygen - SSHの秘密鍵と公開鍵のペアを作成する - Linuxサーバー管理入門 - Linuxの基礎と実用 | Perlゼミ</title>
+<meta name="description" content="ssh-keygenコマンドを使うと、SSHの秘密鍵と公開鍵のペアを作成することができます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20200623094502.html">ssh-keygen - SSHの秘密鍵と公開鍵のペアを作成する</a></h2>
+<p>
+  <b>ssh-keygen</b>コマンドを使うと、SSHの秘密鍵と公開鍵のペアを作成することができます。
+</p>
+<p>
+  まず、SSHの秘密鍵を保存しておくディレクトリに移動します。
+</p>
+<pre>
+cd ~/.ssh
+</pre>
+<p>
+  公開鍵と秘密鍵のペアを生成するには、ssh-keygenコマンドを実行します。公開鍵は秘密鍵とセットになっていて、秘密鍵はローカルマシンに、公開鍵は、Github上に登録します。
+</p>
+<pre>
+ssh-keygen -t rsa
+</pre>
+<p>
+  生成するファイル名を聞かれますので「id_rsa_github」と入力しましょう。
+</p>
+<p>
+  「id_rsa_github」と「id_rsa_github.pub」というファイルが作成されます。「id_rsa_git」は秘密鍵、「id_rsa_git.pub」は公開鍵です。
+</p>
+<p>
+  パスフレーズを入力してくださいと聞かれたときは、パスフレーズを設定しないので、Enterを押してください。再入力を求められるのでEnterを押してください。
+</p>
+<p>
+  <a href="https://linux.perlzemi.com/blog/20200113083613.html">cat</a>コマンドで「id_rsa_github.pub」の中身を表示してみましょう。
+</p>
+<pre>
+cat id_rsa_github.pub
+</pre>
+<p>
+  以下のように表示されます。
+</p>
+<pre>
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41/jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby/KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA+JSFLOGB8wxCV8UFh9XWXI4c5QKQ/Hyl8//nXT6suQf199VNf4Ru31rs+49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM/4OMQeIxZmZg8ysML307viqkKh/2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp@myhost
+</pre>
+<p>
+  この値が必要になるので、コピーしておきましょう。
+</p>
+<h4>秘密鍵のパーミッションは600である必要がある</h4>
+<p>
+  秘密鍵のパーミッションは600である必要があります。ssh-keygenを使って作成した場合は、パーミッションは600に設定されますが、他のサーバーから秘密鍵の内容をコピーしてきた場合は、<a href="https://linux.perlzemi.com/blog/20200519082545.html">chmod</a>コマンドを使って、パーミッションを600にしましょう。
+</p>
+<pre>
+chmod 600 id_rsa_github
+</pre>
+<h3>GithubにSSH接続する場合に作成した秘密鍵を使う設定</h3>
+<p>
+  GithubにSSH接続する場合に作成した秘密鍵を使う設定をしておきましょう。「~/.ssh/config」に追記します。パーミッションも600にしておきましょう。
+</p>
+<pre>
+echo '
+Host github github.com
+  HostName github.com
+  IdentityFile ~/.ssh/id_rsa_github
+  User git
+' | cat &gt;&gt; ~/.ssh/config
+chmod 600 ~/.ssh/config
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/">Linuxサーバー管理入門</a></li>
+    <li><a href="/blog/20200211081227.html">Linuxコマンド</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    Linux関連の研修教材
+  </div>
+  <ul>
+    <li><a href="http://ubuntu.perlzemi.com/">Ubuntuサーバー構築入門</a></li>
+    <li><a href="http://centos.perlzemi.com/">CentOSサーバー構築入門</a></li>
+    <li><a href="https://tutorial.perlzemi.com/">Perlプログラミング入門</a></li>
+    <li><a href="https://web.perlzemi.com/">Webシステム開発入門</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="kimoto_system_link">
+  <a href="https://kimoto-system.co.jp">
+    <img src="https://kimoto-system.co.jp/images/kimoto-system-logo.png" alt="Perl Webシステム開発">
+    Perl システム開発の木本システム株式会社<br>
+    
+    リアルタイムWebとクラウドサーバー対応の<br>
+    
+    Webシステム開発・業務システム開発<br>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>

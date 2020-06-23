@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/linux-server-admin-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>sshコマンド - SSHサーバーへ接続する - Linuxサーバー管理入門 - Linuxの基礎と実用 | Perlゼミ</title>
+<meta name="description" content="sshコマンドを使うと、SSHプロトココルを使って、SSHサーバーに接続して、コマンドを実行することができます。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Linuxサーバー管理入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Linux</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/blog/20200211081227.html">
+        <span itemprop="name">Linuxコマンド</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+<h2><a href="/blog/20200621103220.html">sshコマンド - SSHサーバーへ接続する</a></h2>
+<p>
+  sshコマンドを使うと、SSHプロトココルを使って、SSHサーバーに接続して、コマンドを実行することができます。
+</p>
+<pre>
+ssh 接続先
+</pre>
+<p>
+  接続先は、以下のように記述します。ユーザー名を省略した場合は、ローカルユーザーと同じユーザー名になります。
+</p>
+<pre>
+ユーザー名@ホスト名
+</pre>
+<p>
+  sshで接続するサンプルです。
+</p>
+<pre>
+ssh 10.54.14.15@kimoto
+</pre>
+<h4>ポート番号を指定する</h4>
+<p>
+  sshコマンドで、接続先のポート番号を指定する場合は「-p」オプションを使用します。
+</p>
+<pre>
+ssh -p 55555 10.54.14.15@kimoto
+</pre>
+<h4>sshコマンドが使うデフォルトの秘密鍵</h4>
+<p>
+  sshコマンドが使うデフォルトの秘密鍵は以下です。
+</p>
+<pre>
+~/.ssh/id_rsa
+</pre>
+<h4>秘密鍵ファイルを指定する</h4>
+<p>
+  秘密鍵を「-i」オプションで秘密鍵ファイルを指定することができます。相対パスの場合は「~/.ssh」からのパスになります。
+</p>
+<pre>
+ssh -i id_rsa_example 10.54.14.15@kimoto
+ssh -i /path/id_rsa_example 10.54.14.15@kimoto
+</pre>
+<h4>特定のドメインへのSSH接続する場合に秘密鍵ファイルを指定してを使う設定</h4>
+<p>
+  特定のドメインへのSSH接続する場合に秘密鍵ファイルを指定してを使う設定を設定ファイル「~/.ssh/config」で行うことができます。
+</p>
+<p>
+  GithubにSSH接続する場合に作成した秘密鍵を使う設定のサンプルです。「~/.ssh/config」に追記します。
+</p>
+<pre>
+Host github github.com
+  HostName github.com
+  IdentityFile ~/.ssh/id_rsa_github
+  User git
+</pre>
+<p>
+  パーミッションも600にしておきましょう。
+</p>
+<pre>
+chmod 600 ~/.ssh/config
+</pre>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/">Linuxサーバー管理入門</a></li>
+    <li><a href="/blog/20200211081227.html">Linuxコマンド</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+<div class="side-list">
+  <div class="side-list-title">
+    Linux関連の研修教材
+  </div>
+  <ul>
+    <li><a href="http://ubuntu.perlzemi.com/">Ubuntuサーバー構築入門</a></li>
+    <li><a href="http://centos.perlzemi.com/">CentOSサーバー構築入門</a></li>
+    <li><a href="https://tutorial.perlzemi.com/">Perlプログラミング入門</a></li>
+    <li><a href="https://web.perlzemi.com/">Webシステム開発入門</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="kimoto_system_link">
+  <a href="https://kimoto-system.co.jp">
+    <img src="https://kimoto-system.co.jp/images/kimoto-system-logo.png" alt="Perl Webシステム開発">
+    Perl システム開発の木本システム株式会社<br>
+    
+    リアルタイムWebとクラウドサーバー対応の<br>
+    
+    Webシステム開発・業務システム開発<br>
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
