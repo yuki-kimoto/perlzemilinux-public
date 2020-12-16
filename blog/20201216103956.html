@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/linux-server-admin-logo.png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+
+<script type="text/javascript" src="/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/google-code-prettify/prettify.js"></script>
+<link  type="text/css" rel="stylesheet" href="/js/google-code-prettify/prettify.css"/>
+<script>
+  $(function(){
+    // google code prettifyの有効化
+    $("pre").addClass("prettyprint");
+    function init(event){
+      prettyPrint();
+    }
+    if(window.addEventListener)window.addEventListener("load",init,false);
+    else if(window.attachEvent)window.attachEvent("onload",init);
+    
+    $(".to-top").click(function() {
+      // ページの一番上までスクロールさせます。
+      $('body, html').animate({scrollTop: 0}, 300, 'linear');;
+    });
+  });
+</script>
+
+<title>gccコマンド - C言語ソースコードのコンパイルとリンク - Unix/Linux+Perlでポータブルなサーバー管理入門</title>
+<meta name="description" content="gccコマンドは、C言語ソースコードのコンパイルとリンクを行うためのコマンドです。">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- header -->
+<h1>
+  <a href="/">Unix/Linux+Perlでポータブルなサーバー管理入門</a>
+</h1>
+
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="entry">
+  <div class="top">
+    <!-- top -->
+
+  </div>
+  <div class="middle">
+    <h2><a href="/blog/20201216103956.html">gccコマンド - C言語ソースコードのコンパイルとリンク</a></h2>
+<p>
+  <b>gccコマンド</b>は、C言語ソースコードのコンパイルとリンクを行うためのコマンドです。
+</p>
+<p>
+  コンパイルとリンクを行って、実行ファイルを生成するにはgccコマンドで、「-o」オプションを使用します。
+</p>
+<pre>
+gcc -o 出力ファイル名 入力ファイル名
+</pre>
+<p>
+  「-o」オプションで出力ファイル名を指定します。
+</p>
+<pre>
+gcc -o 出力ファイル名 入力ファイル名
+</pre>
+<p>
+  このコマンドでは、コンパイルとリンクの作業を一度に行ってしまいます。入力ファイルが一つなので、リンクした気分にはならないです。リンクという言葉の意味もまだ説明していません。まず実行できるところまでを、試してみましょう。
+</p>
+<p>
+  「test.c」というC言語ソースファイルから「test」という実行ファイルを作成してみましょう。
+</p>
+<pre>
+// test.c
+
+#include &lt;stdio.h&gt;
+
+int main(void) {
+  printf("Hello World!\n");
+}
+</pre>
+<p>
+  gccコマンドで実行ファイルを生成します。
+</p>
+<pre>
+gcc -o test test.c
+</pre>
+<h3>gccを使ったC言語開発環境の構築手順</h3>
+<p>
+  gccを使ったC言語開発環境の構築手順については以下の記事を参考にしてください。
+</p>
+<ul>
+  <li><a href="https://www.ubuntu-perl-web.com/blog/20201123133738.html">UbuntuでC言語/C++開発環境構築</a></li>
+</ul>
+<h3>C言語で開発を行う</h3>
+<p>
+  gccを使ってC言語で実際に開発を行うには、以下のサイトを参考にしてください。
+</p>
+<ul>
+  <li><a href="https://c.perlzemi.com/">C99対応のC言語入門</a></li>
+</ul>
+
+  </div>
+  <div class="bottom">
+    <!-- bottom -->
+
+<h3>Unix/Linux+Perlでポータブルなサーバー管理入門のご紹介</h3>
+
+<div class="youtube_block">
+  <div class="youtube">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IMlXP-zBsFY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+  </div>
+</div>
+
+        </div>
+        <div class="side">
+          <!-- side -->
+<div class="side-list">
+  <div class="side-list-title">
+    目次
+  </div>
+  <ul>
+    <li><a href="/">Unix/Linuxサーバー管理入門</a></li>
+    <li><a href="/blog/20200211081227.html">Unix/Linuxコマンド</a></li>
+    <li><a href="/list.html">新着情報</a></li>
+  </ul>
+</div>
+
+        </div>
+      </div>
+      <div class="footer">
+        <div class="what_is_this_site">
+  <div class="inside">
+    Unix/Linuxと<a href="https://tutorial.perlzemi.com/">Perl</a>を使って、ポーターブルにサーバー管理を行うことを解説することを目標にしているサイトです。<br>Unix/Linuxコマンド(正確には主にGNUプロジェクトが作成したツール群。GNUという言葉で検索する人は非常に少ないので、Unix/Linuxコマンドと書きますが、作成者に関する誤解を生まないために、ここに書きます。)の解説を主に行っています。<br>「CUIのコマンドラインで真っ黒な画面でテキスト編集、vi開いたけど、終了させられないよ～、えーん。」という方の参考になればと思います。<br>Debian, <a href="https://www.ubuntu-perl-web.com/">Ubuntu</a>, <a href="https://centos.perlzemi.com/">CentOS</a>, FreeBSDなどUnix/Linuxディストリビューションで<a href="https://websystem.perlzemi.com/">Webシステム開発</a>の環境構築を行う場合のコマンド操作の基礎のサイトでもあります。
+  </div>
+</div>
+
+<div class="perlri_link">
+  <a href="http://www.perlri.com">
+    Copyright © Perl総合研究所
+  </a>
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>
